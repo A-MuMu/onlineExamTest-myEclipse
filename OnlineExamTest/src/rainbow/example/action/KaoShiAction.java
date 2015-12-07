@@ -1,7 +1,6 @@
 package rainbow.example.action;
 
 import java.io.IOException;
-import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -13,7 +12,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import rainbow.example.domain.Course;
 import rainbow.example.domain.DaAnJuan;
@@ -30,17 +33,21 @@ import rainbow.example.service.TempleShiJuanDAOService;
 import rainbow.example.service.TempleTiMuDAOService;
 import rainbow.example.service.TempleXuanZeDAOService;
 import rainbow.example.service.TempleZhuGuanDAOService;
+import rainbow.example.util.String2List;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+@Controller
+@ParentPackage("json-default")
+// 注意这边要加 json 默认不是json的
 public class KaoShiAction extends ActionSupport {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2418277377162128674L;
 	Map<String, Object> session = null;
+	static final Logger logger = Logger.getLogger(KaoShiAction.class);
 	// Long xuekeIDLong ;//试卷学科标志
 	// Long teaIDLong;
 	private TempleCourseDAOService<Course> templeCourseDAOService;
@@ -69,7 +76,7 @@ public class KaoShiAction extends ActionSupport {
 
 	static int num_point_hard = 0;
 	static int num_point_easy = 0;
-	
+
 	ShiJuan shiJuan_hard = new ShiJuan();
 	ShiJuan shiJuan_easy = new ShiJuan();
 	static Student stu = new Student();
@@ -77,7 +84,7 @@ public class KaoShiAction extends ActionSupport {
 
 	public void findCourse() {
 		session = ActionContext.getContext().getSession();
-		//Student 
+		// Student
 		stu = (Student) session.get("userinfo");
 		List<String> xkNames = new ArrayList<String>();
 		try {
@@ -134,8 +141,10 @@ public class KaoShiAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	public String intoKaoShi() {
-		//int 
+		// int
 		mid = Integer.parseInt(request.getParameter("mid"));
 		String course = (String) ActionContext.getContext().getSession()
 				.get("course");
@@ -389,69 +398,43 @@ public class KaoShiAction extends ActionSupport {
 		return list;
 	}
 
-	public String intoDaAn_xz() {
-		return SUCCESS;
-//
-////		try {
-//			DaAnJuan daAnJuan = new DaAnJuan();
-//			Long num = findDanAnJuanNum(DaAnJuan.class);
-//			daAnJuan.setDaJuan(num);
-////			Student stu = (Student) session.get("userinfo");
-//			daAnJuan.setIdStu((long) stu.getId());
-////			int mid = Integer.parseInt(request.getParameter("mid"));
-//			if(mid == 1){
-//				daAnJuan.setShiJuan(shiJuan_hard);
-//			}
-//			else if(mid == 2){
-//				daAnJuan.setShiJuan(shiJuan_easy);
-//			}
-//			int i = 0;
-//
-//			daAnJuan.setXuanze1(request.getParameter(i + 1 + ""));
-//			daAnJuan.setXuanze2(request.getParameter(i + 2 + ""));
-//			daAnJuan.setXuanze3(request.getParameter(i + 3 + ""));
-//			daAnJuan.setXuanze4(request.getParameter(i + 4 + ""));
-//			daAnJuan.setXuanze5(request.getParameter(i + 5 + ""));
-//			daAnJuan.setXuanze6(request.getParameter(i + 6 + ""));
-//			daAnJuan.setXuanze7(request.getParameter(i + 7 + ""));
-//			daAnJuan.setXuanze8(request.getParameter(i + 8 + ""));
-//			daAnJuan.setXuanze9(request.getParameter(i + 9 + ""));
-//			daAnJuan.setXuanze10(request.getParameter(i + 10 + ""));
-//
-//			daAnJuan.setPangduan1(request.getParameter(i + 11 + ""));
-//			daAnJuan.setPangduan2(request.getParameter(i + 12 + ""));
-//			daAnJuan.setPangduan3(request.getParameter(i + 13 + ""));
-//			daAnJuan.setPangduan4(request.getParameter(i + 14 + ""));
-//			daAnJuan.setPangduan5(request.getParameter(i + 15 + ""));
-//			daAnJuan.setPangduan6(request.getParameter(i + 16 + ""));
-//			daAnJuan.setPangduan7(request.getParameter(i + 17 + ""));
-//			daAnJuan.setPangduan8(request.getParameter(i + 18 + ""));
-//			daAnJuan.setPangduan9(request.getParameter(i + 19 + ""));
-//			daAnJuan.setPangduan10(request.getParameter(i + 20 + ""));
-//
-//			templeDaAnDAOService.add(daAnJuan);
-////			return SUCCESS;
-////		} catch (Exception e) {
-////			return ERROR;
-////		}
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~交卷~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public void submit() {
+		System.out.println("~~~~~~~进来交卷~~~~~~");
+		logger.info("~~~~~~~进来交卷~~~~~~");
+		DaAnJuan daJuan = new DaAnJuan();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
+
+		String xuanze,pangduan,zhuguan;
+		xuanze = request.getParameter("xuanze");
+		pangduan = request.getParameter("pangduan");
+		zhuguan = request.getParameter("zhuguan");
+		
+//		intoDaAn_xz(daJuan,xuanze);
+//		intoDaAn_pd(daJuan,pangduan);
+//		intoDaAn_zg(daJuan,zhuguan);
+
+		System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
+		logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~");
+		try {
+//			final String URL = "jsp/shouye.jsp";
+			response.getWriter().write("1");// 将值写入页面
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public void intoDaAn_pd() {
-
-	}
-
-	public void intoDaAn_zg() {
-
-	}
-	
-	public void lianxi(){
+	public void lianxi() {
 		int miid = Integer.parseInt(request.getParameter("miid"));
-		if(miid == 1){
+		if (miid == 1) {
 			List<XuanZe> xzList = new ArrayList<XuanZe>();
 			xzList = templeXuanZeDAOService.getAllObjects(XuanZe.class);
-			ActionContext.getContext().getSession().put("xz",xzList);
+			ActionContext.getContext().getSession().put("xz", xzList);
 			try {
-				request.getRequestDispatcher("/jsp/lianxi1.jsp").forward(request, response);
+				request.getRequestDispatcher("/jsp/lianxi1.jsp").forward(
+						request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -459,12 +442,13 @@ public class KaoShiAction extends ActionSupport {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(miid == 2){
+		} else if (miid == 2) {
 			List<PangDuan> pdlist = new ArrayList<PangDuan>();
 			pdlist = templePangDuanDAOService.getAllObjects(PangDuan.class);
-			ActionContext.getContext().getSession().put("pd",pdlist);
+			ActionContext.getContext().getSession().put("pd", pdlist);
 			try {
-				request.getRequestDispatcher("/jsp/lainxi2.jsp").forward(request, response);
+				request.getRequestDispatcher("/jsp/lainxi2.jsp").forward(
+						request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -473,7 +457,7 @@ public class KaoShiAction extends ActionSupport {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	public Long findDanAnJuanNum(Class clazz) {
@@ -548,5 +532,5 @@ public class KaoShiAction extends ActionSupport {
 			TempleXuanZeDAOService<XuanZe> templeXuanZeDAOService) {
 		this.templeXuanZeDAOService = templeXuanZeDAOService;
 	}
-	
+
 }

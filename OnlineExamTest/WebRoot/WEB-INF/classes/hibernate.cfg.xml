@@ -28,7 +28,6 @@
 		<mapping resource="rainbow/example/domain/XuanZe.hbm.xml" />
 		<mapping resource="rainbow/example/domain/PangDuan.hbm.xml" />
 		<mapping resource="rainbow/example/domain/DaAnJuan.hbm.xml" />
-		<mapping resource="rainbow/example/domain/TianKong.hbm.xml" />
 
 	</session-factory>
 

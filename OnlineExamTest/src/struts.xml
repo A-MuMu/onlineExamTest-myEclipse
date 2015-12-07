@@ -11,6 +11,10 @@
 			<result name="success">jsp/shouye.jsp</result>
 			<result name="exception">jsp/login.jsp</result>
 		</action>
+		
+		<action name="submit" class="kaoShiAction" method="submit">
+			<!-- <result name="success">jsp/shouye.jsp</result> -->
+		</action>
 
 		<action name="mingyan" class="mingYanAction" method="doMingYan">
 		</action>

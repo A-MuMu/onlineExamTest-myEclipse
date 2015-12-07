@@ -21,7 +21,7 @@ public class XueKe  implements java.io.Serializable {
      private Set courses = new HashSet(0);
      private Set xuanZes = new HashSet(0);
      private Set keGuans = new HashSet(0);
-     private Set tianKongs = new HashSet(0);
+//     private Set tianKongs = new HashSet(0);
 
 
     // Constructors
@@ -45,7 +45,7 @@ public class XueKe  implements java.io.Serializable {
         this.courses = courses;
         this.xuanZes = xuanZes;
         this.keGuans = keGuans;
-        this.tianKongs = tianKongs;
+//        this.tianKongs = tianKongs;
     }
 
    
@@ -107,20 +107,12 @@ public class XueKe  implements java.io.Serializable {
         this.keGuans = keGuans;
     }
 
-    public Set getTianKongs() {
-        return this.tianKongs;
-    }
-    
-    public void setTianKongs(Set tianKongs) {
-        this.tianKongs = tianKongs;
-    }
-   
-
-
-
-
-
-
-
+//    public Set getTianKongs() {
+//        return this.tianKongs;
+//    }
+//    
+//    public void setTianKongs(Set tianKongs) {
+//        this.tianKongs = tianKongs;
+//    }
 
 }

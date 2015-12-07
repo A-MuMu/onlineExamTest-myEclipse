@@ -50,48 +50,42 @@ $(function() {
 						$.modal(html);
 						clearTimeout(timeout);
 
-						var page = {
-							"xuanze" : answers_1,
-							"pangduan" : answers_2,
-							"zhuguan" : answers_3
-						};
 						// alert(float_second);
 
 						$('.commit-exercise-wrap .submit').click(function() {
 							var url = 'submit';
-
-							var paper_node = $('.page_content');
-							var paper_id = paper_node.data('id');
-
-							if (paper_id <= 0)
-								return;
-
-							//未提交：0     提交：1    保存:2
-							var data = {
-								"page" : page,
-								"flag" : 1
-							};
-
+							var xuanze = answers_1.toString();
+							var pangduan = answers_2.toString();
+							var zhuguan = answers_3.toString();
+//							alert(xuanze + "~~" + pangduan + "~~" +zhuguan);
 							$.ajax({
 								type : "post",
 								url : url,
-								data : data,
+								data : {
+									"xuanze" : xuanze,
+									"pangduan" : pangduan,
+									"zhuguan" : zhuguan
+								},
 								dataType : 'json',
-								success : function(r) {
-									if (r.code > 0) {
-										alert(r.data.msg);
-									} else {
-										window.location.href = r.data.url;
-									}
-								}
+								success : function(URL) {
+									alert("恭喜你交卷成功！");
+									$.modal.close();
+									window.location.href = "jsp/shouye.jsp";
+								},
+								error : function(){
+									alert("交卷失败,请重新提交！");
+									$.modal.close();
+								} 
+								
 							});
-
+							
 						});
 
 						$('.commit-exercise-wrap .cancel').click(function() {
 							$.modal.close();
 							show_time();
 						});
+						no_Num = 0;
 					});
 });
 
@@ -100,7 +94,7 @@ function ajax_answer_1() {
 
 	var question_ids = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 	// var answers = new Array();
-//	alert(question_ids.length);
+	// alert(question_ids.length);
 	for (var iIndex = 0; iIndex < question_ids.length; iIndex++) {
 		var tt = document.getElementsByName(question_ids[iIndex]);
 		var mark = 0;
@@ -116,7 +110,7 @@ function ajax_answer_1() {
 			answers_1[iIndex] = -1;
 			no_Num++;
 		}
-		// alert(answers_1[iIndex]);
+//		 alert(answers_1[iIndex]);
 	}
 
 }
@@ -126,7 +120,7 @@ function ajax_answer_2() {
 
 	var question_ids = new Array(11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 	// var answers = new Array();
-	alert(question_ids.length);
+	// alert(question_ids.length);
 	for (var iIndex = 0; iIndex < question_ids.length; iIndex++) {
 		var tt = document.getElementsByName(question_ids[iIndex]);
 		var mark = 0;
@@ -141,7 +135,7 @@ function ajax_answer_2() {
 			answers_2[iIndex] = -1;
 			no_Num++;
 		}
-		// alert(answers_2[iIndex]);
+//		 alert(answers_2[iIndex]);
 	}
 
 }
@@ -175,9 +169,9 @@ function ajax_answer_3() {
 		no_Num++;
 	} else
 		answers_3[2] = text_3.value;
-	
-//校验问答题答案输出
-//	 alert(answers_3[0]);
-//	 alert(answers_3[1]);
-//	 alert(answers_3[2]);
+
+	// 校验问答题答案输出
+	// alert(answers_3[0]);
+	// alert(answers_3[1]);
+	// alert(answers_3[2]);
 }

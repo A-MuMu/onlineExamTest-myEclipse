@@ -1,0 +1,107 @@
+$(function() {
+		//交卷
+		$('#slpaper_submit')
+				.click(
+						function() {
+							var html = '';
+							html += '<div class="commit-exercise-wrap"><div class="commit-exercise">';
+							html += '<div class="button-row">';
+							html += '<span class="btn btn-paper btn-paper-xlarge submit">确定交卷</span>';
+							html += '<br>';
+							html += '<span class="btn btn-paper btn-paper-xlarge cancel">谢谢提醒，继续做</span>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+							$.modal(html);
+
+							$('.commit-exercise-wrap .submit')
+									.click(
+											function() {
+												var url = '?mod=shenlun&act=submit';
+
+												var paper_node = $('.page_content');
+												var paper_id = paper_node
+														.data('id');
+
+												if (paper_id <= 0)
+													return;
+
+												var sq_answer = $('.sq_answer');
+												var answer_data = {};
+												sq_answer
+														.each(function(i) {
+															var sq_id = $(this)
+																	.data(
+																			'sq-id');
+															answer_data[sq_id] = $(
+																	this).val();
+														});
+
+												var data = {
+													'paper_id' : paper_id,
+													'flag' : 2,
+													'answer_data' : answer_data
+												};
+
+												$
+														.ajax({
+															type : "post",
+															url : url,
+															data : data,
+															dataType : 'json',
+															success : function(
+																	r) {
+																if (r.code > 0) {
+																	alert(r.data.msg);
+																} else {
+																	window.location.href = r.data.url;
+																}
+															}
+														});
+
+											});
+
+							$('.commit-exercise-wrap .cancel').click(
+									function() {
+										$.modal.close();
+									});
+						});
+
+		//下次继续做
+		$('#slpaper_save').click(function() {
+			var url = '?mod=shenlun&act=submit';
+
+			var paper_node = $('.page_content');
+			var paper_id = paper_node.data('id');
+
+			if (paper_id <= 0)
+				return;
+
+			var sq_answer = $('.sq_answer');
+			var answer_data = {};
+			sq_answer.each(function(i) {
+				var sq_id = $(this).data('sq-id');
+				answer_data[sq_id] = $(this).val();
+			});
+
+			var data = {
+				'paper_id' : paper_id,
+				'flag' : 1,
+				'answer_data' : answer_data
+			};
+
+			$.ajax({
+				type : "post",
+				url : url,
+				data : data,
+				dataType : 'json',
+				success : function(r) {
+					if (r.code > 0) {
+						alert(r.data.msg);
+					} else {
+						window.location.href = r.data.url;
+					}
+				}
+			});
+		});
+	});

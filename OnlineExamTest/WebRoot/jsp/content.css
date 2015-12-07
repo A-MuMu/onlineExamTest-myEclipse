@@ -1,0 +1,935 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.box2 {
+	width: 1010px;
+	float: left;
+	background: url(box_line_bg2.jpg) repeat-y;
+	margin-bottom: 20px;
+}
+
+.box_bottom2 {
+	font-size: 0;
+	_margin-top: -5px;
+}
+
+.page_content2 {
+	background: url(page_box_top2.jpg) no-repeat top;
+	padding: 5px;
+}
+
+.clear {
+	clear: both;
+}
+
+.page_nav2 {
+	min-height: 500px;
+	_height: 500px;
+}
+
+.page_content2 .h1 {
+	height: 49px;
+	background: url(content_h1.jpg) repeat-x;
+}
+
+.page_content2 .h1 .lf {
+	float: left;
+	width: 8px;
+	height: 49px;
+	background: url(content_h1_left.jpg) no-repeat;
+}
+
+.page_content2 .h1 .rt {
+	float: right;
+	width: 8px;
+	height: 49px;
+	background: url(content_h1_right.jpg) no-repeat;
+}
+
+.page_content2 .h1 .title {
+	float: left;
+	font-size: 16px;
+	line-height: 45px;
+	margin-left: 51px;
+	color: #333;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.logintable {
+	width: 440px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.logintable td {
+	padding: 5px 0;
+	font-size: 16px;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.logintable .forgot {
+	background: url(loginbg.png) 0 -120px;
+	color: #9b9b9b;
+	padding-left: 15px;
+	margin-left: 20px;
+}
+
+.login_input {
+	width: 242px;
+	height: 32px;
+	line-height: 32px;
+	background: url(loginbg.png) no-repeat;
+	border: 0;
+	padding: 0 3px;
+}
+
+.logintable .auto {
+	color: #9b9b9b;
+	float: right;
+	margin-right: 12px;
+}
+
+.logintable .auto label, .logintable .auto a {
+	color: #0088cc;
+}
+
+.loginbt {
+	width: 120px;
+	height: 32px;
+	display: block;
+	background: url(loginbg.png) left -40px;
+	float: left;
+	margin-left: 128px;
+	border: 0;
+}
+
+.loginbt:hover {
+	background-position: 0 -80px;
+}
+
+.registbt {
+	width: 120px;
+	height: 32px;
+	display: block;
+	background: url(loginbg.png) right -40px;
+	float: left;
+	margin-left: 8px;
+}
+
+.registbt:hover {
+	background-position: right -80px;
+}
+
+.registbt2 {
+	width: 120px;
+	height: 32px;
+	display: block;
+	background: url(loginbg.png) right -40px;
+	float: right;
+	margin-right: 12px;
+}
+
+.registbt2:hover {
+	background-position: right -80px;
+}
+
+.headtitle {
+	border-bottom: 1px dotted #B9B9B9;
+	background: url(titlebg.jpg) repeat-x;
+}
+
+.headtitle_in {
+	width: 1010px;
+	height: 148px;
+	margin: 0 auto;
+	background: url(titlepic.jpg) no-repeat right;
+}
+
+.headtitle_in h1 {
+	width: 400px;
+	margin: 20px 0;
+	float: left;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.headtitle_in p {
+	width: 700px;
+	float: left;
+	color: #666;
+}
+
+.headtitle2 {
+	border-bottom: 1px dashed #bcbcbc;
+	background: url(titlebg.jpg) repeat-x;
+}
+
+.headtitle2_in {
+	width: 1010px;
+	height: 148px;
+	margin: 0 auto;
+	background: url(titlepic2.jpg) no-repeat right;
+}
+
+.headtitle2_in h1 {
+	width: 400px;
+	margin: 20px 0;
+	float: left;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.headtitle2_in p {
+	width: 700px;
+	float: left;
+	color: #666;
+}
+
+.headtitle3_in {
+	width: 1010px;
+	height: 148px;
+	margin: 0 auto;
+	background: url(titlepic3.jpg) no-repeat right;
+}
+
+.headtitle3_in h1 {
+	width: 400px;
+	margin: 20px 0;
+	float: left;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.headtitle3_in p {
+	width: 700px;
+	float: left;
+	color: #666;
+}
+
+.publicbox {
+	width: 1010px;
+	height: 524px;
+}
+
+.publicbox a {
+	display: block;
+	float: left;
+}
+
+.training {
+	width: 486px;
+	height: 254px;
+	background: url(gg_01.gif)
+}
+
+.testpaper {
+	width: 524px;
+	height: 254px;
+	background: url(gg_02.gif)
+}
+
+.zhenti {
+	width: 486px;
+	height: 270px;
+	background: url(gg_03.gif)
+}
+
+.exam {
+	width: 524px;
+	height: 270px;
+	background: url(gg_04.gif)
+}
+
+.publicbox a:hover {
+	background-position: bottom;
+}
+
+.footlink {
+	float: right;
+	margin: 50px 0;
+	width: 500px;
+	color: #929292;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.footlink a {
+	color: #929292;
+}
+
+.footlink span {
+	margin: 0 5px;
+}
+
+.hangcebox h2 {
+	margin-top: 20px;
+	background: url(hangce2.jpg) no-repeat;
+	padding: 7px 0 7px 35px;
+	font-size: 18px;
+	font-weight: normal;
+	color: #333;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: bold;
+}
+
+.hangcebox1, .hangcebox2, .hangcebox4, .hangcebox5 {
+	width: 292px;
+	height: 220px;
+	padding: 20px;
+	_padding: 20px;
+	background: url(hcbox1.jpg) repeat-x bottom;
+	float: left;
+	border-right: 1px solid #ccc;
+}
+
+.hangcebox3, .hangcebox6 {
+	width: 294px;
+	height: 220px;
+	padding: 20px;
+	_padding: 20px;
+	background: url(hcbox1.jpg) repeat-x bottom;
+	float: left;
+}
+
+.hangcebox2 h2 {
+	background-position: 0 -45px;
+	padding-left: 40px;
+}
+
+.hangcebox3 h2 {
+	background-position: 0 -82px;
+	padding-left: 40px;
+}
+
+.hangcebox4 h2 {
+	background-position: 0 -130px;
+	padding-left: 40px;
+}
+
+.hangcebox5 h2 {
+	background-position: 0 -168px;
+	padding-left: 40px;
+}
+
+.hangcebox .hangcebox6 h2 {
+	background-position: 205px -250px;
+	margin-top: 80px
+}
+
+.hangcebox .hangcebox6 h2 a {
+	color: #333;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.hangcebox h2 span {
+	font-size: 12px;
+	color: #999;
+}
+
+.hangcelist li {
+	width: 250px;
+	margin: 8px 0 8px 40px;
+	_margin: 8px 0 8px 25px;
+	color: #666;
+}
+
+.hangcelist li a {
+	background: url(hangce2.jpg) no-repeat 0 -210px;
+	width: 74px;
+	height: 26px;
+	display: block;
+	float: right;
+	text-align: center;
+	line-height: 26px;
+}
+
+.hangcelist li span {
+	float: left;
+}
+
+.zhuanxian h2 {
+	margin-top: 20px;
+	background: url(zhuanxian.jpg) no-repeat;
+	padding: 8px 0 8px 40px;
+	font-size: 18px;
+	font-weight: normal;
+	color: #333;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: bold;
+}
+
+.zhuanxian1, .zhuanxian2, .zhuanxian4, .zhuanxian5, .zhuanxian7,
+	.zhuanxian8 {
+	width: 292px;
+	height: 120px;
+	padding: 20px;
+	_padding: 20px;
+	background: url(hcbox1.jpg) repeat-x bottom;
+	float: left;
+	border-right: 1px solid #ccc;
+}
+
+.zhuanxian3, .zhuanxian6, .zhuanxian9 {
+	width: 294px;
+	height: 120px;
+	padding: 20px;
+	_padding: 20px;
+	background: url(hcbox1.jpg) repeat-x bottom;
+	float: left;
+}
+
+.zhuanxian1 h2 {
+	background-position: 0 -145px;
+	padding-left: 50px;
+}
+
+.zhuanxian2 h2 {
+	background-position: 0 -210px;
+	padding-left: 50px;
+}
+
+.zhuanxian3 h2 {
+	background: url(hangce2.jpg) no-repeat;
+	background-position: 0 -82px;
+	padding-left: 50px;
+}
+
+.zhuanxian4 h2 {
+	background-position: 0 -260px;
+	padding-left: 50px;
+}
+
+.zhuanxian5 h2 {
+	background-position: 0 -90px;
+	padding-left: 50px;
+}
+
+.zhuanxian6 h2 {
+	background-position: 0 -45px;
+	padding-left: 50px;
+}
+
+.zhuanxian7 h2 {
+	background-position: 0 0;
+	padding-left: 50px;
+}
+
+.zhuanxian8 h2 {
+	background: url(hangce2.jpg) no-repeat;
+	background-position: 0 -166px;
+	padding-left: 50px;
+}
+
+.zhuanxian .zhuanxian9 h2 {
+	background: url(hangce2.jpg) no-repeat;
+	background-position: 165px -248px;
+	margin-top: 40px;
+	_margin-top: 60px;
+}
+
+.zhuanxian .zhuanxian6 h2 a {
+	color: #333;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.zhuanxian h2 span {
+	font-size: 12px;
+	color: #999;
+}
+
+.zhuanxian li {
+	width: 250px;
+	margin: 8px 0 8px 50px;
+	_margin: 8px 0 8px 35px;
+	color: #666;
+}
+
+.zhuanxian li a {
+	background: url(hangce2.jpg) no-repeat 0 -210px;
+	width: 74px;
+	height: 26px;
+	display: block;
+	float: left;
+	text-align: center;
+	line-height: 26px;
+}
+
+.zhuanxian li span {
+	float: left;
+}
+
+.topiclist2 {
+	width: 900px;
+	margin-top: 30px;
+}
+
+.topiclist2 h3 {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.topiclist2 a {
+	font-size: 14px;
+	font-weight: bolder;
+}
+
+.topiclist2 p {
+	color: #969696;
+	margin-top: 5px;
+}
+
+.topiclist2 td {
+	border: 1px solid #ececec;
+	padding: 10px 30px;
+}
+
+.topiclist {
+	width: 900px;
+	margin-top: 30px;
+}
+
+.topiclist h3 {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.topiclist p {
+	color: #969696;
+	margin-top: 5px;
+}
+
+.topiclist td {
+	border-top: 1px solid #ececec;
+	padding: 10px 30px;
+}
+
+.topiclist1 {
+	width: 900px;
+	margin-top: 30px;
+}
+
+.topiclist1 h3 {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.topiclist1 p {
+	color: #969696;
+	margin-top: 5px;
+}
+
+.topiclist1 td {
+	border-top: 1px solid #ececec;
+	padding: 5px 10px;
+}
+
+.enter_bt {
+	border-left: 1px solid #ececec;
+	width: 120px;
+}
+
+.enter_bt a {
+	width: 89px;
+	height: 30px;
+	background: url(enter_bt.jpg);
+	display: block;
+}
+
+.enter_bt a:hover {
+	background-position: bottom;
+}
+
+.check {
+	margin: 0px 50px;
+	font-size: 16px;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	color: #808080;
+}
+
+.classify {
+	width: 901px;
+	height: 223px;
+	background: url(shenlunbg1.jpg);
+	margin-top: 30px;
+}
+
+.classify h2 {
+	font-family: "Microsoft Yahei", "微软雅黑";
+	color: #666;
+	margin: 10px 0 0 40px;
+	float: left;
+	color: #333333;
+	font-family: font-size : 16px;
+}
+
+.classify_in {
+	width: 852px;
+	height: 150px;
+	float: left;
+	margin: 5px 0 0 25px;
+}
+
+.tab {
+	float: left;
+	width: 852px;
+	height: 47px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+.tab a {
+	font-size: 16px;
+	font-family: "Microsoft Yahei", "微软雅黑";
+}
+
+.tab .focus a {
+	color: #f00;
+}
+
+.tab .focus span {
+	width: 13px;
+	height: 8px;
+	display: block;
+	background: url(tabfocus.jpg) no-repeat;
+	float: left;
+	position: absolute;
+	bottom: 2px;
+	left: 33px;
+	font-size: 0;
+}
+
+.tab li {
+	width: 100px;
+	height: 47px;
+	position: relative;
+	text-align: left;
+	line-height: 47px;
+	margin: 4 15px;
+}
+
+.tab .focus {
+	position: relative;
+}
+
+.class_area {
+	margin: 15px;
+	font-size: 14px;
+}
+
+.class_area li {
+	width: 100px;
+	height: 47px;
+	position: relative;
+	text-align: left;
+	line-height: 47px;
+	margin: 0 1px;
+}
+
+.ct_focus {
+	margin-left: 30px;
+}
+
+.ct_focus li {
+	width: 90px;
+	text-align: center;
+	color: #f00;
+	float: left;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-size: 16px;
+	line-height: 45px;
+	margin-left: 45px;
+}
+
+.ct_focus .focus {
+	position: relative;
+}
+
+.ct_focus .focus .typea {
+	color: #f00;
+	background: url(ct_focus_red.jpg) no-repeat 67px 8px;
+	padding-right: 12px;
+}
+
+.ct_focus .focus .typeb {
+	color: #f00;
+	background: url(ct_focus_red2.jpg) no-repeat 0 6px;
+	padding-left: 12px;
+}
+
+.ct_focus .focus span {
+	width: 17px;
+	height: 11px;
+	display: block;
+	background: url(ct_focus.jpg);
+	position: absolute;
+	bottom: -2px;
+	_bottom: -3px;
+	left: 35px;
+	font-size: 0;
+}
+
+.graybox {
+	background: #e6e6e6;
+	border-bottom: 1px solid #cfcfcf;
+	height: 30px;
+	line-height: 30px;
+}
+
+.graybox .wdct {
+	margin-left: 200px;
+	_ margin-left: 135px;
+}
+
+.graybox .wdct .active {
+	color: #f00;
+	font-weight: bold;
+}
+
+.topiclist h3 span {
+	color: #4083a9;
+}
+
+.view_bt a {
+	width: 71px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	display: block;
+	background: url(view.jpg);
+	color: #333;
+}
+
+.view_bt a:hover {
+	background-position: bottom;
+}
+
+.view_bt {
+	border-left: 1px solid #ececec;
+	width: 120px;
+}
+
+.view_bt span {
+	width: 71px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	display: block;
+	color: gray;
+}
+
+.xufei {
+	padding: 30px;
+	font-size: 14px;
+}
+
+.xufei p b {
+	color: #4083a9;
+}
+
+.month {
+	width: 920px;
+}
+
+.month a {
+	width: 131px;
+	padding-top: 20px;
+	height: 111px;
+	display: block;
+	background: url(xufeibg.jpg) right;
+	text-align: center;
+	float: left;
+}
+
+.month a:hover {
+	background-position: left;
+	text-decoration: none;
+}
+
+.month .focus {
+	background-position: left;
+	text-decoration: none;
+}
+
+.month b {
+	font-size: 40px;
+	color: #666;
+	margin-top: 10px;
+	font-weight: normal;
+}
+
+.month .focus b {
+	font-size: 40px;
+	color: #f00;
+	margin-top: 10px;
+	font-weight: normal;
+}
+
+.month p {
+	margin-top: 23px;
+}
+
+.month li {
+	margin: 10px;
+	float: left;
+}
+
+.paybox h2 {
+	font-size: 14px;
+	font-weight: normal;
+	margin: 20px 0;
+	float: left;
+}
+
+.paybox h2 span {
+	color: #4083a9;
+}
+
+.paybox h2 span lable {
+	color: #f00;
+	font-size: 24px;
+}
+
+.paybox .bank {
+	border: 1px solid #ccc;
+	padding: 10px;
+	width: 880px;
+	height: 500px;
+	float: left;
+}
+
+.bank p {
+	margin: 20px 0;
+}
+
+.banklist span {
+	width: 155px;
+	height: 50px;
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+
+.banklist {
+	margin: 10px 0;
+}
+
+.banklist li {
+	margin: 5px 15px;
+	_margin: 0px 15px;
+}
+
+.banklist input {
+	float: left;
+	margin-top: 10px;
+}
+
+.pay_bt {
+	width: 120px;
+	height: 32px;
+	display: block;
+	background: url(pay_bt.jpg);
+	float: left;
+	margin: 20px 0;
+}
+
+.pay_bt:hover {
+	background-position: bottom;
+}
+
+.tcbox {
+	width: 500px;
+	float: left;
+	background: url(tc_05.jpg);
+	font-size: 14px;
+}
+
+.tcbox h1 {
+	height: 37px;
+	background: url(tc_03.jpg);
+	font-size: 18px;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: normal;
+	width: 500px;
+	text-align: center;
+	line-height: 37px;
+}
+
+.tcbottom {
+	width: 500px;
+	height: 11px;
+	float: left;
+	background: url(tc_07.jpg);
+	font-size: 0;
+}
+
+.mubanlist {
+	margin: 10px;
+	_ margin: 5px;
+	float: left;
+	font-family: tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;
+}
+
+.mubanlist li {
+	border-bottom: 1px dotted #ccc;
+	margin: 5px;
+	padding: 5px;
+}
+
+.mubanlist li a {
+	margin: 7px;
+	*margin: 5px;
+	_margin: 7px;
+}
+
+.tcbox h1 .close {
+	width: 27px;
+	height: 27px;
+	background: url(close.jpg) no-repeat;
+	display: block;
+	float: right;
+	margin: 5px 5px 0 0;
+}
+
+.tcbox h1 span {
+	float: left;
+	margin-left: 180px;
+}
+
+.training ul, .testpaper ul, .zhenti ul, .exam ul {
+	width: 300px;
+	height: 80px;
+	display: block;
+	background: url(hc_icon.png) no-repeat;
+	padding-left: 65px;
+	margin: 70px 0 0 90px;
+	cursor: pointer;
+}
+
+.training ul {
+	background-position: 0 -70px;
+}
+
+.testpaper ul {
+	background-position: 0 -70px;
+}
+
+.zhenti ul {
+	background-position: 0 -155px;
+}
+
+.exam ul {
+	background-position: 0 -155px;
+}
+
+.training h2, .testpaper h2, .zhenti h2, .exam h2 {
+	width: 280px;
+	font-size: 24px;
+	color: #4083a9;
+	font-family: "Microsoft Yahei", "微软雅黑";
+	font-weight: normal;
+}
+
+.training p, .testpaper p, .zhenti p, .exam p {
+	width: 280px;
+	margin-top: 10px;
+}

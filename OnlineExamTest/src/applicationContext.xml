@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+	<!-- 配置SessionFactory IOC -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<!-- 指定hibernate的配置文件位置 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+
+		<!-- 配置c3p0数据库连接池 -->
+		<property name="dataSource">
+			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource"
+				destroy-method="close">
+				<property name="driverClass">
+					<value>com.mysql.jdbc.Driver</value>
+				</property>
+				<property name="jdbcUrl">
+					<value>jdbc:mysql://localhost:3306/exam</value>
+				</property>
+				<property name="user">
+					<value>root</value>
+				</property>
+				<property name="password">
+					<value>ljl296485225</value>
+				</property>
+				<!--连接池中保留的最小连接数。 -->
+				<property name="minPoolSize" value="10" />
+				<!--连接池中保留的最大连接数。Default: 15 -->
+				<property name="maxPoolSize" value="100" />
+				<!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+				<property name="maxIdleTime" value="1800" />
+				<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+				<property name="acquireIncrement" value="3" />
+				<property name="maxStatements" value="1000" />
+				<property name="initialPoolSize" value="10" />
+				<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+				<property name="idleConnectionTestPeriod" value="60" />
+				<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+				<property name="acquireRetryAttempts" value="30" />
+				<property name="breakAfterAcquireFailure" value="true" />
+				<property name="testConnectionOnCheckout" value="false" />
+			</bean>
+		</property>
+	</bean>
+
+	<!--对实例化对象建bean -->
+	<bean id="templeDAO" class="rainbow.example.DAO.TempleDAO"
+		depends-on="sessionFactory">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="student" class="rainbow.example.domain.Student">
+	</bean>
+	<bean id="mingyan" class="rainbow.example.domain.MingYan">
+	</bean>
+	<bean id="xueke" class="rainbow.example.domain.XueKe">
+	</bean>
+	<bean id="course" class="rainbow.example.domain.Course">
+		<property name="xueKe" ref="xueke"></property>
+	</bean>
+
+	<bean id="templeStuDAOService" class="rainbow.example.service.TempleStuDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeMingYanDAOService" class="rainbow.example.service.TempleMingYanDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeCourseDAOService" class="rainbow.example.service.TempleCourseDAOService">
+		<property name="dao" ref="templeDAO"></property>
+		<property name="student" ref="student"></property>
+		<property name="xueke" ref="xueke"></property>
+		<property name="course" ref="course"></property>
+	</bean>
+	<bean id="templeTiMuDAOService" class="rainbow.example.service.TempleTiMuDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templePangDuanDAOService" class="rainbow.example.service.TemplePangDuanDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeZhuGuanDAOService" class="rainbow.example.service.TempleZhuGuanDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeShiJuanDAOService" class="rainbow.example.service.TempleShiJuanDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeDaAnDAOService" class="rainbow.example.service.TempleDaAnDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeTeacherDAOService" class="rainbow.example.service.TempleTeacherDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeXuanZeDAOService" class="rainbow.example.service.TempleXuanZeDAOService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
+
+	<!-- scope="prototype"多例，表示每次使用都创建一个新的，单例则不创建新的 -->
+	<bean id="loginAction" class="rainbow.example.action.LoginAction"
+		scope="prototype">
+		<property name="userService" ref="templeStuDAOService"></property>
+		<property name="user" ref="student"></property>
+		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
+	</bean>
+	<bean id="mingYanAction" class="rainbow.example.action.MingYanAction"
+		scope="prototype">
+		<property name="mingYan" ref="mingyan"></property>
+		<property name="templeMingYanDAOService" ref="templeMingYanDAOService"></property>
+	</bean>
+	
+	<bean id="magamentAction" class="rainbow.example.action.MagamentAction"
+		scope="prototype">
+		<property name="templeStuDAOService" ref="templeStuDAOService"></property>
+	</bean>
+	<bean id="teacherMagamentAction" class="rainbow.example.action.TeacherMagamentAction"
+		scope="prototype">
+		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
+	</bean>
+	<bean id="xuanZeAction" class="rainbow.example.action.XuanZeAction"
+		scope="prototype">
+		<property name="templeXuanZeDAOService" ref="templeXuanZeDAOService"></property>
+	</bean>
+	
+
+	<bean id="kaoShiAction" class="rainbow.example.action.KaoShiAction"
+		scope="prototype">
+		<property name="templeCourseDAOService" ref="templeCourseDAOService"></property>
+		<property name="templeTiMuDAOService" ref="templeTiMuDAOService"></property>
+		<property name="templePangDuanDAOService" ref="templePangDuanDAOService"></property>
+		<property name="templeZhuGuanDAOService" ref="templeZhuGuanDAOService"></property>
+		<property name="templeShiJuanDAOService" ref="templeShiJuanDAOService"></property>
+		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
+		<property name="templeXuanZeDAOService" ref="templeXuanZeDAOService"></property>
+	</bean>
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED" />
+			<tx:method name="find*" read-only="false" propagation="NOT_SUPPORTED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+
+			<tx:method name="update*" propagation="REQUIRED" />
+
+			<tx:method name="delete*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+</beans>

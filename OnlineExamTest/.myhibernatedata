@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Mon Dec 07 14:14:00 CST 2015
+genBasicCompId=true
+sessionFactoryName=
+profile=
+daoSFId=
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=
+useJavaTypes=false
+keyGenerator=native
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/OnlineExamTest/hibernate.reveng.xml
+configFile=/OnlineExamTest/src/hibernate.cfg.xml
+createConfigFile=true

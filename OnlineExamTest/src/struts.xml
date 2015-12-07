@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="authority" extends="struts-default">
+		<global-results>
+			<result name="error">jsp/error.jsp</result>
+		</global-results>
+
+		<action name="userLogin" class="loginAction" method="doLogin">
+			<result name="success">jsp/shouye.jsp</result>
+			<result name="exception">jsp/login.jsp</result>
+		</action>
+
+		<action name="mingyan" class="mingYanAction" method="doMingYan">
+		</action>
+
+		<action name="kaoshi" class="kaoShiAction" method="findCourse">
+		</action>
+
+		<action name="kaoshi1" class="kaoShiAction" method="showCourse">
+			<result name="success">jsp/kaoshi.jsp</result>
+		</action>
+
+		<action name="kaoshi2" class="kaoShiAction" method="intoKaoShi">
+			<result name="success">jsp/LiKaoshi.jsp</result>
+		</action>
+		
+		<action name="kaoshi3" class="kaoShiAction" method="lianxi">
+		</action>
+
+		<action name="xuanze" class="kaoShiAction" method="intoDaAn_xz">
+			<result name="error">jsp/error.jsp</result>
+			<result name="success">jsp/kaoshi.jsp</result>
+		</action>
+
+		<action name="pangduan" class="kaoShiAction" method="intoDaAn_pd">
+
+		</action>
+
+		<action name="zhuguan" class="kaoShiAction" method="intoDaAn_zg">
+
+		</action>
+
+		<action name="stu" class="magamentAction" method="stu">
+		</action>
+
+		<action name="stucheck" class="magamentAction" method="stucheck">
+			<result name="success">jsp/stu.jsp</result>
+		</action>
+
+		<action name="tea" class="teacherMagamentAction" method="stu">
+		</action>
+
+		<action name="teacheck" class="teacherMagamentAction" method="stucheck">
+			<result name="success">jsp/laoshi.jsp</result>
+		</action>
+
+		<action name="xz" class="xuanZeAction" method="stu">
+		</action>
+
+		<action name="xzcheck" class="xuanZeAction" method="stucheck">
+			<result name="success">jsp/xz.jsp</result>
+		</action>
+
+		<action name="query" class="loginAction" method="doQuery">
+			<result name="SUCCESS">jsp/input.jsp</result>
+		</action>
+		<action name="delete" class="loginAction" method="doDelete" />
+		<action name="edit" class="loginAction" method="doEdit">
+			<result name="editUser">jsp/editUser.jsp</result>
+		</action>
+
+		<action name="add" class="userAct" method="doAdd">
+			<result name="addUser">jsp/addUser.jsp</result>
+		</action>
+
+	</package>
+
+</struts>    

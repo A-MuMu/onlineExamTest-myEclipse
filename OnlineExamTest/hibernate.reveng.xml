@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="mingyan" catalog="exam" class="MingYan">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="student" catalog="exam" class="Student">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="teacher" catalog="exam" class="Teacher">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="shijuan" catalog="exam" class="ShiJuan">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="xueke" catalog="exam" class="XueKe">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="daanjuan" catalog="exam" class="DaAnJuan">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+		<column name="shijuan"></column>
+	</table>
+</hibernate-reverse-engineering>

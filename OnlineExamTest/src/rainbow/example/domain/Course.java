@@ -60,13 +60,5 @@ public class Course  implements java.io.Serializable {
     public void setXueKe(XueKe xueKe) {
         this.xueKe = xueKe;
     }
-   
-
-
-
-
-
-
-
 
 }

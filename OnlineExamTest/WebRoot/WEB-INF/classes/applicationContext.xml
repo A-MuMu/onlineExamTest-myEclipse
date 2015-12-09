@@ -63,6 +63,9 @@
 	<bean id="course" class="rainbow.example.domain.Course">
 		<property name="xueKe" ref="xueke"></property>
 	</bean>
+	<bean id="daJuan" class="rainbow.example.domain.DaAnJuan">
+	</bean>
+	<bean id="shiJuan" class="rainbow.example.domain.ShiJuan"></bean>
 
 	<bean id="templeStuDAOService" class="rainbow.example.service.TempleStuDAOService">
 		<property name="dao" ref="templeDAO"></property>
@@ -135,7 +138,15 @@
 		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
 		<property name="templeXuanZeDAOService" ref="templeXuanZeDAOService"></property>
 	</bean>
-
+	
+	<bean id="jiaoJuanAction" class="rainbow.example.action.JiaoJuanAction" scope="prototype">
+		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
+		<property name="daJuan" ref="daJuan"></property>
+	</bean>
+	
+	<bean id="cunShiJuanAction" class="rainbow.example.action.CunShiJuanAction" scope="prototype">
+		<property name="templeShiJuanDAOService" ref="templeShiJuanDAOService"></property>
+	</bean>
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

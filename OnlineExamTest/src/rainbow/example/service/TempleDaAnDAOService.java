@@ -5,11 +5,16 @@ import java.util.List;
 import rainbow.example.DAO.TempleDAO;
 import rainbow.example.domain.DaAnJuan;
 
+/*
+ * 交卷业务管理逻辑实现
+ */
 public class TempleDaAnDAOService<T> {
 	private TempleDAO dao;
-	/**添加一个 */
-	public void add(DaAnJuan class1){
-		dao.addObject(class1);
+	/*
+	 * 添加一个 */
+	public void add(DaAnJuan clazz){
+		System.out.println("~~~~~~~再次输出选择题~~~~~~"+clazz.getXuanze1());
+		dao.addObject(clazz);
 	}
 	
 	/** 查询所有 */

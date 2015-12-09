@@ -79,11 +79,11 @@
         <many-to-one name="pangDuanByPangduan9" class="PangDuan" fetch="select">
             <column name="pangduan9" />
         </many-to-one>
-        <property name="teaId" type="java.lang.Long">
-            <column name="TeaID" />
+        <property name="stuId" type="java.lang.Long">
+            <column name="StuID" />
         </property>
-        <property name="xkid" type="java.lang.Long">
-            <column name="XKid" />
+        <property name="nameXK" type="java.lang.String">
+			<column name="NameXK" length="32" />
         </property>
         <set name="daAnJuans" inverse="true">
             <key>

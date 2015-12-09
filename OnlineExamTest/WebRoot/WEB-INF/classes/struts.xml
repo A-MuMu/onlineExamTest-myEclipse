@@ -12,7 +12,7 @@
 			<result name="exception">jsp/login.jsp</result>
 		</action>
 		
-		<action name="submit" class="kaoShiAction" method="submit">
+		<action name="submit" class="jiaoJuanAction" method="submit">
 			<!-- <result name="success">jsp/shouye.jsp</result> -->
 		</action>
 

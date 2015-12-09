@@ -94,7 +94,7 @@
 					<div class="classify">
 						<%
 							Student u = null;
-							u = (Student) session.getAttribute("userinfo");
+											u = (Student) session.getAttribute("userinfo");
 						%>
 						<h2>
 							<u><%=u.getNameStu()%>：</u> 同学的课程信息：
@@ -113,33 +113,35 @@
 								<ul class="class_area">
 									<%
 										List<String> xkNames = new ArrayList<String>();
-											xkNames = (List) session.getAttribute("xkNames");
-											if (xkNames != null) {
-												int num = xkNames.size();
-												for (int i = 0; i < num; i++) {
+																		xkNames = (List) session.getAttribute("xkNames");
+																		if (xkNames != null) {
+																			int num = xkNames.size();
+																			for (int i = 0; i < num; i++) {
 									%>
 									<li><a href="kaoshi1?mod=<%=xkNames.get(i)%>"><%=xkNames.get(i)%></a></li>
 									<%
 										}
-											}
+																		}
 									%>
 								</ul>
 							</div>
 						</s:action>
 					</div>
-<!-- 					<div class="check">
+					<!-- 					<div class="check">
 						<p id="check" >--请先选择课程，选择好课程后会生成相应试卷--</p>
 					</div> -->
+					<%
+						String course = (String) session.getAttribute("course");
+						if (course!=null){
+					%>
 					<s:action id="kaoshi" name="kaoshi1">
 						<table class="topiclist">
 							<%
-								String course = (String) session.getAttribute("course");
-									String str1 = null;
-
-									String str2 = null;
-									if (course != null) {
-										str1 = "2014-2015第二学期";
-										str2 = "期末试卷";
+								String str1 = null;
+								String str2 = null;
+								if (course != null) {
+								str1 = "2014-2015第二学期";
+								str2 = "期末试卷";
 							%>
 							<tr>
 								<td>[难] <%=str1 + "‘" + course + "’" + str2%></td>
@@ -160,6 +162,9 @@
 							%>
 						</table>
 					</s:action>
+					<%
+						}
+					%>
 				</div>
 			</div>
 			<div class="box_bottom2">

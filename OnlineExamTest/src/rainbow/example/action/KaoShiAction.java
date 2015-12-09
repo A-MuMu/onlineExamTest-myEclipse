@@ -48,8 +48,6 @@ public class KaoShiAction extends ActionSupport {
 	private static final long serialVersionUID = -2418277377162128674L;
 	Map<String, Object> session = null;
 	static final Logger logger = Logger.getLogger(KaoShiAction.class);
-	// Long xuekeIDLong ;//试卷学科标志
-	// Long teaIDLong;
 	private TempleCourseDAOService<Course> templeCourseDAOService;
 	private TempleTiMuDAOService<XuanZe> templeTiMuDAOService;
 	private TemplePangDuanDAOService<PangDuan> templePangDuanDAOService;
@@ -81,6 +79,7 @@ public class KaoShiAction extends ActionSupport {
 	ShiJuan shiJuan_easy = new ShiJuan();
 	static Student stu = new Student();
 	static int mid;
+	private String nameXK;
 
 	public void findCourse() {
 		session = ActionContext.getContext().getSession();
@@ -98,8 +97,10 @@ public class KaoShiAction extends ActionSupport {
 				while (li.hasNext()) {
 					course = (Course) li.next();
 					System.out.println(course.getXueKe().getId());
-					System.out.println(course.getXueKe().getId().getXkid()
-							+ "  " + course.getXueKe().getId().getTeaId());
+					// 学科ID 和 TeacherID 有点乱
+					System.out.println("TeacherID:"
+							+ course.getXueKe().getId().getXkid() + "  "
+							+ "学科ID:" + course.getXueKe().getId().getTeaId());
 					xueKe = templeCourseDAOService.queryXueKes(course
 							.getXueKe().getId().getXkid());
 					Iterator<XueKe> iterator = xueKe.iterator();
@@ -124,7 +125,7 @@ public class KaoShiAction extends ActionSupport {
 		String string = (String) request.getParameter("mod");
 		String course = null;
 		System.out.println(string);
-		if (string.equals("JAVA")) {
+		/*if (string.equals("JAVA")) {
 			course = "JAVA";
 		} else if (string.equals("操作系统")) {
 			course = "操作系统";
@@ -136,9 +137,14 @@ public class KaoShiAction extends ActionSupport {
 			course = "LINUX";
 		} else if (string.equals("JAVAEE")) {
 			course = "JAVAEE";
-		}
-		ActionContext.getContext().getSession().put("course", course);
+		}*/
+		ActionContext.getContext().getSession().put("course", string);
+		xkIDselected(string);
 		return SUCCESS;
+	}
+
+	public void xkIDselected(String string) {
+		nameXK = string;
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,9 +247,9 @@ public class KaoShiAction extends ActionSupport {
 		Long num_shijuan = findShiJuanNum(ShiJuan.class);
 
 		shiJuan.setSjId(num_shijuan + 1);
-		// shiJuan.setTeaId(teaIDLong);
-		// shiJuan.setXkid(xuekeIDLong);
-		System.out.println(num_shijuan);
+		shiJuan.setStuId(stu.getId().longValue());
+		shiJuan.setNameXK(nameXK);
+		System.out.println(num_shijuan+"#############"+nameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_1.get(i));
@@ -283,9 +289,9 @@ public class KaoShiAction extends ActionSupport {
 		Long num_shijuan = findShiJuanNum(ShiJuan.class);
 
 		shiJuan.setSjId(num_shijuan + 1);
-		// shiJuan.setTeaId(teaIDLong);
-		// shiJuan.setXkid(xuekeIDLong);
-		System.out.println(num_shijuan);
+		shiJuan.setStuId(stu.getId().longValue());
+		shiJuan.setNameXK(nameXK);
+		System.out.println(num_shijuan+"#############"+nameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_2.get(i));
@@ -398,33 +404,28 @@ public class KaoShiAction extends ActionSupport {
 		return list;
 	}
 
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~交卷~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	public void submit() {
-		System.out.println("~~~~~~~进来交卷~~~~~~");
-		logger.info("~~~~~~~进来交卷~~~~~~");
-		DaAnJuan daJuan = new DaAnJuan();
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpServletResponse response = ServletActionContext.getResponse();
-
-		String xuanze,pangduan,zhuguan;
-		xuanze = request.getParameter("xuanze");
-		pangduan = request.getParameter("pangduan");
-		zhuguan = request.getParameter("zhuguan");
-		
-//		intoDaAn_xz(daJuan,xuanze);
-//		intoDaAn_pd(daJuan,pangduan);
-//		intoDaAn_zg(daJuan,zhuguan);
-
-		System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
-		logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~");
-		try {
-//			final String URL = "jsp/shouye.jsp";
-			response.getWriter().write("1");// 将值写入页面
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	/*
+	 * //
+	 * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~交卷~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 * ~~~~~~~~~~~~~~~~~ public void submit() {
+	 * System.out.println("~~~~~~~进来交卷~~~~~~");
+	 * logger.info("~~~~~~~进来交卷~~~~~~"); DaAnJuan daJuan = new DaAnJuan();
+	 * HttpServletRequest request = ServletActionContext.getRequest();
+	 * HttpServletResponse response = ServletActionContext.getResponse();
+	 * 
+	 * String xuanze,pangduan,zhuguan; xuanze = request.getParameter("xuanze");
+	 * pangduan = request.getParameter("pangduan"); zhuguan =
+	 * request.getParameter("zhuguan");
+	 * 
+	 * // intoDaAn_xz(daJuan,xuanze); // intoDaAn_pd(daJuan,pangduan); //
+	 * intoDaAn_zg(daJuan,zhuguan);
+	 * 
+	 * System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
+	 * logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~"); try { // final String URL
+	 * = "jsp/shouye.jsp"; response.getWriter().write("1");// 将值写入页面 } catch
+	 * (IOException e) { // TODO Auto-generated catch block e.printStackTrace();
+	 * } }
+	 */
 
 	public void lianxi() {
 		int miid = Integer.parseInt(request.getParameter("miid"));

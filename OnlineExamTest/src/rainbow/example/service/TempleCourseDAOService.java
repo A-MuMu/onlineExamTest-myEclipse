@@ -30,9 +30,10 @@ public class TempleCourseDAOService<T> {
 	// 获取学科名称
 	public List<XueKe> queryXueKes(Long xkID) {
 		String hqlString = "SELECT xk FROM XueKe xk WHERE xk.id.xkid="+xkID;
-		List<XueKe> xk = dao.getOne(hqlString);
-		return xk;
+		List<XueKe> xks = dao.getObjects(hqlString);
+		return xks;
 	}
+	
 
 	public void addUser(T user) throws Exception {
 		dao.addObject(user);

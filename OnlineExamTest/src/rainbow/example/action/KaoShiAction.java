@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.stereotype.Controller;
 
@@ -34,6 +35,7 @@ import rainbow.example.service.TempleShiJuanDAOService;
 import rainbow.example.service.TempleTiMuDAOService;
 import rainbow.example.service.TempleXuanZeDAOService;
 import rainbow.example.service.TempleZhuGuanDAOService;
+import rainbow.example.util.DaAn2sql;
 import rainbow.example.util.String2List;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -73,14 +75,17 @@ public class KaoShiAction extends ActionSupport {
 	List<KeGuan> zg_hard = new ArrayList<KeGuan>();
 	List<KeGuan> zg_easy = new ArrayList<KeGuan>();
 
-	static int num_point_hard = 0;//标志
-	static int num_point_easy = 0;//标志
+	static int num_point_hard = 0;// 标志
+	static int num_point_easy = 0;// 标志
+	private int flog = 0;// 标志,应该为MAP，一个学科对应一个值，一个学科做一次，未实现
+//	static Map<String, Integer> flogMap;
 
 	ShiJuan shiJuan_hard = new ShiJuan();
 	ShiJuan shiJuan_easy = new ShiJuan();
 	static Student stu = new Student();
 	static int mid;
 	private static String myNameXK;
+	private static String course_lastTime;
 
 	public void findCourse() {
 		session = ActionContext.getContext().getSession();
@@ -112,7 +117,10 @@ public class KaoShiAction extends ActionSupport {
 				}
 			}
 			for (int i = 0; i < xkNames.size(); i++) {
+//				flogMap.put(xkNames.get(i), 0);
 				System.out.println(xkNames.get(i));
+//				System.out.println("*************************"+flogMap.get(xkNames.get(i))
+//						+ "*************************");
 			}
 			ActionContext.getContext().getSession().put("xkNames", xkNames);
 		} catch (Exception e) {
@@ -124,21 +132,17 @@ public class KaoShiAction extends ActionSupport {
 
 	public String showCourse() {
 		String string = (String) request.getParameter("mod");
-		System.out.println(string+"**************************");
-		/*if (string.equals("JAVA")) {
-			course = "JAVA";
-		} else if (string.equals("操作系统")) {
-			course = "操作系统";
-		} else if (string.equals("软件工程")) {
-			course = "软件工程";
-		} else if (string.equals("数据结构")) {
-			course = "数据结构";
-		} else if (string.equals("LINUX")) {
-			course = "LINUX";
-		} else if (string.equals("JAVAEE")) {
-			course = "JAVAEE";
-		}*/
+		System.out.println(string);
+		/*
+		 * if (string.equals("JAVA")) { course = "JAVA"; } else if
+		 * (string.equals("操作系统")) { course = "操作系统"; } else if
+		 * (string.equals("软件工程")) { course = "软件工程"; } else if
+		 * (string.equals("数据结构")) { course = "数据结构"; } else if
+		 * (string.equals("LINUX")) { course = "LINUX"; } else if
+		 * (string.equals("JAVAEE")) { course = "JAVAEE"; }
+		 */
 		if (string != null) {
+			course_lastTime = string;
 			ActionContext.getContext().getSession().put("course", string);
 			xkIDselected(string);
 		}
@@ -146,103 +150,113 @@ public class KaoShiAction extends ActionSupport {
 	}
 
 	public void xkIDselected(String string) {
-		this.myNameXK = string;
-		System.out.println("**************************"+this.myNameXK);
+		System.out.print("*********************"+course_lastTime+"*********************");
+		this.myNameXK = course_lastTime;
+		System.out.println(this.myNameXK);
+//		flog = flogMap.get(this.myNameXK);
+		System.out.print("*********************"+flog+"*********************");
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public String intoKaoShi() {
-		// int
-		mid = Integer.parseInt(request.getParameter("mid"));
-		String course = (String) ActionContext.getContext().getSession()
-				.get("course");
+		if (flog == 0) {
+			flog++;
+			mid = Integer.parseInt(request.getParameter("mid"));
+			String course = (String) ActionContext.getContext().getSession()
+					.get("course");
 
-		int num_xz_hard;
-		int num_pd_hard;
-		int num_tk_hard;
-		int num_zg_hard;
+			int num_xz_hard;
+			int num_pd_hard;
+			int num_tk_hard;
+			int num_zg_hard;
 
-		list_hard = findXZ("hard", course);// 10个 0-9
-		pd_hard = findPD("hard", course);
-		zg_hard = findZG("hard", course);
-		list_easy = findXZ("easy", course);// 8个 0-7
-		pd_easy = findPD("easy", course);
-		zg_easy = findZG("easy", course);
+			list_hard = findXZ("hard", course);// 10个 0-9
+			pd_hard = findPD("hard", course);
+			zg_hard = findZG("hard", course);
+			list_easy = findXZ("easy", course);// 8个 0-7
+			pd_easy = findPD("easy", course);
+			zg_easy = findZG("easy", course);
 
-		System.out.println("选择题hard数组大小" + list_hard.size());
-		System.out.println("选择题easy数组大小" + list_easy.size());
-		System.out.println("判断题hard数组大小" + pd_hard.size());
-		System.out.println("判断题easy数组大小" + pd_easy.size());
-		System.out.println("主观题hard数组大小" + zg_hard.size());
-		System.out.println("主观题easy数组大小" + zg_easy.size());
+			System.out.println("选择题hard数组大小" + list_hard.size());
+			System.out.println("选择题easy数组大小" + list_easy.size());
+			System.out.println("判断题hard数组大小" + pd_hard.size());
+			System.out.println("判断题easy数组大小" + pd_easy.size());
+			System.out.println("主观题hard数组大小" + zg_hard.size());
+			System.out.println("主观题easy数组大小" + zg_easy.size());
 
-		if (mid == 1 && num_point_hard == 0) {
-			num_point_hard++;
-			num_xz_hard = 3;// 表示 10-3=7，从第四题开始是难度大的
-			num_pd_hard = 3;// 表示 10-3=7，从第四题开始是难度大的
-			num_tk_hard = 1;// 表示 5-3=2，从第三题开始是难度大的
-			num_zg_hard = 1;// 表示 5-3=2，从第三题开始是难度大的
-			for (int j = 0; j < 3; j++) {
-				if (j < num_zg_hard) {
-					list_zg_1.add(j, zg_easy.get(j));
-				} else {
-					list_zg_1.add(j, zg_hard.get(j - num_zg_hard));
+			if (mid == 1 && num_point_hard == 0) {
+				num_point_hard++;
+				num_xz_hard = 3;// 表示 10-3=7，从第四题开始是难度大的
+				num_pd_hard = 3;// 表示 10-3=7，从第四题开始是难度大的
+				num_tk_hard = 1;// 表示 5-3=2，从第三题开始是难度大的
+				num_zg_hard = 1;// 表示 5-3=2，从第三题开始是难度大的
+				for (int j = 0; j < 3; j++) {
+					if (j < num_zg_hard) {
+						list_zg_1.add(j, zg_easy.get(j));
+					} else {
+						list_zg_1.add(j, zg_hard.get(j - num_zg_hard));
+					}
+				}
+				for (int i = 0; i < 10; i++) {
+					if (i < num_xz_hard) {
+						list_1.add(i, list_easy.get(i));
+						list_pdDuans_1.add(i, pd_easy.get(i));
+					} else if (i >= num_xz_hard) {
+						list_1.add(i, list_hard.get(i - num_xz_hard));
+						list_pdDuans_1.add(i, pd_hard.get(i - num_pd_hard));
+					}
+				}
+			} else if (mid == 2 && num_point_easy == 0) {
+				num_point_easy++;
+				num_xz_hard = 5;
+				num_pd_hard = 5;
+				num_tk_hard = 2;
+				num_zg_hard = 2;
+				for (int i = 0; i < 10; i++) {
+					if (i < num_xz_hard) {
+						list_2.add(i, list_easy.get(i));
+						list_pdDuans_2.add(i, pd_easy.get(i));
+					} else if (i >= num_xz_hard) {
+						list_2.add(i, list_hard.get(9 - i));
+						list_pdDuans_2.add(i, pd_hard.get(i - num_xz_hard));
+					}
+				}
+				for (int j = 0; j < 3; j++) {
+					if (j < num_zg_hard) {
+						list_zg_2.add(j, zg_easy.get(j));
+					} else {
+						list_zg_2.add(j, zg_hard.get(j - num_zg_hard));
+					}
 				}
 			}
-			for (int i = 0; i < 10; i++) {
-				if (i < num_xz_hard) {
-					list_1.add(i, list_easy.get(i));
-					list_pdDuans_1.add(i, pd_easy.get(i));
-				} else if (i >= num_xz_hard) {
-					list_1.add(i, list_hard.get(i - num_xz_hard));
-					list_pdDuans_1.add(i, pd_hard.get(i - num_pd_hard));
-				}
+			if (mid == 1) {
+				ActionContext.getContext().getSession().put("xuanze", list_1);
+				ActionContext.getContext().getSession()
+						.put("pangduan", list_pdDuans_1);
+				ActionContext.getContext().getSession()
+						.put("zhuguan", list_zg_1);
+			} else if (mid == 2) {
+				ActionContext.getContext().getSession().put("xuanze", list_2);
+				ActionContext.getContext().getSession()
+						.put("pangduan", list_pdDuans_2);
+				ActionContext.getContext().getSession()
+						.put("zhuguan", list_zg_2);
 			}
-		} else if (mid == 2 && num_point_easy == 0) {
-			num_point_easy++;
-			num_xz_hard = 5;
-			num_pd_hard = 5;
-			num_tk_hard = 2;
-			num_zg_hard = 2;
-			for (int i = 0; i < 10; i++) {
-				if (i < num_xz_hard) {
-					list_2.add(i, list_easy.get(i));
-					list_pdDuans_2.add(i, pd_easy.get(i));
-				} else if (i >= num_xz_hard) {
-					list_2.add(i, list_hard.get(9 - i));
-					list_pdDuans_2.add(i, pd_hard.get(i - num_xz_hard));
-				}
+			System.out.println("~~~~~~" + num_point_hard + "~~~~~~"
+					+ num_point_easy + "**********" + myNameXK);
+			if (num_point_hard == 1) {
+				addShiJuan_hard();
 			}
-			for (int j = 0; j < 3; j++) {
-				if (j < num_zg_hard) {
-					list_zg_2.add(j, zg_easy.get(j));
-				} else {
-					list_zg_2.add(j, zg_hard.get(j - num_zg_hard));
-				}
+			if (num_point_easy == 1) {
+				addShiJuan_easy();
 			}
-		}
-		if (mid == 1) {
-			ActionContext.getContext().getSession().put("xuanze", list_1);
-			ActionContext.getContext().getSession()
-					.put("pangduan", list_pdDuans_1);
-			ActionContext.getContext().getSession().put("zhuguan", list_zg_1);
-		} else if (mid == 2) {
-			ActionContext.getContext().getSession().put("xuanze", list_2);
-			ActionContext.getContext().getSession()
-					.put("pangduan", list_pdDuans_2);
-			ActionContext.getContext().getSession().put("zhuguan", list_zg_2);
-		}
-		System.out.println("~~~~~~" + num_point_hard + "~~~~~~"
-				+ num_point_easy+"**********"+myNameXK);
-		if (num_point_hard == 1) {
-			addShiJuan_hard();
-		}
-		if (num_point_easy == 1) {
-			addShiJuan_easy();
-		}
 
-		return SUCCESS;
+			return SUCCESS;
+		} else {
+			ActionContext.getContext().getSession().put("flog", flog);
+			return ERROR;
+		}
 	}
 
 	public void addShiJuan_hard() {
@@ -252,7 +266,7 @@ public class KaoShiAction extends ActionSupport {
 		shiJuan.setSjId(num_shijuan + 1);
 		shiJuan.setStuId(stu.getId().longValue());
 		shiJuan.setNameXK(this.myNameXK);
-		System.out.println(num_shijuan+"#############"+this.myNameXK);
+		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_1.get(i));
@@ -283,6 +297,7 @@ public class KaoShiAction extends ActionSupport {
 
 		System.out.println(shiJuan.getKeGuanByZhuguan1().getTiMu());
 		templeShiJuanDAOService.add(shiJuan);
+		DaAn2sql.setShiJuan(shiJuan);
 		shiJuan_hard = shiJuan;
 		num_point_hard++;
 	}
@@ -294,7 +309,7 @@ public class KaoShiAction extends ActionSupport {
 		shiJuan.setSjId(num_shijuan + 1);
 		shiJuan.setStuId(stu.getId().longValue());
 		shiJuan.setNameXK(this.myNameXK);
-		System.out.println(num_shijuan+"#############"+this.myNameXK);
+		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_2.get(i));
@@ -325,6 +340,7 @@ public class KaoShiAction extends ActionSupport {
 
 		System.out.println(shiJuan.getKeGuanByZhuguan1().getTiMu());
 		templeShiJuanDAOService.add(shiJuan);
+		DaAn2sql.setShiJuan(shiJuan);
 		shiJuan_easy = shiJuan;
 		num_point_easy++;
 	}
@@ -406,29 +422,6 @@ public class KaoShiAction extends ActionSupport {
 		}
 		return list;
 	}
-
-	/*
-	 * //
-	 * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~交卷~~~~~~~~~~~~~~~~~~~~~~~~~~
-	 * ~~~~~~~~~~~~~~~~~ public void submit() {
-	 * System.out.println("~~~~~~~进来交卷~~~~~~");
-	 * logger.info("~~~~~~~进来交卷~~~~~~"); DaAnJuan daJuan = new DaAnJuan();
-	 * HttpServletRequest request = ServletActionContext.getRequest();
-	 * HttpServletResponse response = ServletActionContext.getResponse();
-	 * 
-	 * String xuanze,pangduan,zhuguan; xuanze = request.getParameter("xuanze");
-	 * pangduan = request.getParameter("pangduan"); zhuguan =
-	 * request.getParameter("zhuguan");
-	 * 
-	 * // intoDaAn_xz(daJuan,xuanze); // intoDaAn_pd(daJuan,pangduan); //
-	 * intoDaAn_zg(daJuan,zhuguan);
-	 * 
-	 * System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
-	 * logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~"); try { // final String URL
-	 * = "jsp/shouye.jsp"; response.getWriter().write("1");// 将值写入页面 } catch
-	 * (IOException e) { // TODO Auto-generated catch block e.printStackTrace();
-	 * } }
-	 */
 
 	public void lianxi() {
 		int miid = Integer.parseInt(request.getParameter("miid"));

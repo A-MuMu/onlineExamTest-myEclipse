@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
-	xmlns:tx="http://www.springframework.org/schema/tx">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	">
+	<!-- 上面的xsi:schemaLocation必须成对出现 -->
 
 	<!-- 配置SessionFactory IOC -->
 	<bean id="sessionFactory"
@@ -113,7 +123,7 @@
 		<property name="mingYan" ref="mingyan"></property>
 		<property name="templeMingYanDAOService" ref="templeMingYanDAOService"></property>
 	</bean>
-	
+
 	<bean id="magamentAction" class="rainbow.example.action.MagamentAction"
 		scope="prototype">
 		<property name="templeStuDAOService" ref="templeStuDAOService"></property>
@@ -126,7 +136,7 @@
 		scope="prototype">
 		<property name="templeXuanZeDAOService" ref="templeXuanZeDAOService"></property>
 	</bean>
-	
+
 
 	<bean id="kaoShiAction" class="rainbow.example.action.KaoShiAction"
 		scope="prototype">
@@ -138,14 +148,10 @@
 		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
 		<property name="templeXuanZeDAOService" ref="templeXuanZeDAOService"></property>
 	</bean>
-	
-	<bean id="jiaoJuanAction" class="rainbow.example.action.JiaoJuanAction" scope="prototype">
+
+	<bean id="jiaoJuanAction" class="rainbow.example.action.JiaoJuanAction"
+		scope="prototype">
 		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
-		<property name="daJuan" ref="daJuan"></property>
-	</bean>
-	
-	<bean id="cunShiJuanAction" class="rainbow.example.action.CunShiJuanAction" scope="prototype">
-		<property name="templeShiJuanDAOService" ref="templeShiJuanDAOService"></property>
 	</bean>
 
 	<bean id="transactionManager"
@@ -164,4 +170,14 @@
 			<tx:method name="delete*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
+	<!-- 配置aop， spring是通过aop来进行事务管理的 -->
+	<aop:config>
+		<!-- 设置pointCut表示那些方法要加入事务处理 -->
+		<!-- 以下的事务是声明在dao中的，但是通常都会在service来处理多个业务对象逻辑的关系，注入删除，更新等，此时如果在执行了一个步骤之后抛出异常 
+			就会导致数据不完整，所以事务不应该在dao层处理，而应在service，这也是spring所提供的一个非常方便的工具，声明式事务 -->
+		<aop:pointcut id="interceptorPointCuts"
+			expression="execution(* rainbow.example.service.*.*(..))" />
+		<!-- 通过advisor来确定具体要加入事务控制的方法 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts" />
+	</aop:config>
 </beans>

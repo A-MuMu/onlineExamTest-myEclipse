@@ -28,6 +28,7 @@
 
 		<action name="kaoshi2" class="kaoShiAction" method="intoKaoShi">
 			<result name="success">jsp/LiKaoshi.jsp</result>
+			<result name="error">jsp/shouye.jsp</result>
 		</action>
 		
 		<action name="kaoshi3" class="kaoShiAction" method="lianxi">

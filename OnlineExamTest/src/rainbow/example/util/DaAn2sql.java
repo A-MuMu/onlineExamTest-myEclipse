@@ -2,9 +2,15 @@ package rainbow.example.util;
 
 import java.util.List;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+
+import freemarker.core.ReturnInstruction.Return;
 import rainbow.example.domain.DaAnJuan;
+import rainbow.example.domain.ShiJuan;
 
 public final class DaAn2sql {
+	
+	public static ShiJuan shiJuan;
 	
 	public static void intoDaAn_xz(DaAnJuan daJuan,String string) {
 		String[] list = String2List.change(string);
@@ -40,5 +46,11 @@ public final class DaAn2sql {
 		daJuan.setZhuguan2(list[1]);
 		daJuan.setZhuguan3(list[2]);
 	}
-
+	
+	public static void setShiJuan(ShiJuan myshiJuan){
+		shiJuan=myshiJuan;
+	}
+	public static ShiJuan getShiJuan(){
+		return shiJuan;
+	}
 }

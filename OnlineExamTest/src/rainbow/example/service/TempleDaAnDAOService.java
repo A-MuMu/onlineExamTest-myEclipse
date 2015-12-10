@@ -13,7 +13,6 @@ public class TempleDaAnDAOService<T> {
 	/*
 	 * 添加一个 */
 	public void add(DaAnJuan clazz){
-		System.out.println("~~~~~~~再次输出选择题~~~~~~"+clazz.getXuanze1());
 		dao.addObject(clazz);
 	}
 	
@@ -36,4 +35,5 @@ public class TempleDaAnDAOService<T> {
 	public void setDao(TempleDAO dao) {
 		this.dao = dao;
 	}
+
 }

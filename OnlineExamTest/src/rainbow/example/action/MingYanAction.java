@@ -27,7 +27,7 @@ public class MingYanAction extends ActionSupport {
 			if (my == null) {
 			}
 			else if (my != null) {
-//				System.out.println(my.getYuJu());
+				System.out.println(my.getYuJu());
 				request.setAttribute("mingyan", my.getYuJu());
 			}
 		} catch (Exception e) {

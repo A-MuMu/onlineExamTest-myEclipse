@@ -63,9 +63,10 @@
 		<h2 class="yahei">考试寄语：</h2>
 		<div class="mingyan">
 			<s:action name="mingyan" executeResult="true" namespace="/"></s:action>
+			<jsp:include page="mingyan.jsp"></jsp:include>
 		</div>
 	</div>
-	<br/><br/><br/>
+	<br/>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

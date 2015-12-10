@@ -4,20 +4,24 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpRequest;
 
 import rainbow.example.domain.DaAnJuan;
+import rainbow.example.domain.Student;
 import rainbow.example.service.TempleDaAnDAOService;
 import rainbow.example.util.DaAn2sql;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class JiaoJuanAction extends ActionSupport {
-	private DaAnJuan daJuan;
 	private TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService;
 	static final Logger logger = Logger.getLogger(JiaoJuanAction.class);
+	private Long numDaJuan;
 	
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
@@ -31,8 +35,9 @@ public class JiaoJuanAction extends ActionSupport {
 	public void submit() {
 		System.out.println("~~~~~~~进来交卷~~~~~~");
 		logger.info("~~~~~~~进来交卷~~~~~~");
+		numDaJuan = findDaJuanNum(DaAnJuan.class);
 		
-//		DaAnJuan daJuan = new DaAnJuan();
+		DaAnJuan daJuan = new DaAnJuan();		
 		String xuanze,pangduan,zhuguan;
 		xuanze = request.getParameter("xuanze");
 		pangduan = request.getParameter("pangduan");
@@ -40,9 +45,44 @@ public class JiaoJuanAction extends ActionSupport {
 		DaAn2sql.intoDaAn_xz(daJuan,xuanze);
 		DaAn2sql.intoDaAn_pd(daJuan,pangduan);
 		DaAn2sql.intoDaAn_zg(daJuan,zhuguan);
+		daJuan.setIdStu(getStuID());
+		daJuan.setDaJuan(numDaJuan+1);
+		daJuan.setZuZhuFenShu(2);
+		daJuan.setZongFen(3);
+		daJuan.setShiJuan(DaAn2sql.getShiJuan());
+		
+		System.out.println(daJuan.getPangduan1()
+				+"#"+daJuan.getPangduan1()
+				+"#"+daJuan.getPangduan2()
+				+"#"+daJuan.getPangduan3()
+				+"#"+daJuan.getPangduan4()
+				+"#"+daJuan.getPangduan5()
+				+"#"+daJuan.getPangduan6()
+				+"#"+daJuan.getPangduan7()
+				+"#"+daJuan.getPangduan8()
+				+"#"+daJuan.getPangduan9()
+				+"#"+daJuan.getPangduan10()
+				+"#"+daJuan.getDaJuan()
+				+"#"+daJuan.getXuanze1()
+				+"#"+daJuan.getXuanze2()
+				+"#"+daJuan.getXuanze3()
+				+"#"+daJuan.getXuanze4()
+				+"#"+daJuan.getXuanze5()
+				+"#"+daJuan.getXuanze6()
+				+"#"+daJuan.getXuanze7()
+				+"#"+daJuan.getXuanze8()
+				+"#"+daJuan.getXuanze9()
+				+"#"+daJuan.getXuanze10()
+				+"#"+daJuan.getIdStu()
+				+"#"+daJuan.getZhuguan1()
+				+"#"+daJuan.getZhuguan2()
+				+"#"+daJuan.getZhuguan3()
+				+"#"+daJuan.getZongFen()
+				+"#"+daJuan.getZuZhuFenShu()
+				);
 		
 		addDaJuan(daJuan);
-
+		
 		System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
 		logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~");
 		try {
@@ -54,12 +94,16 @@ public class JiaoJuanAction extends ActionSupport {
 		}
 	}
 	
-	public DaAnJuan getDaJuan() {
-		return daJuan;
+	//获取登录学生ID
+	public Long getStuID(){
+		Student student = (Student) ActionContext.getContext().getSession().get("userinfo");
+		return student.getId().longValue();
 	}
-
-	public void setDaJuan(DaAnJuan daJuan) {
-		this.daJuan = daJuan;
+	
+	//获取答卷数量
+	public Long findDaJuanNum(Class clazz){
+		Long num = templeDaAnDAOService.getAllObjects_num(clazz);
+		return num;
 	}
 
 	public TempleDaAnDAOService<DaAnJuan> getTempleDaAnDAOService() {

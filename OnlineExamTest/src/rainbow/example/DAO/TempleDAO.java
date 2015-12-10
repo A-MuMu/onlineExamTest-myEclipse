@@ -29,6 +29,11 @@ public class TempleDAO extends HibernateDaoSupport {
 	public <T> void addObject(T clazz) {
 		this.getHibernateTemplate().save(clazz);
 	}
+	
+	@Transactional
+	public <T> void addONE(T clazz){
+		this.getHibernateTemplate().save(clazz);
+	}
 
 	/** 更新指定的 */
 	@Transactional (readOnly = false)

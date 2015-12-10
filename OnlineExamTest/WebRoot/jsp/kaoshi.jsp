@@ -67,7 +67,7 @@
 	type="text/css" rel="stylesheet" />
 </head>
 
-<body>
+<body onload="opener.location.reload()">
 	<%
 		if (session.getAttribute("userinfo") == null) {
 	%>
@@ -94,7 +94,7 @@
 					<div class="classify">
 						<%
 							Student u = null;
-											u = (Student) session.getAttribute("userinfo");
+							u = (Student) session.getAttribute("userinfo");
 						%>
 						<h2>
 							<u><%=u.getNameStu()%>：</u> 同学的课程信息：
@@ -102,7 +102,7 @@
 						<s:action id="kaoshi" name="kaoshi" executeResult="true"
 							namespace="/">
 
-							<div class="classify_in" onload="opener.location.reload()">
+							<div class="classify_in" >
 								<ul class="tab">
 									<li class="focus" id="sortByCourse"><a>按课程分类</a><span></span></li>
 									<li class="focus" id="sortByTeacher"><a>按老师分类</a></li>
@@ -113,15 +113,15 @@
 								<ul class="class_area">
 									<%
 										List<String> xkNames = new ArrayList<String>();
-																		xkNames = (List) session.getAttribute("xkNames");
-																		if (xkNames != null) {
-																			int num = xkNames.size();
-																			for (int i = 0; i < num; i++) {
+										xkNames = (List) session.getAttribute("xkNames");
+										if (xkNames != null) {
+											int num = xkNames.size();
+											for (int i = 0; i < num; i++) {
 									%>
 									<li><a href="kaoshi1?mod=<%=xkNames.get(i)%>"><%=xkNames.get(i)%></a></li>
 									<%
 										}
-																		}
+									}
 									%>
 								</ul>
 							</div>
@@ -132,10 +132,10 @@
 					</div> -->
 					<%
 						String course = (String) session.getAttribute("course");
-						if (course!=null){
+						if (course != null){
 					%>
-					<s:action id="kaoshi" name="kaoshi1">
-						<table class="topiclist">
+					<s:action id="kaoshi" name="kaoshi1" >
+						<table class="topiclist" >
 							<%
 								String str1 = null;
 								String str2 = null;

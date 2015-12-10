@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="rainbow.example.domain.Student" %>
+<%@ page import="rainbow.example.domain.Student"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -15,12 +15,12 @@
 <title>彩虹-在线考试网</title>
 
 <!-- 这个<%=request.getContextPath()%>后面直接加css所在的文件夹名字就可以了 -->
-<link href="<%=request.getContextPath()%>/jsp/common.css" type="text/css"
-	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/jsp/content.css" type="text/css"
-	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/jsp/dialog.css" type="text/css"
-	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/jsp/common.css"
+	type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/jsp/content.css"
+	type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/jsp/dialog.css"
+	type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -31,7 +31,8 @@
 			</div>
 			<div class="nav_but yahei">
 				<ul>
-					<li class="sy"><a href="<%=path%>/jsp/shouye.jsp"><span>首 页</span></a></li>
+					<li class="sy"><a href="<%=path%>/jsp/shouye.jsp"><span>首
+								页</span></a></li>
 					<li class="xc"><a href="<%=path%>/jsp/lianxi.jsp"><span>练习</span></a></li>
 					<li class="sl"><a href="<%=path%>/jsp/kaoshi.jsp"><span>考试</span></a></li>
 					<li class="lx"><a href="#"><span>信息中心</span></a></li>
@@ -39,10 +40,12 @@
 			</div>
 			<div class="toolbar">
 				<%
-				Student u = null;
-				u = (Student)session.getAttribute("userinfo");
+					Student u = null;
+					u = (Student) session.getAttribute("userinfo");
 				%>
-				<p >你好，<%=u.getNameStu()%><a href="loginOut.jsp">退出</a> </p>
+				<p>
+					你好，<%=u.getNameStu()%><a href="jsp/loginOut.jsp">退出</a>
+				</p>
 			</div>
 		</div>
 	</div>

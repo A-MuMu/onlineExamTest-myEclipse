@@ -1,6 +1,7 @@
 package rainbow.example.action;
 
 import java.io.IOException;
+import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -72,14 +73,14 @@ public class KaoShiAction extends ActionSupport {
 	List<KeGuan> zg_hard = new ArrayList<KeGuan>();
 	List<KeGuan> zg_easy = new ArrayList<KeGuan>();
 
-	static int num_point_hard = 0;
-	static int num_point_easy = 0;
+	static int num_point_hard = 0;//标志
+	static int num_point_easy = 0;//标志
 
 	ShiJuan shiJuan_hard = new ShiJuan();
 	ShiJuan shiJuan_easy = new ShiJuan();
 	static Student stu = new Student();
 	static int mid;
-	private String nameXK;
+	private static String myNameXK;
 
 	public void findCourse() {
 		session = ActionContext.getContext().getSession();
@@ -123,8 +124,7 @@ public class KaoShiAction extends ActionSupport {
 
 	public String showCourse() {
 		String string = (String) request.getParameter("mod");
-		String course = null;
-		System.out.println(string);
+		System.out.println(string+"**************************");
 		/*if (string.equals("JAVA")) {
 			course = "JAVA";
 		} else if (string.equals("操作系统")) {
@@ -138,13 +138,16 @@ public class KaoShiAction extends ActionSupport {
 		} else if (string.equals("JAVAEE")) {
 			course = "JAVAEE";
 		}*/
-		ActionContext.getContext().getSession().put("course", string);
-		xkIDselected(string);
+		if (string != null) {
+			ActionContext.getContext().getSession().put("course", string);
+			xkIDselected(string);
+		}
 		return SUCCESS;
 	}
 
 	public void xkIDselected(String string) {
-		nameXK = string;
+		this.myNameXK = string;
+		System.out.println("**************************"+this.myNameXK);
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -231,7 +234,7 @@ public class KaoShiAction extends ActionSupport {
 			ActionContext.getContext().getSession().put("zhuguan", list_zg_2);
 		}
 		System.out.println("~~~~~~" + num_point_hard + "~~~~~~"
-				+ num_point_easy);
+				+ num_point_easy+"**********"+myNameXK);
 		if (num_point_hard == 1) {
 			addShiJuan_hard();
 		}
@@ -248,8 +251,8 @@ public class KaoShiAction extends ActionSupport {
 
 		shiJuan.setSjId(num_shijuan + 1);
 		shiJuan.setStuId(stu.getId().longValue());
-		shiJuan.setNameXK(nameXK);
-		System.out.println(num_shijuan+"#############"+nameXK);
+		shiJuan.setNameXK(this.myNameXK);
+		System.out.println(num_shijuan+"#############"+this.myNameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_1.get(i));
@@ -290,8 +293,8 @@ public class KaoShiAction extends ActionSupport {
 
 		shiJuan.setSjId(num_shijuan + 1);
 		shiJuan.setStuId(stu.getId().longValue());
-		shiJuan.setNameXK(nameXK);
-		System.out.println(num_shijuan+"#############"+nameXK);
+		shiJuan.setNameXK(this.myNameXK);
+		System.out.println(num_shijuan+"#############"+this.myNameXK);
 
 		int i = 0;
 		shiJuan.setKeGuanByZhuguan1(list_zg_2.get(i));

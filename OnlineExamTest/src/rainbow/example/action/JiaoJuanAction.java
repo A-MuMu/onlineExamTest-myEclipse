@@ -14,6 +14,7 @@ import rainbow.example.domain.DaAnJuan;
 import rainbow.example.domain.Student;
 import rainbow.example.service.TempleDaAnDAOService;
 import rainbow.example.util.DaAn2sql;
+import rainbow.example.util.TrueORfalse;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +23,7 @@ public class JiaoJuanAction extends ActionSupport {
 	private TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService;
 	static final Logger logger = Logger.getLogger(JiaoJuanAction.class);
 	private Long numDaJuan;
+	private int ziZhuFenShu = 0;
 	
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
@@ -47,6 +49,8 @@ public class JiaoJuanAction extends ActionSupport {
 		DaAn2sql.intoDaAn_zg(daJuan,zhuguan);
 		daJuan.setIdStu(getStuID());
 		daJuan.setDaJuan(numDaJuan+1);
+		TrueORfalse.setDaJuan(daJuan);
+		TrueORfalse.getListXuanZes();
 		daJuan.setZuZhuFenShu(2);
 		daJuan.setZongFen(3);
 		daJuan.setShiJuan(DaAn2sql.getShiJuan());
@@ -82,6 +86,8 @@ public class JiaoJuanAction extends ActionSupport {
 				);
 		
 		addDaJuan(daJuan);
+		
+		
 		
 		System.out.println("~~~~~~~输出："+xuanze+ "~~~~~~~~~~~");
 		logger.info("提交试卷输出："+xuanze + "~~~~~~~~~~~");

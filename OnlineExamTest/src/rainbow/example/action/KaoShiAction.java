@@ -36,7 +36,7 @@ import rainbow.example.service.TempleTiMuDAOService;
 import rainbow.example.service.TempleXuanZeDAOService;
 import rainbow.example.service.TempleZhuGuanDAOService;
 import rainbow.example.util.DaAn2sql;
-import rainbow.example.util.String2List;
+import rainbow.example.util.TrueORfalse;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -269,6 +269,12 @@ public class KaoShiAction extends ActionSupport {
 		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
+		//传选择、判断、问答对象到改卷util
+		TrueORfalse.setListXuanZes(list_1);
+		TrueORfalse.setListPangDuans(list_pdDuans_1);
+		TrueORfalse.setListZhuGuans(list_zg_1);
+		
+		//为试卷domain添加属性
 		shiJuan.setKeGuanByZhuguan1(list_zg_1.get(i));
 		shiJuan.setKeGuanByZhuguan2(list_zg_1.get(i + 1));
 		shiJuan.setKeGuanByZhuguan3(list_zg_1.get(i + 2));
@@ -312,6 +318,12 @@ public class KaoShiAction extends ActionSupport {
 		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
+		//传选择、判断、问答对象到改卷util
+		TrueORfalse.setListXuanZes(list_2);
+		TrueORfalse.setListPangDuans(list_pdDuans_2);
+		TrueORfalse.setListZhuGuans(list_zg_2);
+		
+		//为试卷domain添加属性
 		shiJuan.setKeGuanByZhuguan1(list_zg_2.get(i));
 		shiJuan.setKeGuanByZhuguan2(list_zg_2.get(i + 1));
 		shiJuan.setKeGuanByZhuguan3(list_zg_2.get(i + 2));

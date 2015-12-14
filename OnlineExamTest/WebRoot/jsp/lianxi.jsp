@@ -131,6 +131,7 @@
 						<span class="lf"></span>
 						<ul class="ct_focus">
 							<li class="focus"><a class="typeb">练习历史</a><span> </span></li>
+							<li><a>我的错题</a></li>
 
 						</ul>
 						<span class="rt"></span>

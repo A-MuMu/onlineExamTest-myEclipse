@@ -72,7 +72,7 @@ public final class TrueORfalse {
 
 	public static int getListPangDuans() {
 		int sumPangDuan = 0;
-		if (daJuan.getPangduan1() == listPangDuans.get(0).getDaAn()	
+		if (daJuan.getPangduan1() == listPangDuans.get(0).getDaAn()
 				|| daJuan.getPangduan1().equals(listPangDuans.get(0).getDaAn())) {
 			sumPangDuan = sumPangDuan + 2;
 		}

@@ -1,14 +1,15 @@
 package rainbow.example.action;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpRequest;
 
 import rainbow.example.domain.DaAnJuan;
 import rainbow.example.domain.Student;
@@ -28,7 +29,6 @@ public class JiaoJuanAction extends ActionSupport {
 	static final Logger logger = Logger.getLogger(JiaoJuanAction.class);
 	private Long numDaJuan;
 	private int ziZhuFenShu = 0;
-	SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
@@ -58,10 +58,11 @@ public class JiaoJuanAction extends ActionSupport {
 		ziZhuFenShu = TrueORfalse.getListXuanZes() + TrueORfalse.getListPangDuans();
 		daJuan.setZuZhuFenShu(ziZhuFenShu);
 		
-		daJuan.setDate(new Date());
+//		daJuan.setDate(new Date());
 		System.out.println(new Date());
 		
 //		daJuan.setZongFen(3);            
+
 		daJuan.setShiJuan(DaAn2sql.getShiJuan());
 		
 		System.out.println(daJuan.getPangduan1()

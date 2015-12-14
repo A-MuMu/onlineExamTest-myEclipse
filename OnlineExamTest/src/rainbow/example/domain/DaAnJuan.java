@@ -1,7 +1,6 @@
 package rainbow.example.domain;
 // default package
 
-import java.sql.Time;
 import java.util.Date;
 
 
@@ -14,9 +13,9 @@ public class DaAnJuan  implements java.io.Serializable {
 
     // Fields    
 
-     private Long daJuan;
+     private long daJuan;
      private ShiJuan shiJuan;
-     private Long idStu;
+     private long idStu;
      private String xuanze1;
      private String xuanze2;
      private String xuanze3;
@@ -42,7 +41,6 @@ public class DaAnJuan  implements java.io.Serializable {
      private String zhuguan3;
      private Integer zuZhuFenShu;
      private Integer zongFen;
-     private Date date;
 
     // Constructors
 
@@ -50,8 +48,13 @@ public class DaAnJuan  implements java.io.Serializable {
     public DaAnJuan() {
     }
 
+	/** minimal constructor */
+    public DaAnJuan(ShiJuan shiJuan) {
+        this.shiJuan = shiJuan;
+    }
+    
     /** full constructor */
-    public DaAnJuan(ShiJuan shiJuan, Long idStu, String xuanze1, String xuanze2, String xuanze3, String xuanze4, String xuanze5, String xuanze6, String xuanze7, String xuanze8, String xuanze9, String xuanze10, String pangduan1, String pangduan2, String pangduan3, String pangduan4, String pangduan5, String pangduan6, String pangduan7, String pangduan8, String pangduan9, String pangduan10, String zhuguan1, String zhuguan2, String zhuguan3, Integer zuZhuFenShu, Integer zongFen, Date date) {
+    public DaAnJuan(ShiJuan shiJuan, long idStu, String xuanze1, String xuanze2, String xuanze3, String xuanze4, String xuanze5, String xuanze6, String xuanze7, String xuanze8, String xuanze9, String xuanze10, String pangduan1, String pangduan2, String pangduan3, String pangduan4, String pangduan5, String pangduan6, String pangduan7, String pangduan8, String pangduan9, String pangduan10, String zhuguan1, String zhuguan2, String zhuguan3, Integer zuZhuFenShu, Integer zongFen) {
         this.shiJuan = shiJuan;
         this.idStu = idStu;
         this.xuanze1 = xuanze1;
@@ -79,17 +82,16 @@ public class DaAnJuan  implements java.io.Serializable {
         this.zhuguan3 = zhuguan3;
         this.zuZhuFenShu = zuZhuFenShu;
         this.zongFen = zongFen;
-        this.date = date;
     }
 
    
     // Property accessors
 
-    public Long getDaJuan() {
+    public long getDaJuan() {
         return this.daJuan;
     }
     
-    public void setDaJuan(Long daJuan) {
+    public void setDaJuan(long daJuan) {
         this.daJuan = daJuan;
     }
 
@@ -101,11 +103,11 @@ public class DaAnJuan  implements java.io.Serializable {
         this.shiJuan = shiJuan;
     }
 
-    public Long getIdStu() {
+    public long getIdStu() {
         return this.idStu;
     }
     
-    public void setIdStu(Long idStu) {
+    public void setIdStu(long idStu) {
         this.idStu = idStu;
     }
 
@@ -309,12 +311,5 @@ public class DaAnJuan  implements java.io.Serializable {
         this.zongFen = zongFen;
     }
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 }

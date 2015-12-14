@@ -8,11 +8,11 @@
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-
+		
 		<!-- 自动提交 -->
-		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.show_sql">true </property>
 		<property name="hibernate.connection.autocommit">true</property>
-
+		
 		<property name="myeclipse.connection.profile">exam</property>
 		<property name="connection.url">
 			jdbc:mysql://localhost:3306/exam
@@ -37,6 +37,6 @@
 		<mapping resource="rainbow/example/domain/User.hbm.xml" />
 
 	</session-factory>
-
+	
 
 </hibernate-configuration>

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +20,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class JiaoJuanAction extends ActionSupport {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService;
 	static final Logger logger = Logger.getLogger(JiaoJuanAction.class);
 	private Long numDaJuan;
@@ -56,7 +59,6 @@ public class JiaoJuanAction extends ActionSupport {
 		daJuan.setZuZhuFenShu(ziZhuFenShu);
 		
 		daJuan.setDate(new Date());
-		
 		System.out.println(new Date());
 		
 //		daJuan.setZongFen(3);            

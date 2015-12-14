@@ -22,6 +22,7 @@ public class LoginAction extends ActionSupport {
 	private static final long serialVersionUID = 4730714773607758673L;
 
 	private Student user;
+//	private 
 
 	private TempleStuDAOService<Student> userService;
 	private TempleTeacherDAOService<Teacher> teacherDAOService;
@@ -35,20 +36,19 @@ public class LoginAction extends ActionSupport {
 		String id = request.getParameter("user.idStu");
 		String psw = request.getParameter("user.pswStu");
 		Student loginUser;
-		Teacher teacher;
+//		Teacher teacher;
 		try {
-//			loginUser = userService.doLogin(this.user.getIdStu(), this.user.getPswStu());
 			loginUser = userService.doLogin(id, psw);
 //			teacher = teacherDAOService.doLogin(id, psw);
-			if (loginUser == null ){//|| teacher == null){
+			if (loginUser == null /*|| teacher == null*/){
 				result = "exception";
 			} else if(loginUser != null){
 				ActionContext.getContext().getSession().put("userinfo", loginUser);
 				result = SUCCESS;
-//			}else if(teacher != null){
-//				ActionContext.getContext().getSession().put("userinfo", teacher);
-//				result = SUCCESS;
-			}
+			}/*else if(teacher != null){
+				ActionContext.getContext().getSession().put("userinfo", teacher);
+				result = SUCCESS;
+			}*/
 		} catch (UserException e) {
 			// TODO: handle exception
 			ValidateUtil.validateErr(request, e.getMessage());

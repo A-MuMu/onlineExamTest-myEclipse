@@ -154,6 +154,10 @@
 		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
 	</bean>
 
+	<bean id="lianxiAction" class="rainbow.example.action.LianXiAction" scope="prototype">
+		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
+	</bean>
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />

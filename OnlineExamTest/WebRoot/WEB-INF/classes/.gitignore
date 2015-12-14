@@ -8,3 +8,8 @@
 /ShiJuan.hbm.xml
 /DaAnJuan.class
 /DaAnJuan.hbm.xml
+/Admin.class
+/Admin.hbm.xml
+/User.class
+/User.hbm.xml
+/UserId.class

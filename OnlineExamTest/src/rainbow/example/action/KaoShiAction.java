@@ -1,6 +1,7 @@
 package rainbow.example.action;
 
 import java.io.IOException;
+import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import rainbow.example.domain.Course;

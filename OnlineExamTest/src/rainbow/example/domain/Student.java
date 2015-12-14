@@ -13,12 +13,14 @@ public class Student  implements java.io.Serializable {
 
 
     // Fields    
+
      private Integer id;
      private String idStu;
      private String nameStu;
      private String pswStu;
      private String emailStu;
      private Set courses = new HashSet(0);
+
 
     // Constructors
 

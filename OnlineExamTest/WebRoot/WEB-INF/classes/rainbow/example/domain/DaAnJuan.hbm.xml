@@ -91,5 +91,8 @@
         <property name="zongFen" type="integer">
             <column name="zongFen" />
         </property>
+        <property name="date" type="date">
+        	<column name="date"></column>
+        </property>
     </class>
 </hibernate-mapping>

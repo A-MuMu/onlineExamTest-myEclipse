@@ -1,9 +1,13 @@
 #MyEclipse Hibernate Properties
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Mon Dec 14 18:16:03 CST 2015
 =======
 #Thu Dec 10 14:01:55 CST 2015
 >>>>>>> parent of 1c5c033... 答案卷加入 DATE  属性
+=======
+#Mon Dec 14 13:59:32 CST 2015
+>>>>>>> parent of e1e7c4c... 建立 视图，同一登录操作
 genBasicCompId=true
 sessionFactoryName=
 profile=

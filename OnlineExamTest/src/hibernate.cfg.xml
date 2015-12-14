@@ -33,8 +33,6 @@
 		<mapping resource="rainbow/example/domain/XuanZe.hbm.xml" />
 		<mapping resource="rainbow/example/domain/PangDuan.hbm.xml" />
 		<mapping resource="rainbow/example/domain/DaAnJuan.hbm.xml" />
-		<mapping resource="rainbow/example/domain/Admin.hbm.xml" />
-		<mapping resource="rainbow/example/domain/User.hbm.xml" />
 
 	</session-factory>
 	

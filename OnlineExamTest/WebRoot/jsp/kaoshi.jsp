@@ -134,7 +134,7 @@
 						String course = (String) session.getAttribute("course");
 						if (course != null){
 					%>
-					<s:action id="kaoshi" name="kaoshi1" >
+					<s:action id="kaoshi" name="kaoshi1">
 						<table class="topiclist" >
 							<%
 								String str1 = null;

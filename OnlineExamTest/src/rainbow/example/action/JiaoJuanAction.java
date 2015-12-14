@@ -50,9 +50,9 @@ public class JiaoJuanAction extends ActionSupport {
 		daJuan.setIdStu(getStuID());
 		daJuan.setDaJuan(numDaJuan+1);
 		TrueORfalse.setDaJuan(daJuan);
-		TrueORfalse.getListXuanZes();
-		daJuan.setZuZhuFenShu(2);
-		daJuan.setZongFen(3);
+		ziZhuFenShu = TrueORfalse.getListXuanZes() + TrueORfalse.getListPangDuans();
+		daJuan.setZuZhuFenShu(ziZhuFenShu);
+//		daJuan.setZongFen(3);
 		daJuan.setShiJuan(DaAn2sql.getShiJuan());
 		
 		System.out.println(daJuan.getPangduan1()

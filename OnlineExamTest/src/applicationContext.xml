@@ -76,6 +76,8 @@
 	<bean id="daJuan" class="rainbow.example.domain.DaAnJuan">
 	</bean>
 	<bean id="shiJuan" class="rainbow.example.domain.ShiJuan"></bean>
+	<bean id="user" class="rainbow.example.domain.User"></bean>
+	<bean id="userID" class="rainbow.example.domain.UserId"></bean>
 
 	<bean id="templeStuDAOService" class="rainbow.example.service.TempleStuDAOService">
 		<property name="dao" ref="templeDAO"></property>
@@ -110,13 +112,16 @@
 	<bean id="templeXuanZeDAOService" class="rainbow.example.service.TempleXuanZeDAOService">
 		<property name="dao" ref="templeDAO"></property>
 	</bean>
+	<bean id="templeLoginService" class="rainbow.example.service.TempleLoginService">
+		<property name="user" ref="user"></property>
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
 
 	<!-- scope="prototype"多例，表示每次使用都创建一个新的，单例则不创建新的 -->
 	<bean id="loginAction" class="rainbow.example.action.LoginAction"
 		scope="prototype">
 		<property name="userService" ref="templeStuDAOService"></property>
-		<property name="user" ref="student"></property>
-		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
+		<property name="templeLoginService" ref="templeLoginService"></property>
 	</bean>
 	<bean id="mingYanAction" class="rainbow.example.action.MingYanAction"
 		scope="prototype">

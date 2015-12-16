@@ -1,5 +1,6 @@
+<%@page import="rainbow.example.domain.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="rainbow.example.domain.Student"%>
+<%@ page import="rainbow.example.domain.User"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -40,11 +41,11 @@
 			</div>
 			<div class="toolbar">
 				<%
-					Student u = null;
-					u = (Student) session.getAttribute("userinfo");
+					User u = null;
+					u = (User) session.getAttribute("USER");
 				%>
 				<p>
-					你好，<%=u.getNameStu()%><a href="jsp/loginOut.jsp">退出</a>
+					你好，<%=u.getId().getName()%><a href="jsp/loginOut.jsp">退出</a>
 				</p>
 			</div>
 		</div>

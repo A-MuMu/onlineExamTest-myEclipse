@@ -34,7 +34,6 @@
 	<%
 		if (session.getAttribute("userinfo") != null) {
 	%>
-	<jsp:include page="/jsp/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>

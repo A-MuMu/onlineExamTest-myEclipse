@@ -53,13 +53,13 @@
 							<tr>
 								<td width="60">账 号 ：</td>
 								<td><input type="text" class="login_input"
-									name="user.idStu" /></td>
+									name="loginID" /></td>
 								<td><%=ValidateUtil.showError(request, "zhanghao")%></td>
 							</tr>
 							<tr>
 								<td>密 码 ：</td>
 								<td><input type="password" class="login_input"
-									name="user.pswStu" /></td>
+									name="loginPSW" /></td>
 								<td><%=ValidateUtil.showError(request, "password")%></td>
 
 							</tr>

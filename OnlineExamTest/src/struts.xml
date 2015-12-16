@@ -8,7 +8,8 @@
 		</global-results>
 
 		<action name="userLogin" class="loginAction" method="doLogin">
-			<result name="success">jsp/shouye.jsp</result>
+			<result name="student">jsp/shouye.jsp</result>
+			<result name="teacher">jsp/laoshi.jsp</result>
 			<result name="exception">jsp/login.jsp</result>
 		</action>
 		

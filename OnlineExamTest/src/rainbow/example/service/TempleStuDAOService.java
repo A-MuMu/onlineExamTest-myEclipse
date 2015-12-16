@@ -18,7 +18,7 @@ public class TempleStuDAOService<T> {
 	private TempleDAO dao;
 	private List<T> users;
 
-	public Student doLogin(String userName, String password)
+	/*public Student doLogin(String userName, String password)
 			throws UserException {
 		if (userName == null || "".equals(userName.trim()))
 			throw new UserException("账号不能为空！");
@@ -45,6 +45,17 @@ public class TempleStuDAOService<T> {
 			}
 		}
 		return null;
+	}*/
+	
+	public Student getOne(String id){
+		List<Student> list;
+		String queryString = "SELECT u FROM Student u WHERE u.idStu = "+ id;
+		list = dao.getObjects(queryString);
+		if (list.size() == 0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
 	}
 
 	public List<T> queryUsers(String uname, Class<T> clazz) {

@@ -6,7 +6,9 @@ import org.apache.struts2.ServletActionContext;
 
 import rainbow.example.domain.Student;
 import rainbow.example.domain.Teacher;
+import rainbow.example.domain.User;
 import rainbow.example.domain.UserException;
+import rainbow.example.service.TempleLoginService;
 import rainbow.example.service.TempleStuDAOService;
 import rainbow.example.service.TempleTeacherDAOService;
 import rainbow.example.util.ValidateUtil;
@@ -21,33 +23,36 @@ public class LoginAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 4730714773607758673L;
 
-	private Student user;
-
 	private TempleStuDAOService<Student> userService;
 	private TempleTeacherDAOService<Teacher> teacherDAOService;
-
-	private String searchText;
+	private TempleLoginService templeLoginService;
 
 	@SuppressWarnings("unused")
-	public String doLogin(){
-		String result = "";
+	public String doLogin() {
+		String result = "exception";
 		HttpServletRequest request = ServletActionContext.getRequest();
-		String id = request.getParameter("user.idStu");
-		String psw = request.getParameter("user.pswStu");
-		Student loginUser;
-		Teacher teacher;
+		String id = request.getParameter("loginID");
+		String psw = request.getParameter("loginPSW");
+		User loginUser;
 		try {
-//			loginUser = userService.doLogin(this.user.getIdStu(), this.user.getPswStu());
-			loginUser = userService.doLogin(id, psw);
-//			teacher = teacherDAOService.doLogin(id, psw);
-			if (loginUser == null ){//|| teacher == null){
+			// loginUser = userService.doLogin(id, psw);
+			loginUser = templeLoginService.doLogin(id, psw);
+			System.out.println(loginUser.getId().getId() + "****LoginAction****" + loginUser.getId().getPsw());
+
+			if (loginUser == null) {
 				result = "exception";
-			} else if(loginUser != null){
-				ActionContext.getContext().getSession().put("userinfo", loginUser);
-				result = SUCCESS;
-//			}else if(teacher != null){
-//				ActionContext.getContext().getSession().put("userinfo", teacher);
-//				result = SUCCESS;
+			} else if (loginUser != null) {
+				Student student = userService.getOne(loginUser.getId().getId());
+				if (student != null) {
+					ActionContext.getContext().getSession().put("userinfo", student);
+					result = "student";
+				} else {
+					Teacher teacher = teacherDAOService.getOne(loginUser.getId().getId());
+					if (teacher != null) {
+						ActionContext.getContext().getSession().put("userinfo", teacher);
+						result = "teacher";
+					}
+				}
 			}
 		} catch (UserException e) {
 			// TODO: handle exception
@@ -65,21 +70,19 @@ public class LoginAction extends ActionSupport {
 		this.userService = userService;
 	}
 
-
-	public Student getUser() {
-		return user;
-	}
-
-	public void setUser(Student user) {
-		this.user = user;
-	}
-
 	public TempleTeacherDAOService<Teacher> getTeacherDAOService() {
 		return teacherDAOService;
 	}
 
-	public void setTeacherDAOService(
-			TempleTeacherDAOService<Teacher> teacherDAOService) {
+	public void setTeacherDAOService(TempleTeacherDAOService<Teacher> teacherDAOService) {
 		this.teacherDAOService = teacherDAOService;
+	}
+
+	public TempleLoginService getTempleLoginService() {
+		return templeLoginService;
+	}
+
+	public void setTempleLoginService(TempleLoginService templeLoginService) {
+		this.templeLoginService = templeLoginService;
 	}
 }

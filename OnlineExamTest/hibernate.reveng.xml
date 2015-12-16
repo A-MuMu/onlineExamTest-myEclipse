@@ -33,4 +33,9 @@
 		</primary-key>
 		<column name="shijuan"></column>
 	</table>
+<table name="user" catalog="exam" class="User">
+	<primary-key>
+		<generator class="native"></generator>
+	</primary-key>
+</table>
 </hibernate-reverse-engineering>

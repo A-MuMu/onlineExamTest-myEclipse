@@ -14,10 +14,11 @@ public class TempleDAO extends HibernateDaoSupport {
 		return (List<T>) this.getHibernateTemplate().find(queryString);
 	}
 	
+	/* find 返回的是集合 
 	@SuppressWarnings("unchecked")
 	public <T> T getOne(String queryString) {
 		return  (T) this.getHibernateTemplate().find(queryString);
-	}
+	}*/
 
 	/** 查询所有 */
 	public <T> List<T> getAllObjects(Class<T> clazz) {

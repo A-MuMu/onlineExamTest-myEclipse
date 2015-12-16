@@ -11,7 +11,7 @@ public class TempleTeacherDAOService<T> {
 	private TempleDAO dao;
 	private List<T> users;
 
-	public Teacher doLogin(String userName, String password)
+	/*public Teacher doLogin(String userName, String password)
 			throws UserException {
 		if (userName == null || "".equals(userName.trim()))
 			throw new UserException("ÕËºÅ²»ÄÜÎª¿Õ£¡");
@@ -38,12 +38,23 @@ public class TempleTeacherDAOService<T> {
 			}
 		}
 		return null;
+	}*/
+	
+	public Teacher getOne(String id){
+		List<Teacher> list;
+		String queryString = "SELECT t FROM Teacher t WHERE t.teaId = '"+ id +"'";
+		list = dao.getObjects(queryString);
+		if (list.size() == 0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
 	}
 
 	public List<T> queryUsers(String uname, Class<T> clazz) {
 		if (uname == null || "".equals(uname))
 			return dao.getAllObjects(clazz);
-		String queryString = "SELECT u FROM Student u WHERE u.idStu like "
+		String queryString = "SELECT t FROM Teacher t WHERE t.teaId "
 				+ uname + "%";
 		return dao.getObjects(queryString);
 	}

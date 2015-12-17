@@ -110,14 +110,14 @@
 
 <body>
 	<%
-		if (session.getAttribute("userinfo") == null) {
+		if (session.getAttribute("USER") == null) {
 	%>
 	<jsp:forward page="/jsp/login.jsp"></jsp:forward><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
 	<%
-		if (session.getAttribute("userinfo") != null) {
+		if (session.getAttribute("USER") != null) {
 	%>
 	<jsp:include page="/jsp/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%

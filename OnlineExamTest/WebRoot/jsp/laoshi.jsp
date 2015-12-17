@@ -43,24 +43,24 @@
 		<div class="publicbox box">
 			<a href="<%=request.getContextPath()%>/jsp/stu.jsp" class="training">
 				<ul>
-					<li><h2>学生管理</h2></li>
-					<li><p>学生信息综合管理，包含学生信息添加、修改、删除、查看等。信息包含学生个人成绩、学生个人情况等。</p></li>
+					<li><h2>课程管理</h2></li>
+					<li><p>查看自己所教课程的上课时间、地点安排，并可以进行调课申请等操作。</p></li>
 				</ul>
 			</a> <a href="javascript:void(0);" class="testpaper"
 				onclick="auto_make_paper();">
 				<ul>
-					<li><h2>教师管理</h2></li>
-					<li><p>教师信息综合管理，包含教师信息添加、修改、删除、查看等。信息包含教师个人履历，教学年志，教学学科等。</p></li>
+					<li><h2>个人信息</h2></li>
+					<li><p>信息包含教师个人履历，教学年志，教学学科，与提交某些内容的信息更正等。</p></li>
 				</ul>
 			</a> <a href="?mod=xingce&act=zhenti" class="zhenti">
 				<ul>
-					<li><h2>考试管理</h2></li>
-					<li><p>考试过程时时管理，重置考生试卷，视频监控考生等多项管理手段。</p></li>
+					<li><h2>学生管理</h2></li>
+					<li><p>可查看中选课程学生信息，并记录学生平时上课表现与课堂互动分。</p></li>
 				</ul>
 			</a> <a href="javascript:void(0);" class="exam" onclick="alert('暂未开放');">
 				<ul>
-					<li><h2>试卷审核</h2></li>
-					<li><p>对老师提交的试卷进行审核，对学生要求查卷等做出回应，以及考试时间事项通知等。</p></li>
+					<li><h2>试卷评改</h2></li>
+					<li><p>对学生提交的试卷中的问答题进行评改，查看学生试卷成绩成绩与对应的课程总体考试情况。</p></li>
 				</ul>
 			</a>
 		</div>

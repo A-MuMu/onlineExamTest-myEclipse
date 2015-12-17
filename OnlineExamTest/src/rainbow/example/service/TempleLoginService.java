@@ -20,9 +20,9 @@ public class TempleLoginService {
 			throw new UserException("密码不能为空！");
 
 		// 输出 ->进入的账号信息
-		System.out.println(userName);
+		System.out.println(userName+"****");
 
-		String queryString = "SELECT u FROM User u WHERE u.id.id = '" + userName + "'";
+		String queryString = "SELECT u FROM User u WHERE u.id.id = '" + userName +"'" ;
 
 		users = dao.getObjects(queryString);
 

@@ -11,12 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import rainbow.example.domain.Student;
-import rainbow.example.domain.Teacher;
-
-import com.opensymphony.xwork2.ActionContext;
+import rainbow.example.domain.User;;
 
 /**
  * Servlet Filter implementation class SessionFilter
@@ -49,8 +45,8 @@ public class SessionFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request; 
 		HttpServletResponse resp = (HttpServletResponse) response; 
 
-		Student student = (Student) req.getSession().getAttribute("userinfo");
-		if (student == null) {
+		User user = (User) req.getSession().getAttribute("USER");
+		if (user == null) {
 			resp.sendRedirect(req.getContextPath()+"jsp/login.jsp");
 		}
 		

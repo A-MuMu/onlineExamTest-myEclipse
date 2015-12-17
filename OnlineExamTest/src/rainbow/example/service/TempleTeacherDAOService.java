@@ -5,44 +5,14 @@ import java.util.List;
 
 import rainbow.example.DAO.TempleDAO;
 import rainbow.example.domain.Teacher;
-import rainbow.example.domain.UserException;
 
 public class TempleTeacherDAOService<T> {
 	private TempleDAO dao;
-	private List<T> users;
-
-	/*public Teacher doLogin(String userName, String password)
-			throws UserException {
-		if (userName == null || "".equals(userName.trim()))
-			throw new UserException("账号不能为空！");
-		else if (password == null || "".equals(password.trim()))
-			throw new UserException("密码不能为空！");
-
-		// 输出 ->进入的账号信息
-		System.out.println(userName);
-
-		String queryString = "SELECT t FROM Teacher t WHERE t.teaId = '"
-				+ userName+"'";// + " AND u.pswStu = " + password;
-
-		users = dao.getObjects(queryString);
-		if (users.size() == 0)
-			throw new UserException("该用户不存在！");
-		else {
-			System.out.println(queryString);
-			Teacher loginUser = (Teacher) users.get(0);
-			if (loginUser != null) {
-				if (!password.equals(loginUser.getPwsTea()))
-					throw new UserException("密码输入不正确！");
-				else
-					return loginUser;
-			}
-		}
-		return null;
-	}*/
 	
 	public Teacher getOne(String id){
 		List<Teacher> list;
-		String queryString = "SELECT t FROM Teacher t WHERE t.teaId = '"+ id +"'";
+		String queryString = "SELECT t FROM Teacher t WHERE t.teaId = '"+ id +"'" ;
+		System.out.println(queryString);
 		list = dao.getObjects(queryString);
 		if (list.size() == 0) {
 			return null;

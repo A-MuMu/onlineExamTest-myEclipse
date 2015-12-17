@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import rainbow.example.domain.Student;
+import rainbow.example.domain.Admin;
 import rainbow.example.domain.Teacher;
 import rainbow.example.domain.User;
 import rainbow.example.domain.UserException;
+import rainbow.example.service.TempleAdminLoginService;
 import rainbow.example.service.TempleLoginService;
 import rainbow.example.service.TempleStuDAOService;
 import rainbow.example.service.TempleTeacherDAOService;
@@ -26,6 +28,7 @@ public class LoginAction extends ActionSupport {
 	private TempleStuDAOService<Student> userService;
 	private TempleTeacherDAOService<Teacher> teacherDAOService;
 	private TempleLoginService templeLoginService;
+	private TempleAdminLoginService templeAdminLoginService;
 
 	@SuppressWarnings("unused")
 	public String doLogin() {
@@ -46,12 +49,16 @@ public class LoginAction extends ActionSupport {
 				if (student != null) {
 					ActionContext.getContext().getSession().put("userinfo", student);
 					result = "student";
-				} else {
-					Teacher teacher = teacherDAOService.getOne(loginUser.getId().getId());
-					if (teacher != null) {
-						ActionContext.getContext().getSession().put("userinfo", teacher);
-						result = "teacher";
-					}
+				}
+				Teacher teacher = teacherDAOService.getOne(loginUser.getId().getId());
+				if (teacher != null) {
+					ActionContext.getContext().getSession().put("userinfo", teacher);
+					result = "teacher";
+				}
+				Admin admin = templeAdminLoginService.getOne(loginUser.getId().getId());
+				if (admin != null) {
+					ActionContext.getContext().getSession().put("userinfo", admin);
+					result = "admin";
 				}
 			}
 		} catch (UserException e) {
@@ -84,5 +91,13 @@ public class LoginAction extends ActionSupport {
 
 	public void setTempleLoginService(TempleLoginService templeLoginService) {
 		this.templeLoginService = templeLoginService;
+	}
+
+	public TempleAdminLoginService getTempleAdminLoginService() {
+		return templeAdminLoginService;
+	}
+
+	public void setTempleAdminLoginService(TempleAdminLoginService templeAdminLoginService) {
+		this.templeAdminLoginService = templeAdminLoginService;
 	}
 }

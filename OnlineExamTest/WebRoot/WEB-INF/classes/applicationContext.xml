@@ -64,6 +64,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
+	<bean id="admin" class="rainbow.example.domain.Admin"></bean>
 	<bean id="student" class="rainbow.example.domain.Student">
 	</bean>
 	<bean id="mingyan" class="rainbow.example.domain.MingYan">
@@ -79,6 +80,9 @@
 	<bean id="user" class="rainbow.example.domain.User"></bean>
 	<bean id="userID" class="rainbow.example.domain.UserId"></bean>
 
+	<bean id="templeAdminLoginService" class="rainbow.example.service.TempleAdminLoginService">
+		<property name="dao" ref="templeDAO"></property>
+	</bean>
 	<bean id="templeStuDAOService" class="rainbow.example.service.TempleStuDAOService">
 		<property name="dao" ref="templeDAO"></property>
 	</bean>
@@ -121,7 +125,9 @@
 	<bean id="loginAction" class="rainbow.example.action.LoginAction"
 		scope="prototype">
 		<property name="userService" ref="templeStuDAOService"></property>
+		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
 		<property name="templeLoginService" ref="templeLoginService"></property>
+		<property name="templeAdminLoginService" ref="templeAdminLoginService"></property>
 	</bean>
 	<bean id="mingYanAction" class="rainbow.example.action.MingYanAction"
 		scope="prototype">

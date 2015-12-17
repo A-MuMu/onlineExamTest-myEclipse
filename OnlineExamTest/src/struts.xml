@@ -8,9 +8,10 @@
 		</global-results>
 
 		<action name="userLogin" class="loginAction" method="doLogin">
-			<result name="student">jsp/shouye.jsp</result>
-			<result name="teacher">jsp/laoshi.jsp</result>
-			<result name="exception">jsp/login.jsp</result>
+			<result name="student" type="redirect">jsp/shouye.jsp</result>
+			<result name="admin" type="redirect">jsp/AdminShouYe.jsp</result>
+			<result name="teacher" type="redirect">jsp/laoshi.jsp</result>
+			<result name="exception" type="redirect">jsp/login.jsp</result>
 		</action>
 		
 		<action name="submit" class="jiaoJuanAction" method="submit">
@@ -24,20 +25,20 @@
 		</action>
 
 		<action name="kaoshi1" class="kaoShiAction" method="showCourse">
-			<result name="success">jsp/kaoshi.jsp</result>
+			<result name="success" >jsp/kaoshi.jsp</result>
 		</action>
 
 		<action name="kaoshi2" class="kaoShiAction" method="intoKaoShi">
-			<result name="success">jsp/LiKaoshi.jsp</result>
-			<result name="error">jsp/shouye.jsp</result>
+			<result name="success" >jsp/LiKaoshi.jsp</result>
+			<result name="error" >jsp/shouye.jsp</result>
 		</action>
 		
 		<action name="kaoshi3" class="kaoShiAction" method="lianxi">
 		</action>
 
 		<action name="xuanze" class="kaoShiAction" method="intoDaAn_xz">
-			<result name="error">jsp/error.jsp</result>
-			<result name="success">jsp/kaoshi.jsp</result>
+			<result name="error" >jsp/error.jsp</result>
+			<result name="success" >jsp/kaoshi.jsp</result>
 		</action>
 
 		<action name="pangduan" class="kaoShiAction" method="intoDaAn_pd">
@@ -52,25 +53,25 @@
 		</action>
 
 		<action name="stucheck" class="magamentAction" method="stucheck">
-			<result name="success">jsp/stu.jsp</result>
+			<result name="success" type="redirect">jsp/stu.jsp</result>
 		</action>
 
 		<action name="tea" class="teacherMagamentAction" method="stu">
 		</action>
 
 		<action name="teacheck" class="teacherMagamentAction" method="stucheck">
-			<result name="success">jsp/laoshi.jsp</result>
+			<result name="success" type="redirect">jsp/laoshi.jsp</result>
 		</action>
 
 		<action name="xz" class="xuanZeAction" method="stu">
 		</action>
 
 		<action name="xzcheck" class="xuanZeAction" method="stucheck">
-			<result name="success">jsp/xz.jsp</result>
+			<result name="success" type="redirect">jsp/xz.jsp</result>
 		</action>
 
 		<action name="query" class="loginAction" method="doQuery">
-			<result name="SUCCESS">jsp/input.jsp</result>
+			<result name="SUCCESS" type="redirect">jsp/input.jsp</result>
 		</action>
 		<action name="delete" class="loginAction" method="doDelete" />
 		<action name="edit" class="loginAction" method="doEdit">
@@ -78,7 +79,7 @@
 		</action>
 
 		<action name="add" class="userAct" method="doAdd">
-			<result name="addUser">jsp/addUser.jsp</result>
+			<result name="addUser" type="redirect">jsp/addUser.jsp</result>
 		</action>
 
 	</package>

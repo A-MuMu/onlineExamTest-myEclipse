@@ -49,7 +49,7 @@
 				<h2 class="tit">彩虹-在线考试题库</h2>
 				<p class="text">收录福大数学与计算机科学/软件学院多学科历年卷，欢迎师生们参与在线体验！</p>
 				<%
-					if (session.getAttribute("userinfo") == null) {
+					if (session.getAttribute("USER") == null) {
 				%>
 				<a href="<%=path%>/jsp/login.jsp"><span class="register">登录系统>></span></a>
 				<%

@@ -1,6 +1,6 @@
-/User.class
-/User.hbm.xml
-/UserId.class
 /rainbow/
-/Admin.class
-/Admin.hbm.xml
+/struts.properties
+/struts.xml
+/applicationContext.xml
+/hibernate.cfg.xml
+/jdbc.properties

@@ -61,6 +61,8 @@ table { border-collapse: collapse; border-spacing: 0; }
 .nav .nav_but a{
 	float:left;
 }
+
+/*学生的导航栏*/
 .nav .nav_but span{
 	float:left;
 	color:#ffffff;
@@ -112,6 +114,123 @@ table { border-collapse: collapse; border-spacing: 0; }
 	width:104px;
 	background-position:22px -305px;
 }
+
+/*老师的导航栏*/
+
+.nav .nav_but_ls span{
+	float:left;
+	color:#ffffff;
+	background:url(nav_text_laoshi01.png) no-repeat;
+	height:49px;
+	text-indent:-999em;
+}
+
+.nav .nav_but_ls .sy a:hover,.nav .nav_but_ls .xc a:hover,.nav .nav_but_ls .sl a:hover,.nav .nav_but_ls .lx a:hover,.nav .nav_but_ls .jc a:hover{
+	background:url(nav_on.png) 0 -49px;
+	width:104px;
+	float:left;
+}
+.nav .nav_but_ls .sy a.current,.nav .nav_but_ls .xc a.current,.nav .nav_but_ls .sl a.current,.nav .nav_but_ls .lx a.current,.nav .nav_but_ls .jc a.current{
+	background:url(nav_on.png) 0 -49px;
+	width:104px;
+	float:left;
+}
+/*"首页导航"*/
+.nav .nav_but_ls .sy a:hover{
+	background:url(nav_on.png);
+	width:80px;
+	float:left;
+}
+.nav .nav_but_ls .sy a.current{
+	background:url(nav_on.png);
+	width:80px;
+	float:left;
+}
+.nav .nav_but_ls .sy span{
+	width:80px;
+	background-position:-10px -13px;
+}
+
+.nav .nav_but_ls .xc span{
+	width:104px;
+	background-position:0px -78px;
+}
+.nav .nav_but_ls .sl span{
+	width:104px;
+	background-position:0px -144px;
+}
+.nav .nav_but_ls .ls span{
+	width:104px;
+	background-position:0px -210px;
+}
+.nav .nav_but_ls .lx span{
+	width:104px;
+	background-position:0px -210px;
+}
+.nav .nav_but_ls .jc span{
+	width:100px;
+	background-position:0px -273px;
+}
+
+/*管理员的导航栏*/
+
+.nav .nav_but_admin span{
+	float:left;
+	color:#ffffff;
+	background:url(nav_text_admin01.png) no-repeat;
+	height:49px;
+	text-indent:-999em;
+}
+
+.nav .nav_but_admin .sy a:hover,.nav .nav_but_admin .xc a:hover,.nav .nav_but_admin .sl a:hover,.nav .nav_but_admin .lx a:hover,.nav .nav_but_admin .jc a:hover{
+	background:url(nav_on.png) 0 -49px;
+	width:104px;
+	float:left;
+}
+.nav .nav_but_admin .sy a.current,.nav .nav_but_admin .xc a.current,.nav .nav_but_admin .sl a.current,.nav .nav_but_admin .lx a.current,.nav .nav_but_admin .jc a.current{
+	background:url(nav_on.png) 0 -49px;
+	width:104px;
+	float:left;
+}
+/*"首页导航"*/
+.nav .nav_but_admin .sy a:hover{
+	background:url(nav_on.png);
+	width:80px;
+	float:left;
+}
+.nav .nav_but_admin .sy a.current{
+	background:url(nav_on.png);
+	width:80px;
+	float:left;
+}
+.nav .nav_but_admin .sy span{
+	width:80px;
+	background-position:-10px -13px;
+}
+
+.nav .nav_but_admin .xc span{
+	width:104px;
+	background-position:0px -78px;
+}
+.nav .nav_but_admin .sl span{
+	width:104px;
+	background-position:0px -144px;
+}
+.nav .nav_but_admin .ls span{
+	width:104px;
+	background-position:0px -210px;
+}
+.nav .nav_but_admin .lx span{
+	width:104px;
+	background-position:0px -210px;
+}
+.nav .nav_but_admin .jc span{
+	width:100px;
+	background-position:0px -273px;
+}
+
+/*导航栏结束*/
+
 .main{
 	width:1010px;
 	margin-top:20px;

@@ -9,8 +9,8 @@
 
 		<action name="userLogin" class="loginAction" method="doLogin">
 			<result name="student" type="redirect">jsp/shouye.jsp</result>
-			<result name="admin" type="redirect">jsp/AdminShouYe.jsp</result>
-			<result name="teacher" type="redirect">jsp/laoshi.jsp</result>
+			<result name="admin" type="redirect">jsp/admin/shouye.jsp</result>
+			<result name="teacher" type="redirect">jsp/teacher/shouye.jsp</result>
 			<result name="exception" type="redirect">jsp/login.jsp</result>
 		</action>
 		

@@ -27,14 +27,14 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:include page="/jsp/topLaoShiNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/jsp/teacher/topLaoShiNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/jsp/topLaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/jsp/teacher/topLaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>

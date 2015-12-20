@@ -1,11 +1,7 @@
-<%@page import="rainbow.example.domain.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="rainbow.example.domain.User"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -30,22 +26,18 @@
 			<div class="logo">
 				<img src="<%=request.getContextPath()%>/jsp/logo.jpg" />
 			</div>
-			<div class="nav_but yahei">
+			<div class="nav_but_admin yahei">
 				<ul>
-					<li class="sy"><a href="<%=path%>/jsp/AdminShouYe.jsp"><span>首
-								页</span></a></li>
+					<li class="sy"><a href="<%=path%>/jsp/AdminShouYe.jsp"><span>首页</span></a></li>
 					<li class="xc"><a href=""><span>学生管理</span></a></li>
 					<li class="sl"><a href=""><span>老师管理</span></a></li>
 					<li class="lx"><a href=""><span>考试管理</span></a></li>
+					<li class="jc"><a href=""><span>试卷审核</span></a></li>
 				</ul>
 			</div>
 			<div class="toolbar">
-				<%
-					User u = null;
-					u = (User) session.getAttribute("USER");
-				%>
 				<p>
-					你好，<%=u.getId().getName()%><a href="jsp/loginOut.jsp">退出</a>
+					（不开放注册）<a href="<%=path%>/jsp/login.jsp">登录</a>
 				</p>
 			</div>
 		</div>

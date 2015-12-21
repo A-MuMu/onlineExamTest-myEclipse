@@ -78,8 +78,8 @@ public class KaoShiAction extends ActionSupport {
 	static int num_point_hard = 0;// 标志
 	static int num_point_easy = 0;// 标志
 	private static int flog = 0;// 标志,应该为MAP，一个学科对应一个值，一个学科做一次，未实现,static 先不用
-//	static Map<String, Integer> flogMap;
-//	private int flog = 0;
+	// static Map<String, Integer> flogMap;
+	// private int flog = 0;
 
 	ShiJuan shiJuan_hard = new ShiJuan();
 	ShiJuan shiJuan_easy = new ShiJuan();
@@ -105,11 +105,8 @@ public class KaoShiAction extends ActionSupport {
 					course = (Course) li.next();
 					System.out.println(course.getXueKe().getId());
 					// 学科ID 和 TeacherID 有点乱
-					System.out.println("TeacherID:"
-							+ course.getXueKe().getId().getXkid() + "  "
-							+ "学科ID:" + course.getXueKe().getId().getTeaId());
-					xueKe = templeCourseDAOService.queryXueKes(course
-							.getXueKe().getId().getXkid());
+					System.out.println("TeacherID:" + course.getXueKe().getId().getXkid() + "  " + "学科ID:" + course.getXueKe().getId().getTeaId());
+					xueKe = templeCourseDAOService.queryXueKes(course.getXueKe().getId().getXkid());
 					Iterator<XueKe> iterator = xueKe.iterator();
 					while (iterator.hasNext()) {
 						// System.out.println(iterator.next().getNameXk());
@@ -118,10 +115,10 @@ public class KaoShiAction extends ActionSupport {
 				}
 			}
 			for (int i = 0; i < xkNames.size(); i++) {
-//				flogMap.put(xkNames.get(i), 0);
+				// flogMap.put(xkNames.get(i), 0);
 				System.out.println(xkNames.get(i));
-//				System.out.println("*************************"+flogMap.get(xkNames.get(i))
-//						+ "*************************");
+				// System.out.println("*************************"+flogMap.get(xkNames.get(i))
+				// + "*************************");
 			}
 			ActionContext.getContext().getSession().put("xkNames", xkNames);
 		} catch (Exception e) {
@@ -151,21 +148,20 @@ public class KaoShiAction extends ActionSupport {
 	}
 
 	public void xkIDselected(String string) {
-		System.out.print("*********************"+course_lastTime+"*********************");
+		System.out.print("*********************" + course_lastTime + "*********************");
 		this.myNameXK = course_lastTime;
 		System.out.println(this.myNameXK);
-//		flog = flogMap.get(this.myNameXK);
-		System.out.print("*********************"+flog+"*********************");
+		// flog = flogMap.get(this.myNameXK);
+		System.out.print("*********************" + flog + "*********************");
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public String intoKaoShi() {
-		if (flog == 0 ) {
+		if (flog == 0) {
 			flog++;
 			mid = Integer.parseInt(request.getParameter("mid"));
-			String course = (String) ActionContext.getContext().getSession()
-					.get("course");
+			String course = (String) ActionContext.getContext().getSession().get("course");
 
 			int num_xz_hard;
 			int num_pd_hard;
@@ -233,19 +229,14 @@ public class KaoShiAction extends ActionSupport {
 			}
 			if (mid == 1) {
 				ActionContext.getContext().getSession().put("xuanze", list_1);
-				ActionContext.getContext().getSession()
-						.put("pangduan", list_pdDuans_1);
-				ActionContext.getContext().getSession()
-						.put("zhuguan", list_zg_1);
+				ActionContext.getContext().getSession().put("pangduan", list_pdDuans_1);
+				ActionContext.getContext().getSession().put("zhuguan", list_zg_1);
 			} else if (mid == 2) {
 				ActionContext.getContext().getSession().put("xuanze", list_2);
-				ActionContext.getContext().getSession()
-						.put("pangduan", list_pdDuans_2);
-				ActionContext.getContext().getSession()
-						.put("zhuguan", list_zg_2);
+				ActionContext.getContext().getSession().put("pangduan", list_pdDuans_2);
+				ActionContext.getContext().getSession().put("zhuguan", list_zg_2);
 			}
-			System.out.println("~~~~~~" + num_point_hard + "~~~~~~"
-					+ num_point_easy + "**********" + myNameXK+ "**********" +flog);
+			System.out.println("~~~~~~" + num_point_hard + "~~~~~~" + num_point_easy + "**********" + myNameXK + "**********");
 			if (num_point_hard == 1) {
 				addShiJuan_hard();
 			}
@@ -270,12 +261,12 @@ public class KaoShiAction extends ActionSupport {
 		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
-		//传选择、判断、问答对象到改卷util
+		// 传选择、判断、问答对象到改卷util
 		TrueORfalse.setListXuanZes(list_1);
 		TrueORfalse.setListPangDuans(list_pdDuans_1);
 		TrueORfalse.setListZhuGuans(list_zg_1);
-		
-		//为试卷domain添加属性
+
+		// 为试卷domain添加属性
 		shiJuan.setKeGuanByZhuguan1(list_zg_1.get(i));
 		shiJuan.setKeGuanByZhuguan2(list_zg_1.get(i + 1));
 		shiJuan.setKeGuanByZhuguan3(list_zg_1.get(i + 2));
@@ -319,12 +310,12 @@ public class KaoShiAction extends ActionSupport {
 		System.out.println(num_shijuan + "#############" + this.myNameXK);
 
 		int i = 0;
-		//传选择、判断、问答对象到改卷util
+		// 传选择、判断、问答对象到改卷util
 		TrueORfalse.setListXuanZes(list_2);
 		TrueORfalse.setListPangDuans(list_pdDuans_2);
 		TrueORfalse.setListZhuGuans(list_zg_2);
-		
-		//为试卷domain添加属性
+
+		// 为试卷domain添加属性
 		shiJuan.setKeGuanByZhuguan1(list_zg_2.get(i));
 		shiJuan.setKeGuanByZhuguan2(list_zg_2.get(i + 1));
 		shiJuan.setKeGuanByZhuguan3(list_zg_2.get(i + 2));
@@ -371,8 +362,7 @@ public class KaoShiAction extends ActionSupport {
 				zx = (XuanZe) iterator.next();
 				System.out.print(zx.getXzid());// 输出排队题序
 				// 备注选择题表主键关联出错，teaID与xkID相关关联
-				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(zx
-						.getXueKe().getId().getTeaId());
+				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(zx.getXueKe().getId().getTeaId());
 				if (!xKe.get(0).getNameXk().equals(course)) {
 					System.out.println(xKe.get(0).getNameXk());
 					iterator.remove();
@@ -397,8 +387,7 @@ public class KaoShiAction extends ActionSupport {
 				pd = (PangDuan) iterator.next();
 				System.out.print(pd.getPdid());// 输出排队题序
 
-				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(pd
-						.getXueKe().getId().getTeaId());
+				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(pd.getXueKe().getId().getTeaId());
 				if (!xKe.get(0).getNameXk().equals(course)) {
 					System.out.println(xKe.get(0).getNameXk());
 					iterator.remove();
@@ -423,8 +412,7 @@ public class KaoShiAction extends ActionSupport {
 				zg = (KeGuan) iterator.next();
 				System.out.print(zg.getKgid());// 输出排队题序
 
-				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(zg
-						.getXueKe().getId().getTeaId());
+				xKe = (List<XueKe>) templeCourseDAOService.queryXueKes(zg.getXueKe().getId().getTeaId());
 				if (!xKe.get(0).getNameXk().equals(course)) {
 					System.out.println(xKe.get(0).getNameXk());
 					iterator.remove();
@@ -443,8 +431,7 @@ public class KaoShiAction extends ActionSupport {
 			xzList = templeXuanZeDAOService.getAllObjects(XuanZe.class);
 			ActionContext.getContext().getSession().put("xz", xzList);
 			try {
-				request.getRequestDispatcher("/jsp/lianxi1.jsp").forward(
-						request, response);
+				request.getRequestDispatcher("/jsp/lianxi1.jsp").forward(request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -457,8 +444,7 @@ public class KaoShiAction extends ActionSupport {
 			pdlist = templePangDuanDAOService.getAllObjects(PangDuan.class);
 			ActionContext.getContext().getSession().put("pd", pdlist);
 			try {
-				request.getRequestDispatcher("/jsp/lainxi2.jsp").forward(
-						request, response);
+				request.getRequestDispatcher("/jsp/lainxi2.jsp").forward(request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -484,8 +470,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeCourseDAOService;
 	}
 
-	public void setTempleCourseDAOService(
-			TempleCourseDAOService<Course> templeCourseDAOService) {
+	public void setTempleCourseDAOService(TempleCourseDAOService<Course> templeCourseDAOService) {
 		this.templeCourseDAOService = templeCourseDAOService;
 	}
 
@@ -493,8 +478,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeTiMuDAOService;
 	}
 
-	public void setTempleTiMuDAOService(
-			TempleTiMuDAOService<XuanZe> templeTiMuDAOService) {
+	public void setTempleTiMuDAOService(TempleTiMuDAOService<XuanZe> templeTiMuDAOService) {
 		this.templeTiMuDAOService = templeTiMuDAOService;
 	}
 
@@ -502,8 +486,7 @@ public class KaoShiAction extends ActionSupport {
 		return templePangDuanDAOService;
 	}
 
-	public void setTemplePangDuanDAOService(
-			TemplePangDuanDAOService<PangDuan> templePangDuanDAOService) {
+	public void setTemplePangDuanDAOService(TemplePangDuanDAOService<PangDuan> templePangDuanDAOService) {
 		this.templePangDuanDAOService = templePangDuanDAOService;
 	}
 
@@ -511,8 +494,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeZhuGuanDAOService;
 	}
 
-	public void setTempleZhuGuanDAOService(
-			TempleZhuGuanDAOService<KeGuan> templeZhuGuanDAOService) {
+	public void setTempleZhuGuanDAOService(TempleZhuGuanDAOService<KeGuan> templeZhuGuanDAOService) {
 		this.templeZhuGuanDAOService = templeZhuGuanDAOService;
 	}
 
@@ -520,8 +502,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeShiJuanDAOService;
 	}
 
-	public void setTempleShiJuanDAOService(
-			TempleShiJuanDAOService<ShiJuan> templeShiJuanDAOService) {
+	public void setTempleShiJuanDAOService(TempleShiJuanDAOService<ShiJuan> templeShiJuanDAOService) {
 		this.templeShiJuanDAOService = templeShiJuanDAOService;
 	}
 
@@ -529,8 +510,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeDaAnDAOService;
 	}
 
-	public void setTempleDaAnDAOService(
-			TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService) {
+	public void setTempleDaAnDAOService(TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService) {
 		this.templeDaAnDAOService = templeDaAnDAOService;
 	}
 
@@ -538,8 +518,7 @@ public class KaoShiAction extends ActionSupport {
 		return templeXuanZeDAOService;
 	}
 
-	public void setTempleXuanZeDAOService(
-			TempleXuanZeDAOService<XuanZe> templeXuanZeDAOService) {
+	public void setTempleXuanZeDAOService(TempleXuanZeDAOService<XuanZe> templeXuanZeDAOService) {
 		this.templeXuanZeDAOService = templeXuanZeDAOService;
 	}
 

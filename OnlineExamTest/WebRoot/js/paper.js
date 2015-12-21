@@ -70,7 +70,7 @@ $(function() {
 								success : function(URL) {
 									alert("恭喜你交卷成功！");
 									$.modal.close();
-									window.location.href = "jsp/shouye.jsp";
+									window.location.href = "shouye.jsp";
 								},
 								error : function(){
 									alert("交卷失败,请重新提交！");

@@ -10,13 +10,32 @@
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
 
-# Host: 127.0.0.1    Database: exam
+# Host: 127.0.01    Database: exam
 # ------------------------------------------------------
-# Server version 5.6.24-log
+# Server version 5.6.27-log
 
-DROP DATABASE IF EXISTS `exam`;
-CREATE DATABASE `exam` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `exam`;
+#
+# Source for table admin
+#
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `loginId` varchar(32) DEFAULT NULL,
+  `loginPsw` varchar(32) DEFAULT NULL,
+  `loginName` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Dumping data for table admin
+#
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+
+INSERT INTO `admin` VALUES (1,'admin','admin','管理员');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
 
 #
 # Source for table course
@@ -86,11 +105,10 @@ CREATE TABLE `daanjuan` (
   `zuZhuFenShu` int(9) DEFAULT NULL,
   `zongFen` int(9) DEFAULT NULL,
   `shijuan` bigint(20) NOT NULL DEFAULT '0',
-  `FirstTime` time NOT NULL DEFAULT '00:00:00',
-  `LastTime` time NOT NULL DEFAULT '00:00:00',
+  `date` date DEFAULT NULL,
   PRIMARY KEY (`DaJuan`),
   KEY `shijuan` (`shijuan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table daanjuan
@@ -98,6 +116,8 @@ CREATE TABLE `daanjuan` (
 LOCK TABLES `daanjuan` WRITE;
 /*!40000 ALTER TABLE `daanjuan` DISABLE KEYS */;
 
+INSERT INTO `daanjuan` VALUES (1,1,'A','A','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1',2,NULL,1,'2015-12-21');
+INSERT INTO `daanjuan` VALUES (2,1,'A','A','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1','-1',2,NULL,2,'2015-12-21');
 /*!40000 ALTER TABLE `daanjuan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,8 +234,6 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `shijuan`;
 CREATE TABLE `shijuan` (
   `sjID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `TeaID` bigint(20) DEFAULT NULL,
-  `XKid` bigint(20) DEFAULT NULL,
   `xuanze5` bigint(20) DEFAULT NULL,
   `xuanze1` bigint(20) DEFAULT NULL,
   `xuanze2` bigint(20) DEFAULT NULL,
@@ -239,6 +257,8 @@ CREATE TABLE `shijuan` (
   `zhuguan1` bigint(20) DEFAULT NULL,
   `zhuguan2` bigint(20) DEFAULT NULL,
   `zhuguan3` bigint(20) DEFAULT NULL,
+  `StuID` bigint(20) DEFAULT NULL,
+  `NameXK` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`sjID`),
   KEY `xz3` (`xuanze3`),
   KEY `xz1` (`xuanze1`),
@@ -271,22 +291,8 @@ CREATE TABLE `shijuan` (
 LOCK TABLES `shijuan` WRITE;
 /*!40000 ALTER TABLE `shijuan` DISABLE KEYS */;
 
-INSERT INTO `shijuan` VALUES (1,NULL,NULL,2,13,17,15,9,10,7,8,6,3,17,18,11,3,8,9,4,5,1,10,6,5,4);
-INSERT INTO `shijuan` VALUES (2,NULL,NULL,6,14,15,12,3,1,7,9,8,4,12,16,14,3,9,6,5,7,8,10,7,2,3);
-INSERT INTO `shijuan` VALUES (3,NULL,NULL,16,11,13,14,18,8,1,3,4,10,13,14,15,18,16,7,6,2,4,5,9,10,2);
-INSERT INTO `shijuan` VALUES (4,NULL,NULL,10,18,12,15,3,5,1,4,2,7,14,13,16,1,8,4,3,6,9,5,9,4,2);
-INSERT INTO `shijuan` VALUES (5,NULL,NULL,5,12,16,17,3,7,6,1,2,8,16,18,13,5,10,7,8,4,9,6,8,5,3);
-INSERT INTO `shijuan` VALUES (6,NULL,NULL,5,12,16,14,7,3,6,9,4,10,11,13,18,4,10,6,8,9,5,7,9,1,3);
-INSERT INTO `shijuan` VALUES (7,NULL,NULL,9,18,13,11,8,3,5,4,10,1,17,16,12,9,1,7,8,10,4,6,8,1,3);
-INSERT INTO `shijuan` VALUES (8,NULL,NULL,3,11,17,12,6,2,10,4,1,7,15,17,18,1,8,4,3,7,9,10,10,1,2);
-INSERT INTO `shijuan` VALUES (9,NULL,NULL,10,13,11,15,4,1,8,7,5,2,15,12,16,2,3,9,5,8,6,1,10,1,5);
-INSERT INTO `shijuan` VALUES (10,NULL,NULL,2,13,18,15,5,4,7,6,3,1,18,16,12,6,10,4,3,9,1,8,7,2,3);
-INSERT INTO `shijuan` VALUES (11,NULL,NULL,3,12,15,18,9,2,1,7,6,8,18,11,16,1,9,3,10,6,2,5,10,3,5);
-INSERT INTO `shijuan` VALUES (12,NULL,NULL,4,18,14,17,7,6,3,10,1,9,12,15,11,6,5,4,2,9,10,7,9,1,5);
-INSERT INTO `shijuan` VALUES (13,NULL,NULL,15,11,16,13,17,9,5,1,8,10,12,14,15,16,13,10,3,9,6,4,7,10,2);
-INSERT INTO `shijuan` VALUES (14,NULL,NULL,3,16,18,14,6,10,2,1,8,7,15,16,11,3,9,6,2,5,8,7,9,5,2);
-INSERT INTO `shijuan` VALUES (15,NULL,NULL,10,11,14,12,5,4,1,3,6,8,15,16,17,6,4,5,9,10,2,8,10,5,3);
-INSERT INTO `shijuan` VALUES (16,NULL,NULL,18,14,13,15,12,9,8,2,10,6,12,18,14,11,16,4,8,6,2,10,9,6,4);
+INSERT INTO `shijuan` VALUES (1,4,11,12,16,7,8,10,9,5,2,18,11,12,5,1,10,8,6,7,4,6,5,3,1,'JAVA');
+INSERT INTO `shijuan` VALUES (2,3,12,11,13,5,1,7,9,8,10,13,11,17,9,5,4,2,1,7,10,7,3,4,1,'JAVA');
 /*!40000 ALTER TABLE `shijuan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,6 +384,32 @@ LOCK TABLES `tiankong` WRITE;
 /*!40000 ALTER TABLE `tiankong` DISABLE KEYS */;
 
 /*!40000 ALTER TABLE `tiankong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
+# Source for view user
+#
+
+DROP VIEW IF EXISTS `user`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `user` AS (select `u`.`loginId` AS `id`,`u`.`loginPsw` AS `psw`,`u`.`loginName` AS `name` from `admin` `u`) union (select `u`.`idStu` AS `id`,`u`.`pswStu` AS `psw`,`u`.`nameStu` AS `name` from `student` `u`) union (select `u`.`TeaID` AS `id`,`u`.`PwsTea` AS `psw`,`u`.`Name` AS `name` from `teacher` `u`);
+INSERT INTO `user` VALUES ('admin','admin','管理员');
+INSERT INTO `user` VALUES ('221200214','350322','林俊鑫');
+INSERT INTO `user` VALUES ('221200213','174979','林德强');
+INSERT INTO `user` VALUES ('221200215','011244','罗樱');
+INSERT INTO `user` VALUES ('221200216','220013','王薪越');
+INSERT INTO `user` VALUES ('221200217','155132','严宇凡');
+INSERT INTO `user` VALUES ('221200218','016518','黄艺伟');
+INSERT INTO `user` VALUES ('221200221','090065','夏凡');
+INSERT INTO `user` VALUES ('221200201','233333','谢志华');
+INSERT INTO `user` VALUES ('666666','6666','666666');
+INSERT INTO `user` VALUES ('031256','123456','单红');
+INSERT INTO `user` VALUES ('031234','123456','张舒');
+INSERT INTO `user` VALUES ('031278','123456','陈嘉');
+INSERT INTO `user` VALUES ('031121','123456','陈家瑞');
+INSERT INTO `user` VALUES ('031221','123456','傅仰耿');
+INSERT INTO `user` VALUES ('031222','123456','王一蕾');
+INSERT INTO `user` VALUES ('1','3222','2111');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 #

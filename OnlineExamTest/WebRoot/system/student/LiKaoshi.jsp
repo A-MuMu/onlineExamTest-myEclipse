@@ -118,7 +118,7 @@
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="<%=request.getContextPath()%>/system/student/topLiKaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/student/topLiKaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>

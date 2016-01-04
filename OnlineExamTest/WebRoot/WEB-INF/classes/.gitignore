@@ -1,6 +1,3 @@
 /rainbow/
-/struts.properties
-/struts.xml
-/applicationContext.xml
-/hibernate.cfg.xml
-/jdbc.properties
+/Teacher.hbm.xml
+/Teacher.class

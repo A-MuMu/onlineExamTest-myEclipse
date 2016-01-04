@@ -1,4 +1,3 @@
-package rainbow.example.domain;
 // default package
 
 import java.util.Date;

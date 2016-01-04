@@ -6,27 +6,102 @@
 -->
 <hibernate-mapping package="rainbow.example.domain">
     <class name="Teacher" table="teacher" catalog="exam">
-        <id name="id" type="java.lang.Long">
+        <id name="id" type="long">
             <column name="ID" />
-            <generator class="assigned"></generator>
+            <generator class="identity"></generator>
         </id>
-        <property name="name" type="java.lang.String">
+        <property name="name" type="string">
             <column name="Name" length="32" />
         </property>
-        <property name="pwsTea" type="java.lang.String">
+        <property name="pwsTea" type="string">
             <column name="PwsTea" length="32" />
         </property>
-        <property name="emailTea" type="java.lang.String">
+        <property name="emailTea" type="string">
             <column name="EmailTea" length="32" />
         </property>
-        <property name="teaId" type="java.lang.String">
+        <property name="teaId" type="string">
             <column name="TeaID" length="32" unique="true" />
         </property>
-        <set name="xueKes" inverse="true">
-            <key>
-                <column name="TeaID" not-null="true" />
-            </key>
-            <one-to-many class="XueKe" />
-        </set>
+        <property name="namePy" type="string">
+            <column name="NamePY" length="32" />
+        </property>
+        <property name="usedName" type="string">
+            <column name="usedName" length="32" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="32" />
+        </property>
+        <property name="bornDate" type="date">
+            <column name="bornDate" length="10" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="32" />
+        </property>
+        <property name="mingzu" type="string">
+            <column name="mingzu" length="32" />
+        </property>
+        <property name="zhengzhiMm" type="string">
+            <column name="zhengzhiMM" length="32" />
+        </property>
+        <property name="bornWhere" type="string">
+            <column name="BornWhere" length="64" />
+        </property>
+        <property name="hunyin" type="string">
+            <column name="hunyin" length="32" />
+        </property>
+        <property name="jiguan" type="string">
+            <column name="jiguan" length="32" />
+        </property>
+        <property name="shenfenId" type="string">
+            <column name="shenfenID" length="64" />
+        </property>
+        <property name="jiaoshiId" type="string">
+            <column name="jiaoshiID" length="64" />
+        </property>
+        <property name="xueyuan" type="string">
+            <column name="xueyuan" />
+        </property>
+        <property name="zhuanye" type="string">
+            <column name="zhuanye" />
+        </property>
+        <property name="ruzhiFs" type="string">
+            <column name="ruzhiFS" length="64" />
+        </property>
+        <property name="zhiwei" type="string">
+            <column name="zhiwei" length="32" />
+        </property>
+        <property name="ruzhiDate" type="date">
+            <column name="ruzhiDate" length="10" />
+        </property>
+        <property name="renqi" type="string">
+            <column name="renqi" length="32" />
+        </property>
+        <property name="zhiweiChange" type="string">
+            <column name="zhiweiChange" length="65535" />
+        </property>
+        <property name="zhuyaoChengjiu" type="string">
+            <column name="zhuyaoChengjiu" length="65535" />
+        </property>
+        <property name="renjiaoXk" type="string">
+            <column name="renjiaoXK" length="65535" />
+        </property>
+        <property name="tel" type="string">
+            <column name="Tel" length="32" />
+        </property>
+        <property name="sushe" type="string">
+            <column name="sushe" length="65535" />
+        </property>
+        <property name="susheTel" type="string">
+            <column name="susheTEL" length="32" />
+        </property>
+        <property name="home" type="string">
+            <column name="Home" length="65535" />
+        </property>
+        <property name="homeTel" type="string">
+            <column name="HomeTEL" length="32" />
+        </property>
+        <property name="youbian" type="string">
+            <column name="youbian" length="12" />
+        </property>
     </class>
 </hibernate-mapping>

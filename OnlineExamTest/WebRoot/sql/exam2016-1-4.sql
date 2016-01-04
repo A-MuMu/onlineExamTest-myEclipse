@@ -1,3 +1,5 @@
+﻿# MySQL-Front 5.1  (Build 2.7)
+
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE */;
 /*!40101 SET SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES */;
@@ -8,9 +10,13 @@
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
 
-#Host: 127.0.01    Database: exam
+# Host: 127.0.0.1    Database: exam
 # ------------------------------------------------------
-# Server version 5.6.27-log
+# Server version 5.6.24-log
+
+DROP DATABASE IF EXISTS `exam`;
+CREATE DATABASE `exam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `exam`;
 
 #
 # Source for table admin
@@ -106,7 +112,7 @@ CREATE TABLE `daanjuan` (
   `date` date DEFAULT NULL,
   PRIMARY KEY (`DaJuan`),
   KEY `shijuan` (`shijuan`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table daanjuan
@@ -281,7 +287,7 @@ CREATE TABLE `shijuan` (
   KEY `zg3` (`zhuguan3`),
   KEY `pd1` (`pangduan1`),
   KEY `pd8` (`pangduan8`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 #
 # Dumping data for table shijuan
@@ -338,6 +344,33 @@ CREATE TABLE `teacher` (
   `EmailTea` varchar(32) DEFAULT NULL,
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `TeaID` varchar(32) DEFAULT NULL,
+  `NamePY` varchar(32) DEFAULT NULL,
+  `usedName` varchar(32) DEFAULT NULL,
+  `sex` varchar(32) DEFAULT NULL,
+  `bornDate` date DEFAULT NULL,
+  `country` varchar(32) DEFAULT NULL,
+  `mingzu` varchar(32) DEFAULT NULL,
+  `zhengzhiMM` varchar(32) DEFAULT NULL,
+  `BornWhere` varchar(64) DEFAULT NULL,
+  `hunyin` varchar(32) DEFAULT NULL,
+  `jiguan` varchar(32) DEFAULT NULL,
+  `shenfenID` varchar(64) DEFAULT NULL,
+  `jiaoshiID` varchar(64) DEFAULT NULL,
+  `xueyuan` varchar(255) DEFAULT NULL,
+  `zhuanye` varchar(255) DEFAULT NULL,
+  `ruzhiFS` varchar(64) DEFAULT NULL,
+  `zhiwei` varchar(32) DEFAULT NULL,
+  `ruzhiDate` date DEFAULT NULL,
+  `renqi` varchar(32) DEFAULT NULL,
+  `zhiweiChange` text,
+  `zhuyaoChengjiu` text,
+  `renjiaoXK` text,
+  `Tel` varchar(32) DEFAULT NULL,
+  `sushe` text,
+  `susheTEL` varchar(32) DEFAULT NULL,
+  `Home` text,
+  `HomeTEL` varchar(32) DEFAULT NULL,
+  `youbian` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `TeaID` (`TeaID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -348,13 +381,12 @@ CREATE TABLE `teacher` (
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
 
-INSERT INTO `teacher` VALUES ('单红','123456','mycpp20@sina.cn',1,'031256');
-INSERT INTO `teacher` VALUES ('张舒','123456','469714793@qq.com',2,'031234');
-INSERT INTO `teacher` VALUES ('陈嘉','123456','mycpp20@sina.cn',3,'031278');
-INSERT INTO `teacher` VALUES ('陈家瑞','123456','mycpp20@sina.cn',4,'031121');
-INSERT INTO `teacher` VALUES ('傅仰耿','123456','469714793@qq.com',5,'031221');
-INSERT INTO `teacher` VALUES ('王一蕾','123456','469714793@qq.com',6,'031222');
-INSERT INTO `teacher` VALUES ('2111','3222','5555',7,'1');
+INSERT INTO `teacher` VALUES ('单红','123456','mycpp20@sina.cn',1,'031256','shanhong','无','男','1978-12-30','中国','汉','党员','福建','已婚','福建','未知','1132212031256','软件学院','软件工程','正常入职','讲师','2007-12-30','20年','',NULL,'软件工程等学科',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacher` VALUES ('张舒','123456','469714793@qq.com',2,'031234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacher` VALUES ('陈嘉','123456','mycpp20@sina.cn',3,'031278',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacher` VALUES ('陈家瑞','123456','mycpp20@sina.cn',4,'031121',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacher` VALUES ('傅仰耿','123456','469714793@qq.com',5,'031221',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacher` VALUES ('王一蕾','123456','469714793@qq.com',6,'031222',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,167 +438,8 @@ INSERT INTO `user` VALUES ('031278','123456','陈嘉');
 INSERT INTO `user` VALUES ('031121','123456','陈家瑞');
 INSERT INTO `user` VALUES ('031221','123456','傅仰耿');
 INSERT INTO `user` VALUES ('031222','123456','王一蕾');
-INSERT INTO `user` VALUES ('1','3222','2111');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
-#
-# Source for table xueke
-#
-
-DROP TABLE IF EXISTS `xueke`;
-CREATE TABLE `xueke` (
-  `XKid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `NameXK` varchar(32) DEFAULT NULL,
-  `TeaID` bigint(20) NOT NULL,
-  PRIMARY KEY (`XKid`,`TeaID`),
-  KEY `TeaID` (`TeaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
-#
-# Dumping data for table xueke
-#
-LOCK TABLES `xueke` WRITE;
-/*!40000 ALTER TABLE `xueke` DISABLE KEYS */;
-
-INSERT INTO `xueke` VALUES (1,'JAVA',2);
-INSERT INTO `xueke` VALUES (2,'JAVA',3);
-INSERT INTO `xueke` VALUES (3,'操作系统',3);
-INSERT INTO `xueke` VALUES (4,'软件工程',1);
-INSERT INTO `xueke` VALUES (5,'数据结构',6);
-INSERT INTO `xueke` VALUES (6,'数据结构',5);
-INSERT INTO `xueke` VALUES (7,'LINUX',4);
-INSERT INTO `xueke` VALUES (8,'JAVAEE',4);
-/*!40000 ALTER TABLE `xueke` ENABLE KEYS */;
-UNLOCK TABLES;
-
-#
-# Source for table xuenze
-#
-
-DROP TABLE IF EXISTS `xuenze`;
-CREATE TABLE `xuenze` (
-  `XZid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Type` varchar(8) DEFAULT NULL,
-  `XKid` bigint(20) NOT NULL DEFAULT '0',
-  `TiMu` varchar(255) DEFAULT NULL,
-  `DaAn` varchar(2) DEFAULT NULL,
-  `A` varchar(255) NOT NULL DEFAULT '',
-  `B` varchar(255) DEFAULT NULL,
-  `C` varchar(255) DEFAULT NULL,
-  `D` varchar(255) DEFAULT NULL,
-  `TeaID` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`XZid`),
-  UNIQUE KEY `TiMu` (`TiMu`),
-  KEY `xzTOxk` (`TeaID`,`XKid`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
-
-#
-# Dumping data for table xuenze
-#
-LOCK TABLES `xuenze` WRITE;
-/*!40000 ALTER TABLE `xuenze` DISABLE KEYS */;
-
-INSERT INTO `xuenze` VALUES (1,'hard',1,'下列关于this关键字的说法正确的是（  ）。','C','可以在构造函数内部通过this关键字调用同类的另一构造函数，并且此调用语句可以位于该构造函数内部的任意位置处','可以在构造函数内部通过this关键字调用同类的两个或两个以上的构造函数','在类的静态方法中可通过this关键字访问本类对象','当方法的形参和类的成员变量同名时，可以使用this关键字指明成员变量',2);
-INSERT INTO `xuenze` VALUES (2,'hard',2,'下列关于静态初始化器的说法错误的是（  ）。','D','静态初始化器是在类加载到内存时由系统调用执行的','静态初始化器可执行多次','静态初始化器中不能出现非静态域或非静态方法','静态初始化器不是方法，因此没有方法名、返回值和参数列表',3);
-INSERT INTO `xuenze` VALUES (3,'hard',1,'以下代码段 Point  p1=new Point(2,3);  Point  p2=new Point(4,5);  p1=p2;\r\n(Point为点类)的执行结果是（  ）。\r\n','A','p1所指Point对象的成员更新为4，5','以上代码段不能通过编译','p1和p2均指向原p2所指对象，原p1所指对象将被垃圾收集器收集','p1为null, 原p1所指对象将被垃圾收集器收集',2);
-INSERT INTO `xuenze` VALUES (4,'hard',2,'下列关于公有类中成员的访问权限说法错误的是（  ）。','A','友好成员可以被本类或同包中的其它类访问，但不能被异包中的类访问','公有成员可以被其它任何类访问','私有成员仅可被本类访问','保护成员仅可以被本类或同包中的子类访问，不能被异包中的类访问',3);
-INSERT INTO `xuenze` VALUES (5,'hard',1,'下列说法错误的是（  ）。','B','final类不能派生出其它类','基类的final方法不能被子类继承','基类的final方法不能被子类重写','final类中的所有方法都是final方法',2);
-INSERT INTO `xuenze` VALUES (6,'hard',1,'当需要许多面板切换，而每个面板需要显示为不同布局时，可以使用（  ）。','D','流式布局','卡片布局','盒式布局','网格布局',2);
-INSERT INTO `xuenze` VALUES (7,'hard',1,'设已建立好到某数据库的连接conn,对conn调用哪个方法返回的对象可用于执行存储过程（  ）。','A','prepareCall','prepareStatement','createStatement','createCall',2);
-INSERT INTO `xuenze` VALUES (8,'hard',2,'加载JDBC驱动的正确方法是（  ）。','D','使用类java.sql.DriverManager的getDriver方法','使用类java.sql.DriverManager的getConnection方法','使用类java.lang.Class的forName方法','使用接口java.sql.Driver的connect方法',3);
-INSERT INTO `xuenze` VALUES (9,'hard',1,'想要读取URL资源中的html文本，下列方法正确的是（  ）。','B','对URL对象调用openStream( )方法，获取此URL资源上的输入流再进行读取','对URL对象调用retrieveContent( )方法','对URL对象调用getConnection( )方法打开到该URL资源的连接后再对该连接调用getInputStream( )方法获取此连接上的输入流进行读取','对URL对象调用openConnection( )方法打开到该URL资源的连接后再对该连接调用openStream( )方法获取此连接上的输入流进行读取',2);
-INSERT INTO `xuenze` VALUES (10,'hard',2,'InetAddress类的哪个方法可以获取本地主机的网络地址（即InetAddress对象） （  ）。','A','getByName(String)','getLocalHost( )','getAddress( )','getHostAddress( )',3);
-INSERT INTO `xuenze` VALUES (11,'easy',1,'对于下面的程序哪个结论是正确的（  ）。\r\n   Enum Color { red，blue，yellow }\r\n   public  class  A {\r\npublic static void main (String args[ ]) {\r\n  for  ( Color a: Color.values( ) )\r\n    System.out.println(a+”,”);\r\n } }\r\n}\r\n','C','程序无法通过编译','程序可以通过编译，但无法正常运行','程序运行结果为0，1，2','程序运行结果为red，blue，yellow',2);
-INSERT INTO `xuenze` VALUES (12,'easy',2,'下列关于线程的说法正确的是（  ）。','A','对于使用同一目标对象的线程，目标对象的成员变量自然就是这些线程共享的数据单元','继承Thread类创建线程的方法中采用了接口回调技术','使用同一目标对象的线程共享目标类中run( )方法所定义的局部变量','非主线程不能启动其它线程',3);
-INSERT INTO `xuenze` VALUES (13,'easy',1,'下列关于线程的说法错误的是（  ）。','B','一个进程可被划分为多个线程','JVM加载代码后就会启动一个主线程','在GUI程序中，java使用线程AWT_EventQueue专门负责处理GUI事件','在Java中，Thread类由Runnable类派生而来。',2);
-INSERT INTO `xuenze` VALUES (14,'easy',2,'下列关于Applet的说法错误的是（  ）。','B','Applet自身不能运行，必须嵌入到其它应用程序（如浏览器）中运行','从web 服务器上下载的Applet可以读写本地磁盘文件','在Applet对应的HTML文档中使用param标记可向该Applet传递参数','Applet的主类要定义为java.applet.Applet类的子类',3);
-INSERT INTO `xuenze` VALUES (15,'easy',1,'在浏览器中执行applet 程序时，以下哪个方法将最先被执行（    ）。','D','init()','start()','destroy()','stop()',2);
-INSERT INTO `xuenze` VALUES (16,'easy',2,'以下程序段的输出结果为（  ）。 for  ( int i=1; i<=6; i++ )\r\n  { \r\n     if (i==2)   continue;\r\n     if (i==4)    break;\r\n     System.out.print( i+“  ”); \r\n  }\r\n','C','1  3','1  2  3  4','1  2  3','1  3  4',3);
-INSERT INTO `xuenze` VALUES (17,'easy',2,'以下两条语句int  a=6, b=7, c;  c=a++ + ++b; 执行后，a、b、c三个变量的值分别为（  ）。','B','6，7，13','6，8，14','7，8，15','7，8，14',3);
-INSERT INTO `xuenze` VALUES (18,'easy',2,'下列不属于java语言的特色的是（  ）。','D','java提供无用存储单元收集机制','java具有可移植性','java支持运算符重载','java提供多线程机制',3);
-/*!40000 ALTER TABLE `xuenze` ENABLE KEYS */;
-UNLOCK TABLES;
-
-#
-#  Foreign keys for table course
-#
-
-ALTER TABLE `course`
-ADD CONSTRAINT `student` FOREIGN KEY (`stuID`) REFERENCES `student` (`id`),
-ADD CONSTRAINT `xk` FOREIGN KEY (`TeaID`, `XKid`) REFERENCES `xueke` (`TeaID`, `XKid`);
-
-#
-#  Foreign keys for table daanjuan
-#
-
-ALTER TABLE `daanjuan`
-ADD CONSTRAINT `shijuan` FOREIGN KEY (`shijuan`) REFERENCES `shijuan` (`sjID`);
-
-#
-#  Foreign keys for table keguan
-#
-
-ALTER TABLE `keguan`
-ADD CONSTRAINT `kg` FOREIGN KEY (`TeaID`, `XKid`) REFERENCES `xueke` (`TeaID`, `XKid`);
-
-#
-#  Foreign keys for table pangduan
-#
-
-ALTER TABLE `pangduan`
-ADD CONSTRAINT `pd` FOREIGN KEY (`TeaID`, `XKid`) REFERENCES `xueke` (`TeaID`, `XKid`);
-
-#
-#  Foreign keys for table shijuan
-#
-
-ALTER TABLE `shijuan`
-ADD CONSTRAINT `pd1` FOREIGN KEY (`pangduan1`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd10` FOREIGN KEY (`pangduan10`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd2` FOREIGN KEY (`pangduan2`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd3` FOREIGN KEY (`pangduan3`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd4` FOREIGN KEY (`pangduan4`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd5` FOREIGN KEY (`pangduan5`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd6` FOREIGN KEY (`pangduan6`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd7` FOREIGN KEY (`pangduan7`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd8` FOREIGN KEY (`pangduan8`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `pd9` FOREIGN KEY (`pangduan9`) REFERENCES `pangduan` (`PDid`),
-ADD CONSTRAINT `xz1` FOREIGN KEY (`xuanze1`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz10` FOREIGN KEY (`xuanze10`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz2` FOREIGN KEY (`xuanze2`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz3` FOREIGN KEY (`xuanze3`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz4` FOREIGN KEY (`xuanze4`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz5` FOREIGN KEY (`xuanze5`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz6` FOREIGN KEY (`xuanze6`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz7` FOREIGN KEY (`xuanze7`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz8` FOREIGN KEY (`xuanze8`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `xz9` FOREIGN KEY (`xuanze9`) REFERENCES `xuenze` (`XZid`),
-ADD CONSTRAINT `zg1` FOREIGN KEY (`zhuguan1`) REFERENCES `keguan` (`KGid`),
-ADD CONSTRAINT `zg2` FOREIGN KEY (`zhuguan2`) REFERENCES `keguan` (`KGid`),
-ADD CONSTRAINT `zg3` FOREIGN KEY (`zhuguan3`) REFERENCES `keguan` (`KGid`);
-
-#
-#  Foreign keys for table tiankong
-#
-
-ALTER TABLE `tiankong`
-ADD CONSTRAINT `tk` FOREIGN KEY (`TeaID`, `XKid`) REFERENCES `xueke` (`TeaID`, `XKid`);
-
-#
-#  Foreign keys for table xueke
-#
-
-ALTER TABLE `xueke`
-ADD CONSTRAINT `teaID` FOREIGN KEY (`TeaID`) REFERENCES `teacher` (`ID`);
-
-#
-#  Foreign keys for table xuenze
-#
-
-ALTER TABLE `xuenze`
-ADD CONSTRAINT `xzTOxk` FOREIGN KEY (`TeaID`, `XKid`) REFERENCES `xueke` (`TeaID`, `XKid`);
-
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

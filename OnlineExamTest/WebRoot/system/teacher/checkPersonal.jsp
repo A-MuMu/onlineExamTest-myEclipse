@@ -24,29 +24,10 @@
 <link href="<%=request.getContextPath()%>/system/css/dialog.css"
 	type="text/css" rel="stylesheet" />
 <script type="text/javascript">
-	function preview() {
-		bdhtml = window.document.body.innerHTML;//获取当前页的html代码 
-		sprnstr = "<!--startprint-->"; //设置打印开始区域 
-		eprnstr = "<!--endprint-->"; //设置打印结束区域 
-		prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 17); //从开始代码向后取html 
-
-		prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));//从结束代码向前取html 
-		window.document.body.innerHTML = prnhtml;
-		window.print();
-		window.document.body.innerHTML = bdhtml;
+	function redirect() {
+		window.location.href("personal.jsp");
 	}
-
-	function preview_main() {
-		parent.main.focus();
-		bdhtml = parent.main.document.body.innerHTML; //获取当前页的html代码 
-		sprnstr = "<!--startprint-->"; //设置打印开始区域 
-		eprnstr = "<!--endprint-->"; //设置打印结束区域 
-		prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 17); //从开始代码向后取html 
-
-		prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html 
-		parent.main.document.body.innerHTML = prnhtml;
-		window.print();
-		parent.main.document.body.innerHTML = bdhtml;
+	function submit() {
 	}
 </script>
 </head>
@@ -73,9 +54,17 @@
 				<div class="page_nav2">
 					<br />
 					<center>
-						<font color=#666600 size=5><b>福州大学教师个人信息一览表</b></font>
+						<font color=#666600 size=5><b>福州大学教师个人信息修改表</b></font>
 					</center>
-					
+					<center>
+						<input onclick="submit()" id="bt_edit" type="submit" value="确认修改"
+							name="bt_edit" style="height: 25px ; width: 90px" />
+					    &nbsp;&nbsp;
+					    <input
+							onclick="redirect()" id="bt_print" type="submit" value="取消返回"
+							name="bt_print" style="height: 25px ; width: 90px" />
+					</center>
+					<br />
 					<%
 						Teacher teacher = (Teacher) session.getAttribute("userinfo");
 					%>
@@ -89,105 +78,106 @@
 								<td align=center>姓名</td>
 								<td align=center><span id=contentplaceholder1_lb_xm><%=teacher.getName()%></span></td>
 								<td align=center>姓名拼音</td>
-								<td align=left><span id=contentplaceholder1_lb_xmpy>linjunxin</span></td>
+								<td align=center><span id=contentplaceholder1_lb_xmpy><%=teacher.getNamePy()%></span></td>
 								<td valign=middle rowspan=6 width=100 align=center><span
-									id=contentplaceholder1_lb_img><img border=0
-										src="http://59.77.226.32/xszp/12/221200214.jpg" width=100></span></td>
+									id=contentplaceholder1_lb_img><img border=0 src=""
+										width=100></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>曾用名</td>
-								<td align=center><span id=contentplaceholder1_lb_cym></span></td>
+								<td align=center><span id=contentplaceholder1_lb_cym><%=teacher.getUsedName()%></span></td>
 								<td align=center>性别</td>
-								<td align=center><span id=contentplaceholder1_lb_xb>男</span></td>
+								<td align=center><span id=contentplaceholder1_lb_xb><%=teacher.getSex()%></span></td>
 								<td align=center>出生日期</td>
-								<td align=center><span id=contentplaceholder1_lb_csrq>1994-02-17</span></td>
+								<td align=center><span id=contentplaceholder1_lb_csrq><%=teacher.getBornDate()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>国别</td>
-								<td align=center><span id=contentplaceholder1_lb_gb></span></td>
+								<td align=center><span id=contentplaceholder1_lb_gb><%=teacher.getCountry()%></span></td>
 								<td align=center>民族</td>
-								<td align=center><span id=contentplaceholder1_lb_mz>汉族</span></td>
+								<td align=center><span id=contentplaceholder1_lb_mz><%=teacher.getMingzu()%></span></td>
 								<td align=center>政治面貌</td>
-								<td align=center><span id=contentplaceholder1_lb_zzmm>共青团员</span></td>
+								<td align=center><span id=contentplaceholder1_lb_zzmm><%=teacher.getZhengzhiMm()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>出生地</td>
-								<td align=center><span id=contentplaceholder1_lb_xssy>莆田市城厢区</span></td>
+								<td align=center><span id=contentplaceholder1_lb_xssy><%=teacher.getBornWhere()%></span></td>
 								<td align=center>籍贯</td>
-								<td align=center><span id=contentplaceholder1_lb_jg>莆田市城厢区</span></td>
+								<td align=center><span id=contentplaceholder1_lb_jg><%=teacher.getJiguan()%></span></td>
 								<td align=center>婚姻</td>
-								<td align=center><span id=contentplaceholder1_lb_hyzk></span></td>
+								<td align=center><span id=contentplaceholder1_lb_hyzk><%=teacher.getHunyin()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>身份证号</td>
-								<td colspan=2><span id=contentplaceholder1_lb_sfzh>350322199402171511</span></td>
-								<td align=center>考&nbsp;生&nbsp;号</td>
-								<td colspan=2><span id=contentplaceholder1_lb_ksh>12350302150185</span></td>
+								<td colspan=2><span id=contentplaceholder1_lb_sfzh>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=teacher.getShenfenId()%></span></td>
+								<td align=center>教&nbsp;师&nbsp;号</td>
+								<td colspan=2><span id=contentplaceholder1_lb_ksh>&nbsp;&nbsp;&nbsp;<%=teacher.getJiaoshiId()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>所在学院</td>
-								<td><span id=contentplaceholder1_lb_bxxs></span></td>
+								<td align=center><span id=contentplaceholder1_lb_bxxs><%=teacher.getXueyuan()%></span></td>
 								<td align=center>所在专业</td>
-								<td><span id=contentplaceholder1_lb_bxlx></span></td>
+								<td align=center><span id=contentplaceholder1_lb_bxlx><%=teacher.getZhuanye()%></span></td>
 								<td align=center>入职方式</td>
-								<td><span id=contentplaceholder1_lb_rxfs></span></td>
+								<td align=center><span id=contentplaceholder1_lb_rxfs><%=teacher.getRuzhiFs()%></span></td>
 							</tr>
 
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>职位</td>
-								<td><span id=contentplaceholder1_lb_rxny></span></td>
+								<td align=center><span id=contentplaceholder1_lb_rxny><%=teacher.getZhiwei()%></span></td>
 								<td align=center>入职年月</td>
-								<td><span id=contentplaceholder1_lb_xz>4</span>年</td>
+								<td align=center><span id=contentplaceholder1_lb_xz><%=teacher.getRuzhiDate()%></span></td>
 								<td align=center>任期</td>
-								<td colspan=2><span id=contentplaceholder1_lb_xxnx>6</span>年</td>
+								<td colspan=2><span id=contentplaceholder1_lb_xxnx>&nbsp;&nbsp;&nbsp;<%=teacher.getRenqi()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>职位变动</td>
-								<td colspan=6><span id=contentplaceholder1_lb_xjxx></span></td>
+								<td colspan=6><span id=contentplaceholder1_lb_xjxx><%=teacher.getZhiweiChange()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>主要成就</td>
-								<td colspan=6><span id=contentplaceholder1_lb_byzt></span></td>
+								<td colspan=6><span id=contentplaceholder1_lb_byzt><%=teacher.getZhuyaoChengjiu()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>任教学科</td>
-								<td colspan=6><span id=contentplaceholder1_lb_fxzy></span></td>
+								<td colspan=6><span id=contentplaceholder1_lb_fxzy><%=teacher.getRenjiaoXk()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>本人电话</td>
-								<td colspan=3><span id=contentplaceholder1_lb_lxdh>18860115945</span></td>
+								<td colspan=3><span id=contentplaceholder1_lb_lxdh><%=teacher.getTel()%></span></td>
 								<td align=center>e-mail</td>
-								<td colspan=2><span id=contentplaceholder1_lb_email><%=teacher.getEmailTea() %></span></td>
+								<td colspan=2><span id=contentplaceholder1_lb_email><%=teacher.getEmailTea()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>宿舍</td>
-								<td><span id=contentplaceholder1_lb_ssdz></span></td>
+								<td><span id=contentplaceholder1_lb_ssdz><%=teacher.getSushe()%></span></td>
 								<td align=center>宿舍电话</td>
-								<td><span id=contentplaceholder1_lb_ssdh></span></td>
+								<td><span id=contentplaceholder1_lb_ssdh><%=teacher.getSusheTel()%></span></td>
 								<td align=center>家庭电话</td>
-								<td colspan=2><span id=contentplaceholder1_lb_jtdh></span></td>
+								<td colspan=2><span id=contentplaceholder1_lb_jtdh><%=teacher.getHomeTel()%></span></td>
 							</tr>
 							<tr
 								style="height: 30px; vertical-align: middle; border-bottom: gray 1px solid; border-left: gray 1px solid">
 								<td align=center>家庭地址</td>
-								<td colspan=3><span id=contentplaceholder1_lb_jtdz>福建省莆田市城厢区学园南街1699号莆田一中</span></td>
+								<td colspan=3><span id=contentplaceholder1_lb_jtdz><%=teacher.getHome()%></span></td>
 								<td align=center>家庭邮编</td>
-								<td colspan=2><span id=contentplaceholder1_lb_yzbm>351100</span></td>
+								<td colspan=2><span id=contentplaceholder1_lb_yzbm><%=teacher.getYoubian()%></span></td>
 							</tr>
 						</tbody>
 					</table>
-					<center></center>
+					<br />
+					<br />
 				</div>
 			</div>
 			<div class="box_bottom2">

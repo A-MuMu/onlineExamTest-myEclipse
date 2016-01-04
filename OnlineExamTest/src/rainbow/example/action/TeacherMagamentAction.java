@@ -25,7 +25,7 @@ public class TeacherMagamentAction extends ActionSupport {
 	HttpServletRequest request = ServletActionContext.getRequest();
 
 	static List<Teacher> list = new ArrayList<Teacher>();
-
+	
 	public void stu() {
 		list = (List<Teacher>) teacherDAOService.getAllObjects(Teacher.class);
 		if (list == null) {

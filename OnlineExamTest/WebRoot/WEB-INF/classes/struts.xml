@@ -6,7 +6,7 @@
 		<global-results>
 			<result name="error">jsp/error.jsp</result>
 		</global-results>
-
+		
 		<action name="userLogin" class="loginAction" method="doLogin">
 			<result name="student" type="redirect">system/shouye.jsp</result>
 			<result name="admin" type="redirect">system/admin/shouye.jsp</result>

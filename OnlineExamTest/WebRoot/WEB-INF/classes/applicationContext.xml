@@ -76,6 +76,7 @@
 	</bean>
 	<bean id="daJuan" class="rainbow.example.domain.DaAnJuan">
 	</bean>
+	<bean id="teacher" class="rainbow.example.domain.Teacher"></bean>
 	<bean id="shiJuan" class="rainbow.example.domain.ShiJuan"></bean>
 	<bean id="user" class="rainbow.example.domain.User"></bean>
 	<bean id="userID" class="rainbow.example.domain.UserId"></bean>
@@ -142,6 +143,11 @@
 	<bean id="teacherMagamentAction" class="rainbow.example.action.TeacherMagamentAction"
 		scope="prototype">
 		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
+	</bean>
+	<bean id="teacherPersonCheck" class="rainbow.example.action.TeacherPersonCheck"
+		scope="prototype">
+		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
+		<property name="teacher" ref="teacher"></property>
 	</bean>
 	<bean id="xuanZeAction" class="rainbow.example.action.XuanZeAction"
 		scope="prototype">

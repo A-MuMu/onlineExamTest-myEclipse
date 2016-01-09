@@ -16,6 +16,9 @@
 		
 		<action name="submit" class="jiaoJuanAction" method="submit">
 		</action>
+		
+		<action name="checkTeaPersonal" class="teacherPersonCheck" method="checkTeaPersonal">
+		</action>
 
 		<action name="mingyan" class="mingYanAction" method="doMingYan">
 		</action>

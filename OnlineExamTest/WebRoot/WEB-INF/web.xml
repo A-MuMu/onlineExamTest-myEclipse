@@ -3,7 +3,7 @@
 	xmlns:web="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee"
 	version="3.0">
-	<distributable/> 
+	<distributable/>
 	<display-name>OnlineExamTest</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

@@ -1,10 +1,14 @@
 package rainbow.example.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.struts2.components.If;
 
 import rainbow.example.DAO.TempleDAO;
 import rainbow.example.domain.Course;
 import rainbow.example.domain.Student;
+import rainbow.example.domain.Teacher;
 import rainbow.example.domain.XueKe;
 import rainbow.example.domain.XueKeId;
 
@@ -17,8 +21,7 @@ public class TempleCourseDAOService<T> {
 	// 信息获取
 	public List<T> queryUsers(Student stu) {
 		int idString = stu.getId();
-		String queryString1 = "SELECT c FROM Course c WHERE c.student.id = "
-				+ idString;
+		String queryString1 = "SELECT c FROM Course c WHERE c.student.id = " + idString;
 		List<T> courses = dao.getObjects(queryString1);
 		if (courses.size() == 0) {
 			return null;
@@ -29,9 +32,23 @@ public class TempleCourseDAOService<T> {
 
 	// 获取学科名称
 	public List<XueKe> queryXueKes(Long xkID) {
-		String hqlString = "SELECT xk FROM XueKe xk WHERE xk.id.xkid="+xkID;
+		String hqlString = "SELECT xk FROM XueKe xk WHERE xk.id.xkid=" + xkID;
 		List<XueKe> xks = dao.getObjects(hqlString);
 		return xks;
+	}
+
+	// 老师查询学生
+	public List<Student> getStus(Teacher teacher) {
+		List<Student> stus = new ArrayList<Student>();
+		List<Course> listsCourses = new ArrayList<Course>();
+		System.out.print(teacher.getId()+"@@");
+		String queryString = "SELECT c FROM Course c WHERE c.xueKe.teacher.id = " + teacher.getId();
+		listsCourses = dao.getObjects(queryString);
+		System.out.print(listsCourses.size()+"@@");
+		if (stus.size() == 0) {
+			return null;
+		} else
+			return stus;
 	}
 
 	public void addUser(T user) throws Exception {

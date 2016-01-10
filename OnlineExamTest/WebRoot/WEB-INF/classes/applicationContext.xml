@@ -178,6 +178,7 @@
 		<property name="teacher" ref="teacher"></property>
 		<property name="xueKe" ref="xueke"></property>
 		<property name="templeXkDaoService" ref="templeXkDaoService"></property>
+		<property name="templeCourseDAOService" ref="templeCourseDAOService"></property>
 	</bean>
 
 	<bean id="transactionManager"

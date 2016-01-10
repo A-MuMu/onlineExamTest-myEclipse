@@ -24,7 +24,7 @@
 <link href="<%=request.getContextPath()%>/system/css/dialog.css"
 	type="text/css" rel="stylesheet" />
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/personTea.js"></script>
+	src="<%=request.getContextPath()%>/js/TeaCheckStu.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script type="text/javascript"
@@ -66,7 +66,7 @@
 							<p
 								style="position: relative; width:32.333%; float:left;font-size: 18px;">
 								课程: <select id="sortByCourse" name="sortByCourse"
-									style="font-size: 17px;border: 1px solid #C0C0C0;width:60%;font-weight:lighter;">
+									style=" height:25px;font-size: 17px;border: 1px solid #C0C0C0;width:60%;font-weight:lighter;">
 									<option value="全部" id="all"
 										style="font-size:17px;font-weight:lighter;">全部</option>
 									<%
@@ -82,13 +82,13 @@
 							<p
 								style="position: relative; width:32.333%; float:left;font-size: 18px;">
 								学号: <input id="sortByXueHao" name="sortByXueHao" type="text"
-									style="font-size: 20px;border: 1px solid #C0C0C0;width:60%"
+									style="height:25px;font-size: 17px;border: 1px solid #C0C0C0;width:60%;font-weight:lighter;"
 									type="text">
 							</p>
 							<p
 								style="position: relative; width:32.333%; float:left;font-size: 18px;">
 								姓名: <input id="sortByName" name="sortByName" type="text"
-									style="font-size: 20px;border: 1px solid #C0C0C0;width:60%"
+									style="height:25px;font-size: 17px;border: 1px solid #C0C0C0;width:60%;font-weight:lighter;"
 									type="text">
 							</p>
 							<br /> <br /> <br />

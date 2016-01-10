@@ -41,10 +41,12 @@ public class CheckCourse extends ActionSupport {
 	
 	public void getStuByTea(){
 		List<Student> stus = new ArrayList<Student>();
-		stus = templeCourseDAOService.getStus(teacher);
+		List<XueKe> list = new ArrayList<XueKe>();
+		list = templeCourseDAOService.getXKs(teacher);
+		stus = templeCourseDAOService.getStus(list);
 		ActionContext.getContext().getSession().put("stus", stus);
 //		for (int i = 0; i < stus.size(); i++) {
-//			System.out.println(stus.get(i).getNameStu()+"********************");
+//			System.out.println(stus.get(i).getNameStu()+"********************"+stus.size());
 //		}
 	}
 	

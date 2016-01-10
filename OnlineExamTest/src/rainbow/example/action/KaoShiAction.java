@@ -77,7 +77,7 @@ public class KaoShiAction extends ActionSupport {
 
 	static int num_point_hard = 0;// 标志
 	static int num_point_easy = 0;// 标志
-	private static int flog = 0;// 标志,应该为MAP，一个学科对应一个值，一个学科做一次，未实现,static 先不用
+//	private static int flog = 0;// 标志,应该为MAP，一个学科对应一个值，一个学科做一次，未实现,static 先不用
 	// static Map<String, Integer> flogMap;
 	// private int flog = 0;
 
@@ -152,14 +152,14 @@ public class KaoShiAction extends ActionSupport {
 		this.myNameXK = course_lastTime;
 		System.out.println(this.myNameXK);
 		// flog = flogMap.get(this.myNameXK);
-		System.out.print("*********************" + flog + "*********************");
+//		System.out.print("*********************" + flog + "*********************");
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~出题~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public String intoKaoShi() {
-		if (flog == 0) {
-			flog++;
+//		if (flog == 0) {
+//			flog++;
 			mid = Integer.parseInt(request.getParameter("mid"));
 			String course = (String) ActionContext.getContext().getSession().get("course");
 
@@ -245,11 +245,12 @@ public class KaoShiAction extends ActionSupport {
 			}
 
 			return SUCCESS;
-		} else {
-			ActionContext.getContext().getSession().put("flog", flog);
-			return ERROR;
-		}
-	}
+		} 
+//	else {
+//			ActionContext.getContext().getSession().put("flog", flog);
+//			return ERROR;
+//		}
+//	}
 
 	public void addShiJuan_hard() {
 		ShiJuan shiJuan = new ShiJuan();

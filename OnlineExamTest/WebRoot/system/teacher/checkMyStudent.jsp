@@ -4,8 +4,8 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -34,26 +34,7 @@
 		window.location.href("personal.jsp");
 	}
 </script>
-<style type="text/css">
-.QuickOne_Input {
-	background: url("Images/Public/QuickOne/Form/input_bg.gif") repeat-x
-		scroll left top #FFF;
-	border: 1px solid #E8E7E1;
-	height: 20px;
-	width: 45%;
-}
-.QuickOne_Input, .QuickOne_TextArea {
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    color: #555;
-    font-size: 12px;
-    height: 14px;
-    line-height: 1.4285;
-    padding: 6px 0;
-}
 
-</style>
 </head>
 
 <body>
@@ -71,25 +52,97 @@
 	<%
 		}
 	%>
-
+	<%
+		Teacher teacher = (Teacher) session.getAttribute("userinfo");
+		List<String> xkNames = new ArrayList<String>();
+		xkNames = (List<String>) session.getAttribute("xkNames");
+	%>
 	<div class="main">
 		<div class="box2">
 			<div class="page_content2">
 				<div class="page_nav3">
 					<div class="classify2">
-						<div>
-							<input class="QuickOne_Input" id="sortByCourse" /> <input class="search"
-								id="sortByTeacher" />
+						<div class="QuickOne">
+							<p
+								style="position: relative; width:32.333%; float:left;font-size: 18px;">
+								课程: <select id="sortByCourse" name="sortByCourse"
+									style="font-size: 17px;border: 1px solid #C0C0C0;width:60%;font-weight:lighter;">
+									<option value="全部" id="all"
+										style="font-size:17px;font-weight:lighter;">全部</option>
+									<%
+										for (int i = 0; i < xkNames.size(); i++) {
+									%>
+									<option value="<%=xkNames.get(i)%>" id="<%=xkNames.get(i)%>"
+										style="font-size:17px;font-weight:lighter;"><%=xkNames.get(i)%></option>
+									<%
+										}
+									%>
+								</select>
+							</p>
+							<p
+								style="position: relative; width:32.333%; float:left;font-size: 18px;">
+								学号: <input id="sortByXueHao" name="sortByXueHao" type="text"
+									style="font-size: 20px;border: 1px solid #C0C0C0;width:60%"
+									type="text">
+							</p>
+							<p
+								style="position: relative; width:32.333%; float:left;font-size: 18px;">
+								姓名: <input id="sortByName" name="sortByName" type="text"
+									style="font-size: 20px;border: 1px solid #C0C0C0;width:60%"
+									type="text">
+							</p>
+							<br /> <br /> <br />
+							<div style="margin:0 320px">
+								<input onclick="check()" id="bt_check" type="submit" value="查询"
+									name="bt_check" style="height: 32px ; width:75px" />
+								&nbsp;&nbsp; <input onclick="clean()" id="bt_clean"
+									type="submit" value="重置查询" name="bt_clean"
+									style="height: 32px ; width: 75px" />
+							</div>
+							<br /> <br /> <br /> <br />
+
 						</div>
 
-						<div class="class_area"></div>
+						<div class=".QuickOne_area">
+							<table class="mytable">
+								<tbody>
+									<tr style="background-color: #C1C1C1;height: 20px">
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;"><input
+											type="checkbox" onclick="click(this)" id="click0" /></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 13%;">学号</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">姓名</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 10%;">课程</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 6%;">试卷号</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">选择题分数</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">判断题分数</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">主观题分数</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 9%;">总分</td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 15%;">修改</td>
+									</tr>
+									<%
+										for (int i = 0; i < 10; i++) {
+									%>
+									<tr></tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
+							<br />
+
+						</div>
 
 					</div>
-
-					<%
-						Teacher teacher = (Teacher) session.getAttribute("userinfo");
-					%>
-
 				</div>
 			</div>
 			<div class="box_bottom2">

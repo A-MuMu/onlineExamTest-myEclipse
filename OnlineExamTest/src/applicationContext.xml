@@ -96,7 +96,10 @@
 		<property name="xueke" ref="xueke"></property>
 		<property name="course" ref="course"></property>
 	</bean>
-	<bean id="templeTiMuDAOService" class="rainbow.example.service.TempleTiMuDAOService">
+	<bean id="templeXkDaoService" class="rainbow.example.service.TempleXkDaoService">
+		<property name="templeDAO" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeTiMuDAOService" class="rainbow.example.service.TempleTiMuDAOService" >
 		<property name="dao" ref="templeDAO"></property>
 	</bean>
 	<bean id="templePangDuanDAOService" class="rainbow.example.service.TemplePangDuanDAOService">
@@ -169,6 +172,12 @@
 	<bean id="jiaoJuanAction" class="rainbow.example.action.JiaoJuanAction"
 		scope="prototype">
 		<property name="templeDaAnDAOService" ref="templeDaAnDAOService"></property>
+	</bean>
+	
+	<bean id="checkCourseAction" class="rainbow.example.action.CheckCourse" scope="prototype">
+		<property name="teacher" ref="teacher"></property>
+		<property name="xueKe" ref="xueke"></property>
+		<property name="templeXkDaoService" ref="templeXkDaoService"></property>
 	</bean>
 
 	<bean id="transactionManager"

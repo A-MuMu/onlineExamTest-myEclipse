@@ -12,7 +12,8 @@
 		<!-- 自动提交 -->
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.connection.autocommit">true</property>
-
+	
+		<!-- 
 		<property name="myeclipse.connection.profile">exam</property>
 		<property name="connection.url">
 			jdbc:mysql://localhost:3306/exam
@@ -22,7 +23,8 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-
+		 -->
+		 
 		<mapping resource="rainbow/example/domain/Student.hbm.xml" />
 		<mapping resource="rainbow/example/domain/MingYan.hbm.xml" />
 		<mapping resource="rainbow/example/domain/ShiJuan.hbm.xml" />

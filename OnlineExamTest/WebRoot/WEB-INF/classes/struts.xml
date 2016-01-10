@@ -17,6 +17,10 @@
 		<action name="submit" class="jiaoJuanAction" method="submit">
 		</action>
 		
+		<action name="checkMyStudent" class="checkCourseAction" method="getXkNameByTea">
+			<result name="success" type="redirect">system/teacher/checkMyStudent.jsp</result>
+		</action>
+		
 		<action name="checkTeaPersonal" class="teacherPersonCheck" method="checkTeaPersonal">
 		</action>
 

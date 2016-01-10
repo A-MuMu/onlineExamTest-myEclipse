@@ -1,9 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -54,8 +52,7 @@
 					<li><h2>个人信息</h2></li>
 					<li><p>信息包含教师个人履历，教学年志，教学学科，与提交某些内容的信息更正等。</p></li>
 				</ul>
-			</a> <a href="<%=request.getContextPath()%>/system/teacher/checkMyStudent.jsp"
-				class="zhenti">
+			</a> <a href="checkMyStudent" class="zhenti">
 				<ul>
 					<li><h2>学生管理</h2></li>
 					<li><p>可查看中选课程学生信息，并记录学生平时上课表现与课堂互动分。</p></li>

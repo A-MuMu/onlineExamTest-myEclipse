@@ -26,7 +26,7 @@
 	_height: 500px;
 }
 
-.page_nav3{
+.page_nav3 {
 	min-height: 600px;
 	_height: 600px;
 }
@@ -944,4 +944,43 @@
 .training p, .testpaper p, .zhenti p, .exam p {
 	width: 280px;
 	margin-top: 10px;
+}
+
+.QuickOne {
+	float: left;
+	position: relative;
+	margin: 42 0 0 48px;
+	width: 895px;
+}
+
+.QuickOne_area {
+	position: relative;
+	width: 910px;
+	float: left;
+}
+
+.mytable {
+	width: 901px;
+	border: 1px solid #C0C0C0;
+	font-size: 18px;
+}
+.mytable td{
+	white-space: nowrap;
+	border: 1px solid #C0C0C0;
+	font-size: 18px;
+	height: 31px;
+}
+.mytable tr{
+	border: 1px solid #C0C0C0;
+	font-size: 18px;
+}
+
+.line1 {
+	background-color: #FAFAFA;
+	line-height: 30px;
+}
+
+.line2 {
+	background-color: #F1F1F1;
+	line-height: 30px;
 }

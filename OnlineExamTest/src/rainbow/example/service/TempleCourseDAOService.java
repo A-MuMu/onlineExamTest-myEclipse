@@ -33,7 +33,6 @@ public class TempleCourseDAOService<T> {
 		List<XueKe> xks = dao.getObjects(hqlString);
 		return xks;
 	}
-	
 
 	public void addUser(T user) throws Exception {
 		dao.addObject(user);

@@ -40,7 +40,7 @@
 					<li class="jc"><a href=""><span>试卷评改</span></a></li>
 				</ul>
 			</div>
-			<div class="toolbar">
+			<div class="toolbar" style="margin-left:120px;">
 				<%
 					User u = null;
 					u = (User) session.getAttribute("USER");

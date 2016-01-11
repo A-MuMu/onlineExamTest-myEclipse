@@ -24,6 +24,17 @@ public class TempleStuDAOService<T> {
 			return list.get(0);
 		}
 	}
+	
+	public Student getOneByID(String id){
+		List<Student> list;
+		String queryString = "SELECT u FROM Student u WHERE u.id = '"+ id +"'";
+		list = dao.getObjects(queryString);
+		if (list.size() == 0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
+	}
 
 	public List<T> queryUsers(String uname, Class<T> clazz) {
 		if (uname == null || "".equals(uname))

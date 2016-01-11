@@ -37,46 +37,31 @@ public class TempleCourseDAOService<T> {
 	}
 
 	// 老师获取学科
-	public List<XueKe> getXKs(Teacher teacher){
-		String hql = "SELECT xk FROM XueKe xk WHERE xk.teacher.id = "+ teacher.getId();
+	public List<XueKe> getXKs(Teacher teacher) {
+		String hql = "SELECT xk FROM XueKe xk WHERE xk.teacher.id = "
+				+ teacher.getId();
 		List<XueKe> list = dao.getObjects(hql);
 		if (list.size() == 0) {
 			return null;
-		}else
+		} else
 			return list;
-	}
-
-	// HQL老师查询学生
-	public List<Student> getStus(List<XueKe> list) {
-		XueKe xk;
-		List<Student> stus = new ArrayList<Student>();
-		List<Student> list2 = new ArrayList<Student>();
-		for (int i = 0; i < list.size(); i++) {
-			list2.clear();
-			xk = list.get(i);
-			String hql = "SELECT c.student From Course c WHERE c.xueKe.nameXk = '"+xk.getNameXk()+"'";
-			list2=dao.getObjects(hql);
-			stus.addAll(list2);
-		}
-		
-		System.out.print(stus.size() + "@@" + "###");
-		if (stus.size() == 0) {
-			return null;
-		} else {
-			return stus;
-		}
 	}
 
 	// SQL老师查询学生
 
-	/*
-	 * public List<Student> getStus(Teacher teacher) { List<Student> stus = new
-	 * ArrayList<Student>(); System.out.print(teacher.getId() + "@@"); String
-	 * queryString = "SELECT * FROM Student stu WHERE stu.id = any("+
-	 * "SELECT c.stuID FROM Course c WHERE c.TeaID = " + teacher.getId()+")";
-	 * stus = dao.queryBySql(queryString); System.out.print(stus.size() + "@@" +
-	 * "###"); if (stus.size() == 0) { return null; } else return stus; }
-	 */
+	public List<Integer> getStus(Teacher teacher) {
+		List<Integer> stus = null;
+		System.out.print(teacher.getId() + "@@");
+		String queryString = "SELECT stu.id FROM Student stu WHERE stu.id = any("
+				+ "SELECT c.stuID FROM Course c WHERE c.TeaID = "
+				+ teacher.getId() + ")";
+		stus = dao.queryBySql(queryString);
+		System.out.print(stus.size() + "@@" + "###");
+		if (stus.size() == 0) {
+			return null;
+		} else
+			return stus;
+	}
 
 	public void addUser(T user) throws Exception {
 		dao.addObject(user);

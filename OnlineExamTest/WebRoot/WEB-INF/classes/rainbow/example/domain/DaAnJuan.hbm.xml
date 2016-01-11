@@ -94,5 +94,8 @@
         <property name="date" type="date">
         	<column name="date"></column>
         </property>
+        <property name="nameXk" type="java.lang.String">
+        	<column name="XKname" length="32" ></column>
+        </property>
     </class>
 </hibernate-mapping>

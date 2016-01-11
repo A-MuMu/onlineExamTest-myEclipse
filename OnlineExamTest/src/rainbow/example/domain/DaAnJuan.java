@@ -16,6 +16,7 @@ public class DaAnJuan  implements java.io.Serializable {
      private long daJuan;
      private ShiJuan shiJuan;
      private long idStu;
+     private String nameXk;
      private String xuanze1;
      private String xuanze2;
      private String xuanze3;
@@ -55,7 +56,7 @@ public class DaAnJuan  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public DaAnJuan(ShiJuan shiJuan, long idStu, String xuanze1, String xuanze2, String xuanze3, String xuanze4, String xuanze5, String xuanze6, String xuanze7, String xuanze8, String xuanze9, String xuanze10, String pangduan1, String pangduan2, String pangduan3, String pangduan4, String pangduan5, String pangduan6, String pangduan7, String pangduan8, String pangduan9, String pangduan10, String zhuguan1, String zhuguan2, String zhuguan3, Integer zuZhuFenShu, Integer zongFen, Date date) {
+    public DaAnJuan(ShiJuan shiJuan, long idStu, String xuanze1, String xuanze2, String xuanze3, String xuanze4, String xuanze5, String xuanze6, String xuanze7, String xuanze8, String xuanze9, String xuanze10, String pangduan1, String pangduan2, String pangduan3, String pangduan4, String pangduan5, String pangduan6, String pangduan7, String pangduan8, String pangduan9, String pangduan10, String zhuguan1, String zhuguan2, String zhuguan3, Integer zuZhuFenShu, Integer zongFen, Date date, String nameXk) {
         this.shiJuan = shiJuan;
         this.idStu = idStu;
         this.xuanze1 = xuanze1;
@@ -84,16 +85,26 @@ public class DaAnJuan  implements java.io.Serializable {
         this.zuZhuFenShu = zuZhuFenShu;
         this.zongFen = zongFen;
         this.date = date;
+        this.nameXk = nameXk;
     }
 
    
     // Property accessors
 
+    
     public long getDaJuan() {
         return this.daJuan;
     }
     
-    public void setDaJuan(long daJuan) {
+    public String getNameXk() {
+		return nameXk;
+	}
+
+	public void setNameXk(String nameXk) {
+		this.nameXk = nameXk;
+	}
+
+	public void setDaJuan(long daJuan) {
         this.daJuan = daJuan;
     }
 

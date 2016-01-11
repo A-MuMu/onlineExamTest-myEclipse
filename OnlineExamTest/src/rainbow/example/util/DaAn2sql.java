@@ -47,6 +47,10 @@ public final class DaAn2sql {
 		daJuan.setZhuguan3(list[2]);
 	}
 	
+	public static void intoDaAn_xkName(){
+		
+	}
+	
 	public static void setShiJuan(ShiJuan myshiJuan){
 		shiJuan=myshiJuan;
 	}

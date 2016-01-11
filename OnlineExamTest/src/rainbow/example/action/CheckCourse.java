@@ -3,15 +3,13 @@ package rainbow.example.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-
-import rainbow.example.domain.Course;
+import rainbow.example.domain.StuCourse;
 import rainbow.example.domain.Student;
 import rainbow.example.domain.Teacher;
 import rainbow.example.domain.XueKe;
 import rainbow.example.service.TempleCourseDAOService;
+import rainbow.example.service.TempleStuCourseDaoService;
+import rainbow.example.service.TempleStuDAOService;
 import rainbow.example.service.TempleXkDaoService;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -26,35 +24,58 @@ public class CheckCourse extends ActionSupport {
 
 	private TempleXkDaoService templeXkDaoService;
 	private TempleCourseDAOService<Teacher> templeCourseDAOService;
-	private Teacher teacher ;
+	private TempleStuDAOService<Student> templeStuDAOService;
+	private TempleStuCourseDaoService templeStuCourseDaoService;
+	private Teacher teacher;
 	private XueKe xueKe;
-	
-	public String getXkNameByTea(){		
-		teacher = (Teacher) ActionContext.getContext().getSession().get("userinfo");
-		System.out.println(teacher.getName()+"~~~~~~~~~~~~~~~");
-		List<String> xkNames =  new ArrayList<String>();
+	private List<String> xkNames = new ArrayList<String>();
+	private List<StuCourse> stuCs = new ArrayList<StuCourse>();
+
+	public String getXkNameByTea() {
+		teacher = (Teacher) ActionContext.getContext().getSession()
+				.get("userinfo");
+		System.out.println(teacher.getName() + "~~~~~~~~~~~~~~~");		
 		xkNames = templeXkDaoService.getNameByTea(teacher);
 		getStuByTea();
 		ActionContext.getContext().getSession().put("xkNames", xkNames);
 		return SUCCESS;
 	}
-	
-	public void getStuByTea(){
-		List<Student> stus = new ArrayList<Student>();
-		List<XueKe> list = new ArrayList<XueKe>();
-		list = templeCourseDAOService.getXKs(teacher);
-		stus = templeCourseDAOService.getStus(list);
-		ActionContext.getContext().getSession().put("stus", stus);
-//		for (int i = 0; i < stus.size(); i++) {
-//			System.out.println(stus.get(i).getNameStu()+"********************"+stus.size());
-//		}
+
+	public void getStuByTea() {
+		// 获取老师所教学的课程
+		for (int i = 0; i < xkNames.size(); i++) {
+			if (templeStuCourseDaoService.queryDaAns(xkNames.get(i))!=null) {
+				stuCs.addAll(templeStuCourseDaoService.queryDaAns(xkNames.get(i)));
+			}
+		}
+		System.out.println(stuCs.get(1).getDate()+"%%%%%%%%%%%%%%%%");
+		ActionContext.getContext().getSession().put("stuCs", stuCs);
 	}
-	
+
+	public TempleStuCourseDaoService getTempleStuCourseDaoService() {
+		return templeStuCourseDaoService;
+	}
+
+	public void setTempleStuCourseDaoService(
+			TempleStuCourseDaoService templeStuCourseDaoService) {
+		this.templeStuCourseDaoService = templeStuCourseDaoService;
+	}
+
+	public TempleStuDAOService<Student> getTempleStuDAOService() {
+		return templeStuDAOService;
+	}
+
+	public void setTempleStuDAOService(
+			TempleStuDAOService<Student> templeStuDAOService) {
+		this.templeStuDAOService = templeStuDAOService;
+	}
+
 	public TempleCourseDAOService<Teacher> getTempleCourseDAOService() {
 		return templeCourseDAOService;
 	}
 
-	public void setTempleCourseDAOService(TempleCourseDAOService<Teacher> templeCourseDAOService) {
+	public void setTempleCourseDAOService(
+			TempleCourseDAOService<Teacher> templeCourseDAOService) {
 		this.templeCourseDAOService = templeCourseDAOService;
 	}
 

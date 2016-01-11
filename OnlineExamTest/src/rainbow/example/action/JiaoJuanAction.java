@@ -40,6 +40,7 @@ public class JiaoJuanAction extends ActionSupport {
 		System.out.println("~~~~~~~进来交卷~~~~~~");
 		logger.info("~~~~~~~进来交卷~~~~~~");
 		numDaJuan = findDaJuanNum(DaAnJuan.class);
+		String course = (String) ActionContext.getContext().getSession().get("course");
 		
 		DaAnJuan daJuan = new DaAnJuan();		
 		String xuanze,pangduan,zhuguan;
@@ -51,10 +52,13 @@ public class JiaoJuanAction extends ActionSupport {
 		DaAn2sql.intoDaAn_zg(daJuan,zhuguan);
 		daJuan.setIdStu(getStuID());
 		daJuan.setDaJuan(numDaJuan+1);
+		daJuan.setNameXk(course);
 		TrueORfalse.setDaJuan(daJuan);
 		ziZhuFenShu = TrueORfalse.getListXuanZes() + TrueORfalse.getListPangDuans();
 		daJuan.setZuZhuFenShu(ziZhuFenShu);
 		
+		//临时设置总分
+		daJuan.setZongFen(0);
 		daJuan.setDate(new Date());
 		System.out.println(new Date());
 		

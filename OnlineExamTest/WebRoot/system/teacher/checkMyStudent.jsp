@@ -1,4 +1,7 @@
+<%@page import="rainbow.example.domain.DaAnJuan"%>
+<%@page import="rainbow.example.domain.Student"%>
 <%@page import="rainbow.example.domain.Teacher"%>
+<%@page import="rainbow.example.domain.StuCourse"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
@@ -56,6 +59,9 @@
 		Teacher teacher = (Teacher) session.getAttribute("userinfo");
 		List<String> xkNames = new ArrayList<String>();
 		xkNames = (List<String>) session.getAttribute("xkNames");
+		List<StuCourse> stuCs = new ArrayList<StuCourse>();
+		stuCs = (List<StuCourse>) session.getAttribute("stuCs");
+		int sum = 0 ;
 	%>
 	<div class="main">
 		<div class="box2">
@@ -119,9 +125,9 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 6%;">试卷号</td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;">选择题分数</td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">考试时间</td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;">判断题分数</td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;">客观题分数</td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;">主观题分数</td>
 										<td align="center"
@@ -130,9 +136,35 @@
 											style="border: 1px solid #FFF;height: 36px;width: 15%;">修改</td>
 									</tr>
 									<%
-										for (int i = 0; i < 10; i++) {
+										for (int i = 0; i < stuCs.size(); i++) {
 									%>
-									<tr></tr>
+									<tr style="background-color: #efefef;height: 18px">
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;"><input
+											type="checkbox" onclick="click(this)" id="click0" /></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 13%;"><%=stuCs.get(i).getId().getIdStu()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getNameStu()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getXkname()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><%=stuCs.get(i).getShijuan()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getDate()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getZuZhuFenShu()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getZongFen()%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 9%;">
+											<%
+												sum = stuCs.get(i).getZongFen()
+															+ stuCs.get(i).getZuZhuFenShu();
+											%><%=sum%></td>
+										<td align="center"
+											style="border: 1px solid #FFF;height: 36px;width: 15%;">不可修改</td>
+									</tr>
 									<%
 										}
 									%>

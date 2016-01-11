@@ -38,9 +38,16 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="admin" catalog="exam" class="Admin">
+	<table name="admin" catalog="exam" class="Admin">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="stucourse" catalog="exam" class="StuCourse">
 	<primary-key>
-		<generator class="native"></generator>
+		<generator class="identity"></generator>
+		<key-column name="id" />
+		<key-column name="idStu" />
 	</primary-key>
 </table>
 </hibernate-reverse-engineering>

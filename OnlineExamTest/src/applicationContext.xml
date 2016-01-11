@@ -71,6 +71,8 @@
 	</bean>
 	<bean id="xueke" class="rainbow.example.domain.XueKe">
 	</bean>
+	<bean id="stuCourse" class="rainbow.example.domain.StuCourse">
+	</bean>
 	<bean id="course" class="rainbow.example.domain.Course">
 		<property name="xueKe" ref="xueke"></property>
 	</bean>
@@ -123,6 +125,10 @@
 	<bean id="templeLoginService" class="rainbow.example.service.TempleLoginService">
 		<property name="user" ref="user"></property>
 		<property name="dao" ref="templeDAO"></property>
+	</bean>
+	<bean id="templeStuCourseDaoService" class="rainbow.example.service.TempleStuCourseDaoService">
+		<property name="dao" ref="templeDAO"></property>
+		<property name="stuCourse" ref="stuCourse"></property>
 	</bean>
 
 	<!-- scope="prototype"多例，表示每次使用都创建一个新的，单例则不创建新的 -->
@@ -179,6 +185,8 @@
 		<property name="xueKe" ref="xueke"></property>
 		<property name="templeXkDaoService" ref="templeXkDaoService"></property>
 		<property name="templeCourseDAOService" ref="templeCourseDAOService"></property>
+		<property name="templeStuDAOService" ref="templeStuDAOService"></property>
+		<property name="templeStuCourseDaoService" ref="templeStuCourseDaoService"></property>
 	</bean>
 
 	<bean id="transactionManager"

@@ -1,3 +1,5 @@
+<%@page import="rainbow.example.domain.DaAnJuan"%>
+<%@page import="rainbow.example.domain.ShiJuan"%>
 <%@page import="org.w3c.dom.Document"%>
 <%@page import="rainbow.example.domain.KeGuan"%>
 <%@page import="rainbow.example.domain.PangDuan"%>
@@ -26,14 +28,12 @@
 	type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/system/css/dialog.css"
 	type="text/css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/system/css/page.css" type="text/css"
-	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/system/css/page.css"
+	type="text/css" rel="stylesheet" />
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/paper.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.simplemodal.js"></script>
+	src="<%=request.getContextPath()%>/js/jquery.js">
+	
+</script>
 <script>
 	$(function() {
 		$(".Expand_in").hide();
@@ -111,16 +111,21 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:include page="/system/topNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:forward page="/system/login.jsp"></jsp:forward>
 	<%
 		}
 	%>
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/system/student/topLiKaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/teacher/topLaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
+	%>
+
+	<%
+		ShiJuan sj = (ShiJuan) session.getAttribute("sj");
+		DaAnJuan dj = (DaAnJuan) session.getAttribute("dj");
 	%>
 	<div class="main">
 
@@ -129,35 +134,35 @@
 			<div class="page_content" data-id="2036981"
 				style="position:relative;">
 				<%
-					Student u = null;
-					u = (Student) session.getAttribute("userinfo");
-					String course = (String) session.getAttribute("course");
+					
 				%>
 				<div class="page_nav">
-					<a href="?mod=shenlun"><%=u.getNameStu()%></a> &gt;&gt; <a
-						href="?mod=shenlun&act=index&pid=25"><%=course%></a>
+					<span><%=sj.getNameXK()%> &gt;&gt;</span> <span id="test"
+						style="color:#EE0000;font-weight:bold">红色标记为正确答案！</span><span id="test"
+						style="color:blue;font-weight:bold">蓝色标记为学生答案！</span>
 				</div>
-				<%
-					String str1 = null;
-					String str2 = null;
-					if (course != null) {
-						str1 = "2014-2015第二学期";
-						str2 = "期末试卷";
-				%>
-				<div class="hc_title"><%=str1 + " " + course + " " + str2%></div>
-				<%
-					}
-				%>
+				<div class="hc_title"><%="2014-2015第二学期" + " " + sj.getNameXK() + " " + "期末试卷"%></div>
 				<form id="xuanze" name="xuanze" method="post" action="xuanze.action">
-
 					<div class="left">
 						<div style="height:1px;"></div>
 						<div class="hc_side" style="width:144px; position:fixed;">
-							<div class="hc_time" id="hc_time">00:45:00</div>
 							<ul>
-								<li class="on">阅读原题</li>
-								<li class="paper_submit" id="paper_submit">我要交卷</li>
-								<!-- <li class="paper_save" id="paper_save">下次继续做</li> -->
+								<li class="on" style="font-weight: bold;">答卷号：</li>
+								<li class="paper_submit" style="font-weight: bold;"><%=dj.getDaJuan()%></li>
+								<li class="paper_submit" >主观题No.1得分：
+								</li>
+							</ul>
+								<input type="text" id = "no1" name ="no1" style="height:35px;width:145px;font-size: 18px;border-width:1px;border-color: C1C1C1;"/>
+							<ul>
+								<li class="paper_submit" >主观题No.2得分：</li>
+							</ul>
+							<input type="text" id = "no2" name ="no2" style="height:35px;width:145px;font-size: 18px;border-width:1px;border-color: C1C1C1;"/>
+							<ul>
+								<li class="paper_submit" >主观题No.3得分：</li>
+							</ul>
+							<input type="text" id = "no3" name ="no3" style="height:35px;width:145px;font-size: 18px;border-width:1px;border-color: C1C1C1;"/>
+							<ul>
+								<li type="text" onclick="tijiao" style="font-weight: bold;">提交成绩</li>
 							</ul>
 
 						</div>
@@ -174,28 +179,81 @@
 
 								<table class="topiclist1">
 									<%
-										List<XuanZe> zx = (List<XuanZe>) session.getAttribute("xuanze");
-										XuanZe xuanze = null;
-
-										for (int i = 0; i < zx.size(); i++) {
-											xuanze = zx.get(i);
+										List<XuanZe> list1 = new ArrayList<XuanZe>();
+										List<String> lista = new ArrayList<String>();
+										list1.add(sj.getXuanZeByXuanze1()); lista.add(dj.getXuanze1());
+										list1.add(sj.getXuanZeByXuanze2()); lista.add(dj.getXuanze2());
+										list1.add(sj.getXuanZeByXuanze3()); lista.add(dj.getXuanze3());
+										list1.add(sj.getXuanZeByXuanze4()); lista.add(dj.getXuanze4());
+										list1.add(sj.getXuanZeByXuanze5()); lista.add(dj.getXuanze5());
+										list1.add(sj.getXuanZeByXuanze6()); lista.add(dj.getXuanze6());
+										list1.add(sj.getXuanZeByXuanze7()); lista.add(dj.getXuanze7());
+										list1.add(sj.getXuanZeByXuanze8()); lista.add(dj.getXuanze8());
+										list1.add(sj.getXuanZeByXuanze9()); lista.add(dj.getXuanze9());
+										list1.add(sj.getXuanZeByXuanze10()); lista.add(dj.getXuanze10());
+										for(int i =0 ; i<list1.size();i++){
 									%>
 									<tr class="huanxian">
-										<td colspan="2"><%=(i + 1) + "、" + xuanze.getTiMu()%></td>
+										<td colspan="2"><%=(i + 1) + "、" +list1.get(i).getTiMu()%></td>
 									</tr>
 
 									<tr class="huanxian">
-										<td><input type="radio" name="<%=(i + 1)%>"
-											value="A"><%=xuanze.getA()%></td>
-										<td><input type="radio" name="<%=(i + 1)%>"
-											value="B"><%=xuanze.getB()%></td>
+										<td><input type="radio" name="<%=(i + 1)%>" value="A"><span
+											id="<%=(4*i + 0)%>"><%=list1.get(i).getA()%></span></td>
+										<td><input type="radio" name="<%=(i + 1)%>" value="B"><span
+											id="<%=(4*i + 1)%>"><%=list1.get(i).getB()%></span></td>
 									</tr>
 									<tr>
-										<td><input type="radio" name="<%=(i + 1)%>"
-											value="C"><%=xuanze.getC()%></td>
-										<td><input type="radio" class="radio" name="<%=(i + 1)%>"
-											value="D"><%=xuanze.getD()%></td>
+										<td><input type="radio" name="<%=(i + 1)%>" value="C"><span
+											id="<%=(4*i + 2)%>"><%=list1.get(i).getC()%></span></td>
+										<td><input type="radio" name="<%=(i + 1)%>" value="D"><span
+											id="<%=(4*i + 3)%>" ><%=list1.get(i).getD()%></span></td>
 									</tr>
+									<script type="text/javascript"> 
+										var abcd = '<%=list1.get(i).getDaAn()%>';
+										var dcba = '<%=lista.get(i)%>';
+										if(abcd == 'A'){
+											var aaa = '<%=(4*i + 0)%>';
+											document.getElementById(aaa).style.color = "#EE0000";
+											document.getElementById(aaa).style.fontWeight="bold";
+										}
+										if(abcd == 'B'){
+											var bbb = '<%=(4*i + 1)%>';
+											document.getElementById(bbb).style.color = "#EE0000";
+											document.getElementById(bbb).style.fontWeight="bold";
+										}
+										if(abcd == 'C'){
+											var ccc = '<%=(4*i + 2)%>';
+											document.getElementById(ccc).style.color = "#EE0000";
+											document.getElementById(ccc).style.fontWeight="bold";
+										}
+										if(abcd == 'D'){
+											var ddd = '<%=(4*i + 3)%>';
+											document.getElementById(ddd).style.color = "#EE0000";
+											document.getElementById(ddd).style.fontWeight = "bold";
+										}
+										if(dcba == 'A'){
+											var aaa = '<%=(4*i + 0)%>';
+											document.getElementById(aaa).style.color = "blue";
+											document.getElementById(aaa).style.fontWeight="bold";
+										}
+										if(dcba == 'B'){
+											var bbb = '<%=(4*i + 1)%>';
+											document.getElementById(bbb).style.color = "blue";
+											document.getElementById(bbb).style.fontWeight="bold";
+										}
+										if(dcba == 'C'){
+											var ccc = '<%=(4*i + 2)%>';
+											document.getElementById(ccc).style.color = "blue";
+											document.getElementById(ccc).style.fontWeight="bold";
+										}
+										if(dcba == 'D'){
+											var ddd = '<%=(4*i + 3)%>';
+											document.getElementById(ddd).style.color = "blue";
+											document.getElementById(ddd).style.fontWeight = "bold";
+										}
+										
+									</script>
 									<%
 										}
 									%>
@@ -208,33 +266,57 @@
 							</h1>
 
 							<div class="text" id="text_box_2" data-flag="0">
-								<s:action id="xuanze" name="pangduan">
 
-									<table class="topiclist1">
-										<%
-											List<PangDuan> pd = (List<PangDuan>) session
-														.getAttribute("pangduan");
-												PangDuan pangduan = null;
-
-												for (int i = 0; i < pd.size(); i++) {
-													pangduan = pd.get(i);
-										%>
-										<tr class="huanxian">
-											<td colspan="2"><%=(i + 1) + "、" + pangduan.getTiMu()%></td>
-										</tr>
-										<tr></tr>
-										<tr class="huanxian">
-											<td><input type="radio" name="<%=(i + 11)%>" value="1">正确
-											</td>
-											<td><input type="radio" name="<%=(i + 11)%>" value="0">错误
-											</td>
-										</tr>
-
-										<%
-											}
-										%>
-									</table>
-								</s:action>
+								<table class="topiclist1">
+									<%
+									List<PangDuan> list2 = new ArrayList<PangDuan>();
+									List<String> listb = new ArrayList<String>();
+									list2.add(sj.getPangDuanByPangduan1());listb.add(dj.getPangduan1());
+									list2.add(sj.getPangDuanByPangduan2());listb.add(dj.getPangduan2());
+									list2.add(sj.getPangDuanByPangduan3());listb.add(dj.getPangduan3());
+									list2.add(sj.getPangDuanByPangduan4());listb.add(dj.getPangduan4());
+									list2.add(sj.getPangDuanByPangduan5());listb.add(dj.getPangduan5());
+									list2.add(sj.getPangDuanByPangduan6());listb.add(dj.getPangduan6());
+									list2.add(sj.getPangDuanByPangduan7());listb.add(dj.getPangduan7());
+									list2.add(sj.getPangDuanByPangduan8());listb.add(dj.getPangduan8());
+									list2.add(sj.getPangDuanByPangduan9());listb.add(dj.getPangduan9());
+									list2.add(sj.getPangDuanByPangduan10());listb.add(dj.getPangduan10());
+									for(int j = 0;j < list2.size();j++){
+									%>
+									<tr class="huanxian">
+										<td colspan="2"><%=list2.get(j).getTiMu() %></td>
+									</tr>
+									<tr></tr>
+									<tr class="huanxian">
+										<td><input type="radio" name="<%=j+11 %>" value="1"><span id="<%=-(2*j+1) %>">正确</span></td>
+										<td><input type="radio" name="<%=j+11 %>" value="0"><span id="<%=-(2*j+2) %>">错误</span></td>
+									</tr>
+									<script type="text/javascript"> 
+										var abcd = '<%=list2.get(j).getDaAn()%>';
+										var dcba = '<%=listb.get(j)%>';
+										if(abcd == '1'){
+											var aaa = '<%=-(2*j + 1)%>';
+											document.getElementById(aaa).style.color = "#EE0000";
+											document.getElementById(aaa).style.fontWeight="bold";
+										}
+										if(abcd == '0'){
+											var bbb = '<%=-(2*j + 2)%>';
+											document.getElementById(bbb).style.color = "#EE0000";
+											document.getElementById(bbb).style.fontWeight="bold";
+										}
+										if(dcba == '1'){
+											var aaa = '<%=-(2*j + 1)%>';
+											document.getElementById(aaa).style.color = "#blue";
+											document.getElementById(aaa).style.fontWeight="bold";
+										}
+										if(dcba == '0'){
+											var bbb = '<%=-(2*j + 2)%>';
+											document.getElementById(bbb).style.color = "#blue";
+											document.getElementById(bbb).style.fontWeight="bold";
+										}
+									</script>
+									<%} %>
+								</table>
 							</div>
 							<h1>
 								<span>主观题</span><a href="javascript:void(0);"
@@ -242,26 +324,19 @@
 							</h1>
 
 							<div class="text" id="text_box_3" data-flag="0">
-								<s:action id="xuanze" name="zhuguan">
-									<table class="topiclist1">
-										<%
-											List<KeGuan> zg = (List<KeGuan>) session
-														.getAttribute("zhuguan");
-												KeGuan zhuguan = null;
-
-												for (int i = 0; i < zg.size(); i++) {
-													zhuguan = zg.get(i);
-										%>
-										<tr class="huanxian">
-											<td colspan="2"><%=(i + 1) + "、" + zhuguan.getTiMu()%></td>
-										</tr>
-										<tr></tr>
-										<tr></tr>
-										<%
-											}
-										%>
-									</table>
-								</s:action>
+								<table class="topiclist1">
+								<%
+								List<KeGuan> list3 = new ArrayList<KeGuan>();
+								list3.add(sj.getKeGuanByZhuguan1());
+								list3.add(sj.getKeGuanByZhuguan2());
+								list3.add(sj.getKeGuanByZhuguan3());
+								for(int k = 0; k<list3.size();k++){
+								%>
+									<tr class="huanxian">
+										<td colspan="2"><%=list3.get(k).getTiMu() %></td>
+									</tr>
+								<%} %>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -287,25 +362,25 @@
 						</ul>
 
 						<div id="sq_detail_0" class="sq_detail ">
-							<textarea id="status_0" class="sq_answer" data-sq-id="1280"
+							<textarea id="status_0" class="sq_answer" data-sq-id="1280" style="color: blue"
 								onkeydown="count_char('status_0','counter_0');"
-								onkeyup="count_char('status_0','counter_0');"></textarea>
+								onkeyup="count_char('status_0','counter_0');">答：<%=dj.getZhuguan1() %></textarea>
 							<p class="right">
 								当前已输入<span id="counter_0">0</span>字
 							</p>
 						</div>
 						<div id="sq_detail_1" class="sq_detail hide">
-							<textarea id="status_1" class="sq_answer" data-sq-id="1281"
+							<textarea id="status_1" class="sq_answer" data-sq-id="1281" style="color: blue"
 								onkeydown="count_char('status_1','counter_1');"
-								onkeyup="count_char('status_1','counter_1');"></textarea>
+								onkeyup="count_char('status_1','counter_1');">答：<%=dj.getZhuguan2() %></textarea>
 							<p class="right">
 								当前已输入<span id="counter_1">0</span>字
 							</p>
 						</div>
 						<div id="sq_detail_2" class="sq_detail hide">
-							<textarea id="status_2" class="sq_answer" data-sq-id="1282"
+							<textarea id="status_2" class="sq_answer" data-sq-id="1282" style="color: blue"
 								onkeydown="count_char('status_2','counter_2');"
-								onkeyup="count_char('status_2','counter_2');"></textarea>
+								onkeyup="count_char('status_2','counter_2');">答：<%=dj.getZhuguan3() %></textarea>
 							<p class="right">
 								当前已输入<span id="counter_2">0</span>字
 							</p>
@@ -316,7 +391,8 @@
 			</div>
 
 			<div class="box_bottom">
-				<img src="<%=request.getContextPath()%>/system/css/box_bottom_bg05.jpg" />
+				<img
+					src="<%=request.getContextPath()%>/system/css/box_bottom_bg05.jpg" />
 			</div>
 		</div>
 

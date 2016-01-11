@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
+import rainbow.example.domain.DaAnJuan;
 import rainbow.example.domain.ShiJuan;
 import rainbow.example.domain.StuCourse;
 import rainbow.example.domain.Student;
 import rainbow.example.domain.Teacher;
 import rainbow.example.domain.XueKe;
 import rainbow.example.service.TempleCourseDAOService;
+import rainbow.example.service.TempleDaAnDAOService;
 import rainbow.example.service.TempleShiJuanDAOService;
 import rainbow.example.service.TempleStuCourseDaoService;
 import rainbow.example.service.TempleStuDAOService;
@@ -33,12 +35,14 @@ public class CheckCourse extends ActionSupport {
 	private TempleStuDAOService<Student> templeStuDAOService;
 	private TempleStuCourseDaoService templeStuCourseDaoService;
 	private TempleShiJuanDAOService<ShiJuan> templeShiJuanDAOService;
+	private TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService;
 	private Teacher teacher;
 	private XueKe xueKe;
 	private List<String> xkNames = new ArrayList<String>();
 	private List<StuCourse> stuCs = new ArrayList<StuCourse>();
-	private String num;
+	private String num , No , daNo;
 	private ShiJuan sj;
+	private DaAnJuan daAnJuan;
 	
 	HttpServletRequest request = ServletActionContext.getRequest();
 
@@ -69,6 +73,20 @@ public class CheckCourse extends ActionSupport {
 		sj = templeShiJuanDAOService.getByID(num);
 		System.out.println(num+"......................"+sj.getStuId()+"...........");
 		ActionContext.getContext().getSession().put("sj", sj);
+		return SUCCESS;
+	}
+	
+	public String gaiJuan(){
+		No = request.getParameter("No");
+		daNo = request.getParameter("daNo");
+		System.out.println(No+"!!!!!!!!!!!!!!!"+daNo);
+		
+		sj = templeShiJuanDAOService.getByID(No);
+		daAnJuan = templeDaAnDAOService.getByID(daNo);
+		
+		System.out.println(daAnJuan.getNameXk()+"``````````````"+sj.getStuId()+"`````````````");
+		ActionContext.getContext().getSession().put("sj", sj);
+		ActionContext.getContext().getSession().put("dj", daAnJuan);
 		return SUCCESS;
 	}
 	
@@ -131,4 +149,14 @@ public class CheckCourse extends ActionSupport {
 	public void setXueKe(XueKe xueKe) {
 		this.xueKe = xueKe;
 	}
+
+	public TempleDaAnDAOService<DaAnJuan> getTempleDaAnDAOService() {
+		return templeDaAnDAOService;
+	}
+
+	public void setTempleDaAnDAOService(
+			TempleDaAnDAOService<DaAnJuan> templeDaAnDAOService) {
+		this.templeDaAnDAOService = templeDaAnDAOService;
+	}
+	
 }

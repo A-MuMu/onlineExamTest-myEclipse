@@ -1,5 +1,6 @@
 package rainbow.example.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rainbow.example.DAO.TempleDAO;
@@ -28,6 +29,19 @@ public class TempleDaAnDAOService<T> {
 	public Long getAllObjects_num(Class<T> clazz) {
 		List<T> list = dao.getAllObjects(clazz);
 		return (long) list.size();
+	}
+	
+	//通过id获取答案卷类
+	public DaAnJuan getByID(String id){
+		List<DaAnJuan> list = new ArrayList<DaAnJuan>();
+		String hql = "SELECT da FROM DaAnJuan da WHERE da.daJuan = "+id;
+		list = dao.getObjects(hql);
+		if (list.size() == 0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
+		
 	}
 
 	public TempleDAO getDao() {

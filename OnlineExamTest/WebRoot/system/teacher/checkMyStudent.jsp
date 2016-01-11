@@ -149,7 +149,7 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getXkname()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a href="chaJuan?num=<%=stuCs.get(i).getShijuan() %>"><%=stuCs.get(i).getShijuan()%></a></td>
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a style="color:blue" href="chaJuan?num=<%=stuCs.get(i).getShijuan() %>"><%=stuCs.get(i).getShijuan()%></a></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getDate()%></td>
 										<td align="center"
@@ -163,7 +163,7 @@
 															+ stuCs.get(i).getZuZhuFenShu();
 											%><%=sum%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 15%;">不可修改</td>
+											style="border: 1px solid #FFF;height: 36px;width: 15%; "><a style="color:#ee0000" href="gaiJuan?No=<%=stuCs.get(i).getShijuan() %>&daNo=<%=stuCs.get(i).getDaJuan()%>">改卷</a></td>
 									</tr>
 									<%
 										}

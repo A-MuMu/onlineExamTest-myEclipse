@@ -187,6 +187,7 @@
 		<property name="templeCourseDAOService" ref="templeCourseDAOService"></property>
 		<property name="templeStuDAOService" ref="templeStuDAOService"></property>
 		<property name="templeStuCourseDaoService" ref="templeStuCourseDaoService"></property>
+		<property name="templeShiJuanDAOService" ref="templeShiJuanDAOService"></property>
 	</bean>
 
 	<bean id="transactionManager"

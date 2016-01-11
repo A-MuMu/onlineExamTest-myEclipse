@@ -3,11 +3,17 @@ package rainbow.example.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import rainbow.example.domain.ShiJuan;
 import rainbow.example.domain.StuCourse;
 import rainbow.example.domain.Student;
 import rainbow.example.domain.Teacher;
 import rainbow.example.domain.XueKe;
 import rainbow.example.service.TempleCourseDAOService;
+import rainbow.example.service.TempleShiJuanDAOService;
 import rainbow.example.service.TempleStuCourseDaoService;
 import rainbow.example.service.TempleStuDAOService;
 import rainbow.example.service.TempleXkDaoService;
@@ -26,10 +32,15 @@ public class CheckCourse extends ActionSupport {
 	private TempleCourseDAOService<Teacher> templeCourseDAOService;
 	private TempleStuDAOService<Student> templeStuDAOService;
 	private TempleStuCourseDaoService templeStuCourseDaoService;
+	private TempleShiJuanDAOService<ShiJuan> templeShiJuanDAOService;
 	private Teacher teacher;
 	private XueKe xueKe;
 	private List<String> xkNames = new ArrayList<String>();
 	private List<StuCourse> stuCs = new ArrayList<StuCourse>();
+	private String num;
+	private ShiJuan sj;
+	
+	HttpServletRequest request = ServletActionContext.getRequest();
 
 	public String getXkNameByTea() {
 		teacher = (Teacher) ActionContext.getContext().getSession()
@@ -52,6 +63,15 @@ public class CheckCourse extends ActionSupport {
 		ActionContext.getContext().getSession().put("stuCs", stuCs);
 	}
 
+	public String chaJuan(){
+		num = request.getParameter("num");
+		
+		sj = templeShiJuanDAOService.getByID(num);
+		System.out.println(num+"......................"+sj.getStuId()+"...........");
+		ActionContext.getContext().getSession().put("sj", sj);
+		return SUCCESS;
+	}
+	
 	public TempleStuCourseDaoService getTempleStuCourseDaoService() {
 		return templeStuCourseDaoService;
 	}
@@ -93,6 +113,15 @@ public class CheckCourse extends ActionSupport {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+	
+	public TempleShiJuanDAOService<ShiJuan> getTempleShiJuanDAOService() {
+		return templeShiJuanDAOService;
+	}
+
+	public void setTempleShiJuanDAOService(
+			TempleShiJuanDAOService<ShiJuan> templeShiJuanDAOService) {
+		this.templeShiJuanDAOService = templeShiJuanDAOService;
 	}
 
 	public XueKe getXueKe() {

@@ -149,7 +149,7 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getXkname()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a href="chaJuan?num=<%=stuCs.get(i).getShijuan() %>"><%=stuCs.get(i).getShijuan()%></a></td>
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><%=stuCs.get(i).getShijuan()%></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getDate()%></td>
 										<td align="center"

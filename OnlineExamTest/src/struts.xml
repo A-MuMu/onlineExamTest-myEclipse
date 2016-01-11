@@ -21,6 +21,10 @@
 			<result name="success" type="redirect">system/teacher/checkMyStudent.jsp</result>
 		</action>
 		
+		<action name="chaJuan" class="checkCourseAction" method="chaJuan">
+			<result name="success" type="redirect">system/teacher/shiJuan.jsp</result>
+		</action>
+		
 		<action name="checkTeaPersonal" class="teacherPersonCheck" method="checkTeaPersonal">
 		</action>
 

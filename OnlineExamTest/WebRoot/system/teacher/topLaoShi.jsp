@@ -35,9 +35,9 @@
 					<li class="sy"><a href="<%=path%>/system/teacher/shouye.jsp"><span>首
 								页</span></a></li>
 					<li class="xc"><a href=""><span>课程管理</span></a></li>
-					<li class="sl"><a href="checkMyStudent"><span>个人信息</span></a></li>
-					<li class="lx"><a href="<%=request.getContextPath()%>/system/teacher/checkMyStudent.jsp"><span>学生管理</span></a></li>
-					<li class="jc"><a href=""><span>试卷评改</span></a></li>
+					<li class="sl"><a href="<%=request.getContextPath()%>/system/teacher/personal.jsp"><span>个人信息</span></a></li>
+					<li class="lx"><a href=""><span>学生管理</span></a></li>
+					<li class="jc"><a href="checkMyStudent"><span>试卷评改</span></a></li>
 				</ul>
 			</div>
 			<div class="toolbar" style="margin-left:120px;">

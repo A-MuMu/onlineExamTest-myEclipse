@@ -1,9 +1,16 @@
+<%@ page import="rainbow.example.domain.Student"%>
+<%@ page import="rainbow.example.domain.Course"%>
+<%@ page import="java.lang.String"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.ListIterator"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -13,106 +20,61 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>彩虹-在线开始网</title>
 
-<!-- 这个<%=request.getContextPath()%>后面直接加css所在的文件夹名字就可以了 -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script language="javascript">
+	$(document).ready(function() {
+		$("li#sortByCourse").click(function() {
+			window.location.reload();
+		});
+	});
+</script>
+
+<%-- <script language="javascript">
+	$(document).ready(function() {
+		$("li#sortByCourse").click(function() {
+			$.ajax({
+				url : "getAjaxMessage",//.action 不用写出来
+				type : "get",
+				async : false,
+				cache : false,//false才能时时刷新
+				dataType : 'html',
+				error : function() {
+					alert("发生错误啦~~~");
+				},
+				success : function(data) {
+					//var mes = data;
+					//if (mes == "~") {
+					//	alert(mes);
+					//}
+					$("ul.class_area li").html(data.valueOf(0));
+				}
+			});
+
+		});
+		$("li#sortByTeacher").click(function() {
+			$(this).hide();
+		});
+	});
+</script> --%>
+
+<%-- 这个<%=request.getContextPath()%>后面直接加css所在的文件夹名字就可以了 --%>
 <link href="<%=request.getContextPath()%>/system/css/common.css"
 	type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/system/css/content.css"
 	type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/system/css/dialog.css"
 	type="text/css" rel="stylesheet" />
-
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-
-<script>
-	$(document).ready(function() {
-
-	});
-</script>
-
-<style type="text/css">
-.pages {
-	text-align: center;
-	font-size: 12px;
-}
-
-.pages * {
-	border: 1px solid #E6E7E1;
-	height: 24px;
-	line-height: 24px;
-	padding: 3px 6px;
-	margin: 1px;
-	color: #0099CC;
-}
-
-.pages b {
-	background-color: #0099CC;
-	border-color: #0099CC;
-	color: #FFFFFF;
-}
-
-.pages a {
-	text-decoration: none;
-}
-
-.pages a:hover {
-	border-color: #0099CC;
-}
-
-.pn {
-	border-color: #0099CC;
-}
-
-.tab {
-	float: left;
-	width: 852px;
-	height: 20px;
-	border-bottom: 1px solid #e2e2e2;
-	margin-left: 60px;
-}
-
-.tab a {
-	font-size: 16px;
-	font-family: "Microsoft Yahei", "微软雅黑";
-}
-
-.tab .focus a {
-	color: #f00;
-}
-
-.tab .focus span {
-	width: 13px;
-	height: 8px;
-	display: block;
-	background: url(../css/tabfocus.jpg) no-repeat;
-	float: left;
-	position: absolute;
-	bottom: -1px;
-	_bottom: -3px;
-	left: 40px;
-	font-size: 0;
-}
-
-.tab li {
-	width: 100px;
-	height: 20px;
-	position: relative;
-	text-align: left;
-	line-height: 20px;
-	margin: 4 15px;
-}
-
-.tab .focus {
-	position: relative;
-}
-</style>
 </head>
 
-<body>
+<body onload="opener.location.reload()">
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:forward page="/system/login.jsp"></jsp:forward><!-- 此处必须在同一行，不能换行 -->
+	<jsp:forward page="/system/login.jsp"></jsp:forward>
+
+	<!-- 此处必须在同一行，不能换行 -->
+	<!--<jsp:include page="/jsp/topNull.jsp"></jsp:include>-->
 	<%
 		}
 	%>
@@ -123,68 +85,86 @@
 	<%
 		}
 	%>
+
 	<div class="main">
+
 		<div class="box2">
 			<div class="page_content2">
 				<div class="page_nav2">
-					<div class="h1">
-						<span class="lf"></span>
-						<ul class="ct_focus">
-							<li class="focus"><a class="typeb">练习历史</a><span> </span></li>
-							<li><a>我的错题</a></li>
+					<div class="classify">
+						<%
+							Student u = null;
+							u = (Student) session.getAttribute("userinfo");
+						%>
+						<h2>
+							<u><%=u.getNameStu()%>：</u> 同学的课程信息：
+						</h2>
+						<s:action id="kaoshi" name="kaoshi" executeResult="true"
+							namespace="/">
 
-						</ul>
-						<span class="rt"></span>
+							<div class="classify_in" >
+								<ul class="tab">
+									<li class="focus" id="sortByCourse"><a>按课程分类</a><span></span></li>
+									<li class="focus" id="sortByTeacher"><a>按老师分类</a></li>
+									<!-- focus的自动识别 -->
+									<!-- <li><a>按老师分类</a></li>  -->
+								</ul>
 
-
-						<!-- <ul class="tab">
-							<li class="focus" id="sortByXuanze"><a>选择题</a><span>
-							</span></li>
-							<li class="" id="sortByPanduan"><a>判断题</a></li>
-							<li class="" id="sortByKeguan"><a>问答题</a></li>
-							focus的自动识别
-						</ul> -->
-
+								<ul class="class_area">
+									<%
+										List<String> xkNames = new ArrayList<String>();
+										xkNames = (List) session.getAttribute("xkNames");
+										if (xkNames != null) {
+											int num = xkNames.size();
+											for (int i = 0; i < num; i++) {
+									%>
+									<li><a href="kaoshi1?mod=<%=xkNames.get(i)%>"><%=xkNames.get(i)%></a></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+						</s:action>
 					</div>
-					<br />
-					<table class="topiclist" style="border-collapse:collapse;">
+					<!-- 					<div class="check">
+						<p id="check" >--请先选择课程，选择好课程后会生成相应试卷--</p>
+					</div> -->
+					<%
+						String course = (String) session.getAttribute("course");
+						if (course != null){
+					%>
+					<s:action id="kaoshi" name="kaoshi1">
+						<table class="topiclist" >
+							<%
+								String str1 = null;
+								String str2 = null;
+								if (course != null) {
+								str1 = "2014-2015第二学期";
+								str2 = "期末试卷";
+							%>
+							<tr>
+								<td>[难] <%=str1 + "‘" + course + "’" + str2%></td>
+								<td class="enter_bt"><a href="kaoshi2?mid=1"></a></td>
+							</tr>
+							<!-- 
 						<tr>
-							<td style="border-bottom:1px solid #ececec;">
-								<h3>2015年上半年四川公务员考试《申论》真题试卷</h3>
-								<p>作答时间：2015年06月12日</p>
-							</td>
-							<td style="border-bottom:1px solid #ececec;" class="view_bt">
-								<a href="index.php?mod=exercise&act=paper&tid=2050705">继续做题</a>
-							</td>
+							<td>[中]</td>
+							<td class="enter_bt"><a href="/jsp/LiKaoshi.jsp"></a></td>
 						</tr>
-						<tr>
-							<td bgcolor="#fbfbfb">
-								<h3>2015年上半年四川公务员考试《申论》真题试卷</h3>
-								<p>作答时间：2015年06月12日</p>
-							</td>
-							<td bgcolor="#fbfbfb" class="view_bt"><a
-								href="index.php?mod=exercise&act=paper&tid=2050702">继续做题</a></td>
-						</tr>
-						<tr>
-							<td style="border-bottom:1px solid #ececec;">
-								<h3>2015年上半年四川公务员考试《申论》真题试卷</h3>
-								<p>作答时间：2015年05月25日</p>
-							</td>
-							<td style="border-bottom:1px solid #ececec;" class="view_bt">
-								<a href="index.php?mod=exercise&act=paper&tid=1973648">继续做题</a>
-							</td>
-						</tr>
-					</table>
-
-
-
-					<div class="topiclist">
-
-						<div class="pages">
-							<b>1</b>
-						</div>
-					</div>
-
+						 -->
+							<tr>
+								<td>[易] <%=str1 + "‘" + course + "’" + str2%></td>
+								<td class="enter_bt"><a href="kaoshi2?mid=2"></a></td>
+							</tr>
+							<%
+								}
+							%>
+						</table>
+					</s:action>
+					<%
+						}
+					%>
 				</div>
 			</div>
 			<div class="box_bottom2">
@@ -192,6 +172,6 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="/system/footer.jsp"></jsp:include>
+	<jsp:include page="/system/footer.jsp"></jsp:include>
 </body>
 </html>

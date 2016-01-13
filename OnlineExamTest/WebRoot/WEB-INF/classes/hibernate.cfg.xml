@@ -38,6 +38,7 @@
 		<mapping resource="rainbow/example/domain/User.hbm.xml" />
 		<mapping resource="rainbow/example/domain/Admin.hbm.xml" />
 		<mapping resource="rainbow/example/domain/StuCourse.hbm.xml" />
+		<mapping resource="rainbow/example/domain/Loginuser.hbm.xml" />
 
 	</session-factory>
 

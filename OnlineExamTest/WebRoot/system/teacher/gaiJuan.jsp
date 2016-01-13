@@ -31,9 +31,11 @@
 <link href="<%=request.getContextPath()%>/system/css/page.css"
 	type="text/css" rel="stylesheet" />
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.js">
-	
-</script>
+	src="<%=request.getContextPath()%>/js/submitZhuGuan.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.simplemodal.js"></script>
 <script>
 	$(function() {
 		$(".Expand_in").hide();
@@ -148,7 +150,7 @@
 						<div class="hc_side" style="width:144px; position:fixed;">
 							<ul>
 								<li class="on" style="font-weight: bold;">答卷号：</li>
-								<li class="paper_submit" style="font-weight: bold;"><%=dj.getDaJuan()%></li>
+								<li class="paper_submit" style="font-weight: bold;" value="<%=dj.getDaJuan()%>" id="no"><%=dj.getDaJuan()%></li>
 								<li class="paper_submit" >主观题No.1得分：
 								</li>
 							</ul>
@@ -162,7 +164,7 @@
 							</ul>
 							<input type="text" id = "no3" name ="no3" style="height:35px;width:145px;font-size: 18px;border-width:1px;border-color: C1C1C1;"/>
 							<ul>
-								<li type="text" onclick="tijiao" style="font-weight: bold;">提交成绩</li>
+								<li type="text" style="font-weight: bold;" onclick="submitZg()">提交成绩</li>
 							</ul>
 
 						</div>

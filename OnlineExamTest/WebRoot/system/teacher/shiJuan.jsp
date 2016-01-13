@@ -135,7 +135,7 @@
 					
 				%>
 				<div class="page_nav">
-					<span><%=sj.getNameXK()%> &gt;&gt;</span> <span id="test"
+					<span><a href="<%=request.getContextPath()%>/system/teacher/checkMyStudent.jsp" style="color:black;font-weight:bold">返回</a> &gt;&gt;</span> <span id="test"
 						style="color:#EE0000;font-weight:bold">红色标记为正确答案！</span>
 				</div>
 				<div class="hc_title"><%="2014-2015第二学期" + " " + sj.getNameXK() + " " + "期末试卷"%></div>

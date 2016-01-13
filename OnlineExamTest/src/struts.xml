@@ -14,6 +14,8 @@
 			<result name="exception" type="redirect">system/login.jsp</result>
 		</action>
 		
+		<action name="zhuGuanSubmit" class="gaiJuan" method="Submit" >
+		</action>
 		<action name="submit" class="jiaoJuanAction" method="submit">
 		</action>
 		

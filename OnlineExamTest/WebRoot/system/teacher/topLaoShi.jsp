@@ -36,7 +36,7 @@
 								页</span></a></li>
 					<li class="xc"><a href=""><span>课程管理</span></a></li>
 					<li class="sl"><a href="<%=request.getContextPath()%>/system/teacher/personal.jsp"><span>个人信息</span></a></li>
-					<li class="lx"><a href=""><span>学生管理</span></a></li>
+					<li class="lx"><a href="<%=request.getContextPath()%>/system/teacher/stu.jsp"><span>学生管理</span></a></li>
 					<li class="jc"><a href="checkMyStudent"><span>试卷评改</span></a></li>
 				</ul>
 			</div>

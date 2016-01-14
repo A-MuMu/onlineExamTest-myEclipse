@@ -10,7 +10,9 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.support.StaticApplicationContext;
 
 import rainbow.example.domain.Student;
+import rainbow.example.domain.Teacher;
 import rainbow.example.service.TempleStuDAOService;
+import rainbow.example.service.TempleTeacherDAOService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,19 +25,30 @@ public class MagamentAction extends ActionSupport {
 	private static final long serialVersionUID = 8950122478844670120L;
 
 	private TempleStuDAOService<Student> templeStuDAOService;
+	private TempleTeacherDAOService<Teacher> teacherDAOService;
 
 	HttpServletRequest request = ServletActionContext.getRequest();
 
 	static List<Student> list = new ArrayList<Student>();
 
-	public void stu() {
+	public String stu() {
 		list = (List<Student>) templeStuDAOService.getAllObjects(Student.class);
 		if (list == null) {
-			;
+			return "null";
 		} else {
 			ActionContext.getContext().getSession().put("magament_stu", list);
 		}
-
+		return SUCCESS;
+	}
+	
+	public String teacher() {
+		List<Teacher> list2 = (List<Teacher>) teacherDAOService.getAllObjects(Teacher.class);
+		if (list2 == null) {
+			return "null";
+		} else {
+			ActionContext.getContext().getSession().put("magament_tea", list2);
+		}
+		return SUCCESS;
 	}
 
 	public String stucheck() {
@@ -137,5 +150,16 @@ public class MagamentAction extends ActionSupport {
 			TempleStuDAOService<Student> templeStuDAOService) {
 		this.templeStuDAOService = templeStuDAOService;
 	}
+
+	public TempleTeacherDAOService<Teacher> getTeacherDAOService() {
+		return teacherDAOService;
+	}
+
+	public void setTeacherDAOService(
+			TempleTeacherDAOService<Teacher> teacherDAOService) {
+		this.teacherDAOService = teacherDAOService;
+	}
+	
+	
 
 }

@@ -18,6 +18,12 @@
 		</action>
 		<action name="submit" class="jiaoJuanAction" method="submit">
 		</action>
+		<action name="stu" class="magamentAction" method="stu">
+			<result name="success" type="redirect">system/admin/stu.jsp</result>
+		</action>
+		<action name="teacher" class="magamentAction" method="teacher">
+			<result name="success" type="redirect">system/admin/teacher.jsp</result>
+		</action>
 		
 		<action name="checkMyStudent" class="checkCourseAction" method="getXkNameByTea">
 			<result name="success" type="redirect">system/teacher/checkMyStudent.jsp</result>
@@ -63,9 +69,6 @@
 
 		<action name="zhuguan" class="kaoShiAction" method="intoDaAn_zg">
 
-		</action>
-
-		<action name="stu" class="magamentAction" method="stu">
 		</action>
 
 		<action name="stucheck" class="magamentAction" method="stucheck">

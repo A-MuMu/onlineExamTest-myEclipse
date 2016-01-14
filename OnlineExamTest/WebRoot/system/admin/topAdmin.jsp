@@ -34,8 +34,8 @@
 				<ul>
 					<li class="sy"><a href="<%=path%>/system/admin/shouye.jsp"><span>首
 								页</span></a></li>
-					<li class="xc"><a href=""><span>学生管理</span></a></li>
-					<li class="sl"><a href=""><span>老师管理</span></a></li>
+					<li class="xc"><a href="stu"><span>学生管理</span></a></li>
+					<li class="sl"><a href="teacher"><span>老师管理</span></a></li>
 					<li class="lx"><a href=""><span>考试管理</span></a></li>
 					<li class="jc"><a href=""><span>试卷审核</span></a></li>
 				</ul>

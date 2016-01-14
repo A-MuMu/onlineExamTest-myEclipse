@@ -162,6 +162,7 @@
 	<bean id="magamentAction" class="rainbow.example.action.MagamentAction"
 		scope="prototype">
 		<property name="templeStuDAOService" ref="templeStuDAOService"></property>
+		<property name="teacherDAOService" ref="templeTeacherDAOService"></property>
 	</bean>
 	<bean id="teacherMagamentAction" class="rainbow.example.action.TeacherMagamentAction"
 		scope="prototype">

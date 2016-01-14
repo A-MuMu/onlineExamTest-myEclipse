@@ -41,12 +41,12 @@
 
 	<div class="main">
 		<div class="publicbox box">
-			<a href="" class="training">
+			<a href="stu" class="training">
 				<ul>
 					<li><h2>学生管理</h2></li>
 					<li><p>学生信息综合管理，包含学生信息添加、修改、删除、查看等。信息包含学生个人成绩、学生个人情况等。</p></li>
 				</ul>
-			</a> <a href="" class="testpaper"
+			</a> <a href="teacher" class="testpaper"
 				onclick="auto_make_paper();">
 				<ul>
 					<li><h2>教师管理</h2></li>

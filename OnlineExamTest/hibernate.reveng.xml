@@ -43,11 +43,13 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="stucourse" catalog="exam" class="StuCourse">
-	<primary-key>
-		<generator class="identity"></generator>
-		<key-column name="id" />
-		<key-column name="idStu" />
-	</primary-key>
-</table>
+	<table name="stucourse" catalog="exam" class="StuCourse">
+		<primary-key>
+			<generator class="assigned"></generator>
+
+
+		</primary-key>
+		<column name="id"></column>
+		<column name="idStu"></column>
+	</table>
 </hibernate-reverse-engineering>

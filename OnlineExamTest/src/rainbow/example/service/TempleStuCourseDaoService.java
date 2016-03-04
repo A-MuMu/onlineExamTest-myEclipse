@@ -1,5 +1,6 @@
 package rainbow.example.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import rainbow.example.DAO.TempleDAO;
@@ -12,9 +13,13 @@ public class TempleStuCourseDaoService {
 	
 	/* 老师通过课程查询学生 */
 	public List<StuCourse> queryDaAns(String xkName) {
-		String queryString = "SELECT s FROM StuCourse s WHERE s.xkname = '" + xkName +"'";
+		String queryString = "SELECT s FROM StuCourse s WHERE s.id.xkname = '" + xkName +"'";
 		list = dao.getObjects(queryString);
-		System.out.println(list.size()+"@@@@@@"+list.get(0).getDate());
+	    Iterator<StuCourse> iterator = list.iterator();
+	    if (iterator.hasNext()) {
+			System.out.println(iterator.next().getId().getShijuan()+"~~"+iterator.next().getId().getShijuan());
+		}
+//		System.out.println(list.size()+"@@@"+list.get(0).getShijuan()+"@@@"+list.get(1).getShijuan());
 		if (list.size() == 0) {
 			return null;
 		} else {

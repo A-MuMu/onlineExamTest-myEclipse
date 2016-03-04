@@ -36,7 +36,7 @@
 					<value>root</value>
 				</property>
 				<property name="password">
-					<value>ljl296485225</value>
+					<value>root</value>
 				</property>
 				<!--连接池中保留的最小连接数。 -->
 				<property name="minPoolSize" value="10" />

@@ -13,27 +13,27 @@
             <key-property name="idStu" type="string">
                 <column name="idStu" length="32" />
             </key-property>
+            <key-property name="nameStu" type="string">
+                <column name="nameStu" />
+            </key-property>
+            <key-property name="xkname" type="string">
+                <column name="XKname" length="32" />
+            </key-property>
+            <key-property name="daJuan" type="long">
+                <column name="DaJuan" />
+            </key-property>
+            <key-property name="shijuan" type="long">
+                <column name="shijuan" />
+            </key-property>
+            <key-property name="date" type="date">
+                <column name="date" length="10" />
+            </key-property>
+            <key-property name="zongFen" type="integer">
+                <column name="zongFen" />
+            </key-property>
+            <key-property name="zuZhuFenShu" type="integer">
+                <column name="zuZhuFenShu" />
+            </key-property>
         </composite-id>
-        <property name="nameStu" type="string">
-            <column name="nameStu" not-null="true" />
-        </property>
-        <property name="xkname" type="string">
-            <column name="XKname" length="32" />
-        </property>
-        <property name="daJuan" type="long">
-            <column name="DaJuan" not-null="true" />
-        </property>
-        <property name="shijuan" type="long">
-            <column name="shijuan" not-null="true" />
-        </property>
-        <property name="date" type="date">
-            <column name="date" length="10" />
-        </property>
-        <property name="zongFen" type="integer">
-            <column name="zongFen" />
-        </property>
-        <property name="zuZhuFenShu" type="integer">
-            <column name="zuZhuFenShu" />
-        </property>
     </class>
 </hibernate-mapping>

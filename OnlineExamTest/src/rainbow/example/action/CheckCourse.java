@@ -58,12 +58,14 @@ public class CheckCourse extends ActionSupport {
 
 	public void getStuByTea() {
 		// 获取老师所教学的课程
+		stuCs.clear();
 		for (int i = 0; i < xkNames.size(); i++) {
 			if (templeStuCourseDaoService.queryDaAns(xkNames.get(i))!=null) {
 				stuCs.addAll(templeStuCourseDaoService.queryDaAns(xkNames.get(i)));
 			}
+			System.out.println(xkNames.size()+"@@"+stuCs.size()+"@@@"+stuCs.get(i).getId().getShijuan()+"%%%"+stuCs.get(1).getId().getShijuan());
 		}
-		System.out.println(stuCs.get(1).getDate()+"%%%%%%%%%%%%%%%%");
+		
 		ActionContext.getContext().getSession().put("stuCs", stuCs);
 	}
 

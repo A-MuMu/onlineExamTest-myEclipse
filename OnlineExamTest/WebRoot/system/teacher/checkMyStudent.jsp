@@ -61,7 +61,7 @@
 		xkNames = (List<String>) session.getAttribute("xkNames");
 		List<StuCourse> stuCs = new ArrayList<StuCourse>();
 		stuCs = (List<StuCourse>) session.getAttribute("stuCs");
-		int sum = 0 ;
+		int sum = 0;
 	%>
 	<div class="main">
 		<div class="box2">
@@ -149,7 +149,9 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getId().getXkname()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a style="color:blue" href="chaJuan?num=<%=stuCs.get(i).getId().getShijuan() %>"><%=stuCs.get(i).getId().getShijuan()%></a></td>
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a
+											style="color:blue"
+											href="chaJuan?num=<%=stuCs.get(i).getId().getShijuan()%>"><%=stuCs.get(i).getId().getShijuan()%></a></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getDate()%></td>
 										<td align="center"
@@ -159,11 +161,12 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 9%;">
 											<%
-												sum = stuCs.get(i).getId().getZongFen()
-															+ stuCs.get(i).getId().getZuZhuFenShu();
+												sum = stuCs.get(i).getId().getZongFen() + stuCs.get(i).getId().getZuZhuFenShu();
 											%><%=sum%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 15%; "><a style="color:#ee0000" href="gaiJuan?No=<%=stuCs.get(i).getId().getShijuan() %>&daNo=<%=stuCs.get(i).getId().getDaJuan()%>">改卷</a></td>
+											style="border: 1px solid #FFF;height: 36px;width: 15%; "><a
+											style="color:#ee0000"
+											href="gaiJuan?No=<%=stuCs.get(i).getId().getShijuan()%>&daNo=<%=stuCs.get(i).getId().getDaJuan()%>">改卷</a></td>
 									</tr>
 									<%
 										}

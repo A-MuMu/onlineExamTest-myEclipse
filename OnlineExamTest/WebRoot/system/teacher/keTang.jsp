@@ -145,22 +145,22 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 13%;"><%=stuCs.get(i).getId().getIdStu()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getNameStu()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getNameStu()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getXkname()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getId().getXkname()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 6%;"><%=stuCs.get(i).getShijuan()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><%=stuCs.get(i).getId().getShijuan()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getDate()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getDate()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getZuZhuFenShu()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getZuZhuFenShu()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getZongFen()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getZongFen()%></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 9%;">
 											<%
-												sum = stuCs.get(i).getZongFen()
-															+ stuCs.get(i).getZuZhuFenShu();
+												sum = stuCs.get(i).getId().getZongFen()
+															+ stuCs.get(i).getId().getZuZhuFenShu();
 											%><%=sum%></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 15%;">不可修改</td>

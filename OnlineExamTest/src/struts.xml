@@ -21,6 +21,9 @@
 		<action name="stu" class="magamentAction" method="stu">
 			<result name="success" type="redirect">system/admin/stu.jsp</result>
 		</action>
+		<action name="ketang" class="checkCourseAction" method="getXkNameByTea">
+			<result name="success" type="redirect">system/teacher/stu.jsp</result>
+		</action>
 		<action name="teacher" class="magamentAction" method="teacher">
 			<result name="success" type="redirect">system/admin/teacher.jsp</result>
 		</action>

@@ -145,15 +145,15 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 13%;"><%=stuCs.get(i).getId().getIdStu()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getNameStu()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getNameStu()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getXkname()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 10%;"><%=stuCs.get(i).getId().getXkname()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a style="color:blue" href="chaJuan?num=<%=stuCs.get(i).getShijuan() %>"><%=stuCs.get(i).getShijuan()%></a></td>
+											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a style="color:blue" href="chaJuan?num=<%=stuCs.get(i).getId().getShijuan() %>"><%=stuCs.get(i).getId().getShijuan()%></a></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getDate()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getDate()%></td>
 										<td align="center"
-											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getZongFen()%></td>
+											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getZongFen()%></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
 										<td align="center"

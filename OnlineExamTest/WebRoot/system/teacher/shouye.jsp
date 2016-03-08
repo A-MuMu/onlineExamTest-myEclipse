@@ -40,10 +40,10 @@
 	<div class="main">
 		<div class="publicbox box">
 			<a
-				href="<%=request.getContextPath()%>/system/teacher/courseManager.jsp"
+				href="ketang"
 				class="training">
 				<ul>
-					<li><h2>课程管理</h2></li>
+					<li><h2>课堂评分</h2></li>
 					<li><p>查看自己所教课程的上课时间、地点安排，并可以进行调课申请等操作。</p></li>
 				</ul>
 			</a> <a href="<%=request.getContextPath()%>/system/teacher/personal.jsp"
@@ -52,7 +52,7 @@
 					<li><h2>个人信息</h2></li>
 					<li><p>信息包含教师个人履历，教学年志，教学学科，与提交某些内容的信息更正等。</p></li>
 				</ul>
-			</a> <a href="<%=request.getContextPath()%>/system/teacher/stu.jsp" class="zhenti">
+			</a> <a href="stu" class="zhenti">
 				<ul>
 					<li><h2>学生管理</h2></li>
 					<li><p>可查看中选课程学生信息，并记录学生平时上课表现与课堂互动分。</p></li>

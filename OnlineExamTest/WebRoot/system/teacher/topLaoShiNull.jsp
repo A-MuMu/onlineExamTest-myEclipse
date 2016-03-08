@@ -29,9 +29,9 @@
 			<div class="nav_but_ls yahei">
 				<ul>
 					<li class="sy"><a href="<%=path%>/system/teacher/shouye.jsp"><span>首页</span></a></li>
-					<li class="xc"><a href=""><span>课程管理</span></a></li>
+					<li class="xc"><a href=""><span>课堂评分</span></a></li>
 					<li class="sl"><a href=""><span>个人信息</span></a></li>
-					<li class="lx"><a href="checkMyStudent"><span>学生管理</span></a></li>
+					<li class="lx"><a href=""><span>学生管理</span></a></li>
 					<li class="jc"><a href=""><span>试卷评改</span></a></li>
 				</ul>
 			</div>

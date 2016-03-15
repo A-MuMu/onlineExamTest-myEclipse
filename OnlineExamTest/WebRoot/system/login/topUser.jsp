@@ -32,7 +32,7 @@
 			</div>
 			<div class="nav_but yahei">
 				<ul>
-					<li class="sy"><a href="<%=path%>/system/shouye.jsp"><span>首
+					<li class="sy"><a href="<%=path%>/system/login/shouye.jsp"><span>首
 								页</span></a></li>
 					<li class="xc"><a href="<%=path%>/system/student/lianxi.jsp"><span>练习</span></a></li>
 					<li class="sl"><a href="<%=path%>/system/student/kaoshi.jsp"><span>考试</span></a></li>
@@ -45,7 +45,7 @@
 					u = (User) session.getAttribute("USER");
 				%>
 				<p>
-					你好，<%=u.getId().getName()%><a href="<%=path%>/system/loginOut.jsp">退出</a>
+					你好，<%=u.getId().getName()%><a href="<%=path%>/system/login/loginOut.jsp">退出</a>
 				</p>
 			</div>
 		</div>

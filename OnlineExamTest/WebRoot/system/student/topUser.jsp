@@ -30,17 +30,16 @@
 			<div class="logo">
 				<img src="<%=request.getContextPath()%>/system/css/logo.jpg" />
 			</div>
-			<div class="nav_but_ls yahei">
+			<div class="nav_but yahei">
 				<ul>
-					<li class="sy"><a href="<%=path%>/system/teacher/shouye.jsp"><span>首
+					<li class="sy"><a href="<%=path%>/system/login/shouye.jsp"><span>首
 								页</span></a></li>
-					<li class="xc"><a href="<%=request.getContextPath()%>/system/teacher/courseManager.jsp"><span>课堂评分</span></a></li>
-					<li class="sl"><a href="<%=request.getContextPath()%>/system/teacher/personal.jsp"><span>个人信息</span></a></li>
-					<li class="lx"><a href="ketang"><span>学生管理</span></a></li>
-					<li class="jc"><a href="checkMyStudent"><span>试卷评改</span></a></li>
+					<li class="xc"><a href="<%=path%>/system/student/lianxi.jsp"><span>练习</span></a></li>
+					<li class="sl"><a href="<%=path%>/system/student/kaoshi.jsp"><span>考试</span></a></li>
+					<li class="lx"><a href=""><span>信息中心</span></a></li>
 				</ul>
 			</div>
-			<div class="toolbar" style="margin-left:120px;">
+			<div class="toolbar">
 				<%
 					User u = null;
 					u = (User) session.getAttribute("USER");

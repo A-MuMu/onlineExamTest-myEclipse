@@ -399,6 +399,6 @@
 		</div>
 
 	</div>
-	<jsp:include page="/system/footer.jsp"></jsp:include>
+	<jsp:include page="/system/teacher/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -31,14 +31,14 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:include page="/system/topNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/login/topNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/system/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/login/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
@@ -51,7 +51,7 @@
 				<%
 					if (session.getAttribute("USER") == null) {
 				%>
-				<a href="<%=path%>/system/login.jsp"><span class="register">登录系统>></span></a>
+				<a href="<%=path%>/system/login/login.jsp"><span class="register">登录系统>></span></a>
 				<%
 					}
 				%>
@@ -67,6 +67,6 @@
 		</div>
 	</div>
 	<br/>
-	<jsp:include page="/system/footer.jsp"></jsp:include>
+	<jsp:include page="/system/login/footer.jsp"></jsp:include>
 </body>
 </html>

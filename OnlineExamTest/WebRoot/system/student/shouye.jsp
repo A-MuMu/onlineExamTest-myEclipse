@@ -31,14 +31,14 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:include page="/system/topNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/student/topNull.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/system/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/student/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
@@ -63,10 +63,10 @@
 		<h2 class="yahei">考试寄语：</h2>
 		<div class="mingyan">
 			<s:action name="mingyan" executeResult="true" namespace="/"></s:action>
-			<jsp:include page="/system/mingyan.jsp"></jsp:include>
+			<jsp:include page="/system/student/mingyan.jsp"></jsp:include>
 		</div>
 	</div>
 	<br/>
-	<jsp:include page="/system/footer.jsp"></jsp:include>
+	<jsp:include page="/system/student/footer.jsp"></jsp:include>
 </body>
 </html>

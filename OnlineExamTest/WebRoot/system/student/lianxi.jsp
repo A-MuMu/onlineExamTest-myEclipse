@@ -81,7 +81,7 @@
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/system/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/student/topUser.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>
@@ -172,6 +172,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/system/footer.jsp"></jsp:include>
+	<jsp:include page="/system/student/footer.jsp"></jsp:include>
 </body>
 </html>

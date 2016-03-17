@@ -134,8 +134,8 @@
 					String course = (String) session.getAttribute("course");
 				%>
 				<div class="page_nav">
-					<a href="?mod=shenlun"><%=u.getNameStu()%></a> &gt;&gt; <a
-						href="?mod=shenlun&act=index&pid=25"><%=course%></a>
+					<a href="#"><%=u.getNameStu()%></a> &gt;&gt; <a
+						href="#"><%=course%></a>
 				</div>
 				<%
 					String str1 = null;
@@ -148,7 +148,7 @@
 				<%
 					}
 				%>
-				<form id="xuanze" name="xuanze" method="post" action="xuanze.action">
+				<!-- <form id="xuanze" name="xuanze" method="post" action="xuanze.action">  -->
 
 					<div class="left">
 						<div style="height:1px;"></div>
@@ -208,7 +208,7 @@
 							</h1>
 
 							<div class="text" id="text_box_2" data-flag="0">
-								<s:action id="xuanze" name="pangduan">
+								<!-- <s:action id="xuanze" name="pangduan"> -->
 
 									<table class="topiclist1">
 										<%
@@ -234,7 +234,7 @@
 											}
 										%>
 									</table>
-								</s:action>
+								<!-- </s:action> -->
 							</div>
 							<h1>
 								<span>主观题</span><a href="javascript:void(0);"
@@ -242,7 +242,7 @@
 							</h1>
 
 							<div class="text" id="text_box_3" data-flag="0">
-								<s:action id="xuanze" name="zhuguan">
+								<!-- <s:action id="xuanze" name="zhuguan"> -->
 									<table class="topiclist1">
 										<%
 											List<KeGuan> zg = (List<KeGuan>) session
@@ -261,11 +261,11 @@
 											}
 										%>
 									</table>
-								</s:action>
+								<!-- </s:action> -->
 							</div>
 						</div>
 					</div>
-				</form>
+				<!-- </form>  -->
 				<div class="clearfix"></div>
 			</div>
 

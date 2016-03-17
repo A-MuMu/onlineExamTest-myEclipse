@@ -1,6 +1,7 @@
 <%@page import="rainbow.example.domain.Student"%>
 <%@page import="rainbow.example.util.ValidateUtil"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -48,7 +49,7 @@
 							class="rt"></span>
 						<div class="clear"></div>
 					</h1>
-					<form id="u_login_form" method="post" action="userLogin.action">
+					<s:form id="u_login_form" method="post" action="userLogin" namespace="/system/login">
 						<table class="logintable">
 							<tr>
 								<td width="60">账 号 ：</td>
@@ -69,7 +70,7 @@
 
 							</tr>
 						</table>
-					</form>
+					</s:form>
 				</div>
 			</div>
 			<div class="box_bottom2">

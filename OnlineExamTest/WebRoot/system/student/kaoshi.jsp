@@ -11,6 +11,7 @@
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
+	String myPath = basePath + "system/student/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -100,7 +101,7 @@
 							<u><%=u.getNameStu()%>：</u> 同学的课程信息：
 						</h2>
 						<s:action id="kaoshi" name="kaoshi" executeResult="true"
-							namespace="/">
+							namespace="/system/student">
 
 							<div class="classify_in" >
 								<ul class="tab">
@@ -116,13 +117,15 @@
 										xkNames = (List) session.getAttribute("xkNames");
 										if (xkNames != null) {
 											int num = xkNames.size();
+											
 											for (int i = 0; i < num; i++) {
 									%>
-									<li><a href="kaoshi1?mod=<%=xkNames.get(i)%>"><%=xkNames.get(i)%></a></li>
+									<li><a href="<%=myPath %>kaoshi1?mod=<%=xkNames.get(i)%>" ><%=xkNames.get(i)%></a></li>
 									<%
 										}
 									}
 									%>
+									
 								</ul>
 							</div>
 						</s:action>
@@ -134,7 +137,7 @@
 						String course = (String) session.getAttribute("course");
 						if (course != null){
 					%>
-					<s:action id="kaoshi" name="kaoshi1">
+					<s:action id="kaoshi" name="kaoshi1" namespace="/system/student">
 						<table class="topiclist" >
 							<%
 								String str1 = null;
@@ -145,7 +148,7 @@
 							%>
 							<tr>
 								<td>[难] <%=str1 + "‘" + course + "’" + str2%></td>
-								<td class="enter_bt"><a href="kaoshi2?mid=1"></a></td>
+								<td class="enter_bt"><a href="<%=myPath %>kaoshi2?mid=1"></a></td>
 							</tr>
 							<!-- 
 						<tr>
@@ -155,7 +158,7 @@
 						 -->
 							<tr>
 								<td>[易] <%=str1 + "‘" + course + "’" + str2%></td>
-								<td class="enter_bt"><a href="kaoshi2?mid=2"></a></td>
+								<td class="enter_bt"><a href="<%=myPath %>kaoshi2?mid=2"></a></td>
 							</tr>
 							<%
 								}

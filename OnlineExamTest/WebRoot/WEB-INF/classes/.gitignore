@@ -1,4 +1,3 @@
-/StuCourse.class
-/StuCourseId.class
+/applicationContext.xml
+/hibernate.cfg.xml
 /rainbow/
-/StuCourse.hbm.xml

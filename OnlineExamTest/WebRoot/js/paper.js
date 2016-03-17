@@ -53,11 +53,11 @@ $(function() {
 						// alert(float_second);
 
 						$('.commit-exercise-wrap .submit').click(function() {
-							var url = 'submit';
+							var url = 'system/student/submit';
 							var xuanze = answers_1.toString();
 							var pangduan = answers_2.toString();
 							var zhuguan = answers_3.toString();
-//							alert(xuanze + "~~" + pangduan + "~~" +zhuguan);
+							alert(url+"~~" +zhuguan);
 							$.ajax({
 								type : "post",
 								url : url,

@@ -2,68 +2,65 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.objectFactory" value="spring" />
-	<package name="authority" extends="struts-default">
-		<global-results>
-			<result name="error">jsp/error.jsp</result>
-		</global-results>
-		
-		<action name="userLogin" class="loginAction" method="doLogin" >
-			<result name="student" type="redirect">system/student/shouye.jsp</result>
-			<result name="admin" type="redirect">system/admin/shouye.jsp</result>
-			<result name="teacher" type="redirect">system/teacher/shouye.jsp</result>
-			<result name="exception" type="redirect">system/login/login.jsp</result>
+	<package name="exam-login" namespace="/system/login" extends="struts-default">
+		<action name="userLogin" class="loginAction" method="doLogin">
+			<result name="student" type="redirect">
+				<param name="namespace">/system/student</param>
+				<param name="location">shouye.jsp</param>
+			</result>
+			<result name="admin" type="redirect">
+				<param name="namespace">/system/admin</param>
+				<param name="location">shouye.jsp</param>
+			</result>
+			<result name="teacher" type="redirect">
+				<param name="namespace">/system/teacher</param>
+				<param name="location">shouye.jsp</param>
+			</result>
+			<result name="exception" type="redirect">login.jsp</result>
 		</action>
-		
-		<action name="zhuGuanSubmit" class="gaiJuan" method="Submit" >
+		<action name="query" class="loginAction" method="doQuery">
 		</action>
+		<action name="delete" class="loginAction" method="doDelete" />
+		<action name="edit" class="loginAction" method="doEdit">
+		</action>
+		<action name="mingyan" class="mingYanAction" method="doMingYan">
+		</action>
+	</package>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<package name="exam-student" namespace="/system/student"
+		extends="json-default">
+
 		<action name="submit" class="jiaoJuanAction" method="submit">
 		</action>
-		<action name="stu" class="magamentAction" method="stu">
-			<result name="success" type="redirect">system/admin/stu.jsp</result>
+		<action name="kaoshi" class="kaoShiAction" method="findCourse">
 		</action>
-		<action name="ketang" class="checkCourseAction" method="getXkNameByTea">
-			<result name="success" type="redirect">system/teacher/stu.jsp</result>
-		</action>
-		<action name="teacher" class="magamentAction" method="teacher">
-			<result name="success" type="redirect">system/admin/teacher.jsp</result>
-		</action>
-		
-		<action name="checkMyStudent" class="checkCourseAction" method="getXkNameByTea">
-			<result name="success" type="redirect">system/teacher/checkMyStudent.jsp</result>
-		</action>
-		
-		<action name="gaiJuan" class="checkCourseAction" method="gaiJuan">
-			<result name="success" type="redirect">system/teacher/gaiJuan.jsp</result>
-		</action>
-		
-		<action name="chaJuan" class="checkCourseAction" method="chaJuan">
-			<result name="success" type="redirect">system/teacher/shiJuan.jsp</result>
-		</action>
-		
-		<action name="checkTeaPersonal" class="teacherPersonCheck" method="checkTeaPersonal">
-		</action>
-
 		<action name="mingyan" class="mingYanAction" method="doMingYan">
 		</action>
 
-		<action name="kaoshi" class="kaoShiAction" method="findCourse">
-		</action>
-
 		<action name="kaoshi1" class="kaoShiAction" method="showCourse">
-			<result name="success" >system/student/kaoshi.jsp</result>
+			<result name="success">kaoshi.jsp</result>
 		</action>
 
 		<action name="kaoshi2" class="kaoShiAction" method="intoKaoShi">
-			<result name="success" type="redirect">system/student/LiKaoshi.jsp</result>
-			<result name="error" >system/shouye.jsp</result>
-		</action>
-		
-		<action name="kaoshi3" class="kaoShiAction" method="lianxi">
+			<result name="success" type="redirect">LiKaoshi.jsp
+			</result>
+			<result name="error">
+				<param name="namespace">/system/login</param>
+				<param name="location">shouye.jsp</param>
+			</result>
 		</action>
 
+		<action name="kaoshi3" class="kaoShiAction" method="lianxi">
+		</action>
 		<action name="xuanze" class="kaoShiAction" method="intoDaAn_xz">
-			<result name="error" >system/login/error.jsp</result>
-			<result name="success" >system/student/kaoshi.jsp</result>
+			<result name="error">
+				<param name="namespace">/system/login</param>
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="success">
+				<param name="namespace">/system/student</param>
+				<param name="location">kaoshi.jsp</param>
+			</result>
 		</action>
 
 		<action name="pangduan" class="kaoShiAction" method="intoDaAn_pd">
@@ -74,32 +71,62 @@
 
 		</action>
 
-		<action name="stucheck" class="magamentAction" method="stucheck">
-			<result name="success" type="redirect">system/teacher/stu.jsp</result>
-		</action>
-
-		<action name="tea" class="teacherMagamentAction" method="stu">
-		</action>
-
-		<action name="teacheck" class="teacherMagamentAction" method="stucheck">
-			<result name="success" type="redirect">system/teacher/laoshi.jsp</result>
-		</action>
 
 		<action name="xz" class="xuanZeAction" method="stu">
 		</action>
 
 		<action name="xzcheck" class="xuanZeAction" method="stucheck">
 		</action>
-
-		<action name="query" class="loginAction" method="doQuery">
-		</action>
-		<action name="delete" class="loginAction" method="doDelete" />
-		<action name="edit" class="loginAction" method="doEdit">
-		</action>
-
-		<action name="add" class="userAct" method="doAdd">
+		<action name="zhuGuanSubmit" class="gaiJuan" method="Submit">
 		</action>
 
 	</package>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<package name="exam-teacher" namespace="/system/teacher"
+		extends="struts-default">
+		<action name="ketang" class="checkCourseAction" method="getXkNameByTea">
+			<result name="success" type="redirect">stu.jsp</result>
+		</action>
+		<action name="checkMyStudent" class="checkCourseAction" method="getXkNameByTea">
+			<result name="success" type="redirect">checkMyStudent.jsp
+			</result>
+		</action>
+
+		<action name="gaiJuan" class="checkCourseAction" method="gaiJuan">
+			<result name="success" type="redirect">gaiJuan.jsp
+			</result>
+		</action>
+
+		<action name="chaJuan" class="checkCourseAction" method="chaJuan">
+			<result name="success" type="redirect">shiJuan.jsp
+			</result>
+		</action>
+		<action name="stucheck" class="magamentAction" method="stucheck">
+			<result name="success" type="redirect">stu.jsp</result>
+		</action>
+
+		<action name="tea" class="teacherMagamentAction" method="stu">
+		</action>
+
+		<action name="teacheck" class="teacherMagamentAction" method="stucheck">
+			<result name="success" type="redirect">laoshi.jsp</result>
+		</action>
+		<action name="checkTeaPersonal" class="teacherPersonCheck"
+			method="checkTeaPersonal">
+		</action>
+
+	</package>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<package name="exam-admin" namespace="/system/admin" extends="struts-default">
+		<action name="stu" class="magamentAction" method="stu">
+			<result name="success" type="redirect">stu.jsp</result>
+		</action>
+		<action name="teacher" class="magamentAction" method="teacher">
+			<result name="success" type="redirect">teacher.jsp</result>
+		</action>
+		<action name="add" class="userAct" method="doAdd">
+		</action>
+	</package>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 </struts>    

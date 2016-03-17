@@ -3,9 +3,8 @@
 <%@ page import="rainbow.example.domain.User"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String myPath = basePath + "system/admin/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -34,8 +33,8 @@
 				<ul>
 					<li class="sy"><a href="<%=path%>/system/admin/shouye.jsp"><span>首
 								页</span></a></li>
-					<li class="xc"><a href="stu"><span>学生管理</span></a></li>
-					<li class="sl"><a href="teacher"><span>老师管理</span></a></li>
+					<li class="xc"><a href="<%=myPath%>stu"><span>学生管理</span></a></li>
+					<li class="sl"><a href="<%=myPath%>teacher"><span>老师管理</span></a></li>
 					<li class="lx"><a href=""><span>考试管理</span></a></li>
 					<li class="jc"><a href=""><span>试卷审核</span></a></li>
 				</ul>
@@ -46,7 +45,7 @@
 					u = (User) session.getAttribute("USER");
 				%>
 				<p>
-					你好，<%=u.getId().getName()%><a href="system/loginOut.jsp">退出</a>
+					你好，<%=u.getId().getName()%><a href="system/login/loginOut.jsp">退出</a>
 				</p>
 			</div>
 		</div>

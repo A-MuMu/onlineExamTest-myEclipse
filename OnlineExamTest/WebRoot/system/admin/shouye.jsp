@@ -1,9 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String myPath = basePath + "system/admin/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -41,18 +40,18 @@
 
 	<div class="main">
 		<div class="publicbox box">
-			<a href="stu" class="training">
+			<a href="<%=myPath %>stu" class="training">
 				<ul>
 					<li><h2>学生管理</h2></li>
 					<li><p>学生信息综合管理，包含学生信息添加、修改、删除、查看等。信息包含学生个人成绩、学生个人情况等。</p></li>
 				</ul>
-			</a> <a href="teacher" class="testpaper"
-				onclick="auto_make_paper();">
+			</a> <a href="" class="testpaper" onclick="auto_make_paper();">
 				<ul>
 					<li><h2>教师管理</h2></li>
 					<li><p>教师信息综合管理，包含教师信息添加、修改、删除、查看等。信息包含教师个人履历，教学年志，教学学科等。</p></li>
 				</ul>
-			</a> <a href="<%=request.getContextPath()%>/system/admin/kaoshi.jsp" class="zhenti">
+			</a> <a href="<%=request.getContextPath()%>/system/admin/kaoshi.jsp"
+				class="zhenti">
 				<ul>
 					<li><h2>考试管理</h2></li>
 					<li><p>考试过程时时管理，重置考生试卷，视频监控考生等多项管理手段。</p></li>

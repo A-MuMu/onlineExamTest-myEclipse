@@ -7,8 +7,9 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
+	String myPath = basePath + "system/admin/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -44,7 +45,7 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:forward page="/system/login.jsp"></jsp:forward>
+	<jsp:forward page="/system/login/login.jsp"></jsp:forward>
 	<%
 		}
 	%>
@@ -56,7 +57,7 @@
 		}
 	%>
 	<%
-		List<Student> list = (List<Student>)session.getAttribute("magament_stu");
+		List<Student> list = (List<Student>) session.getAttribute("magament_stu");
 		String no = request.getParameter("No");
 		int i = Integer.parseInt(no);
 	%>
@@ -68,37 +69,52 @@
 						<table style="width:250px" class="mytable">
 							<tbody>
 								<tr style="height: 20px">
-									<td colspan="2" align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">学生个人信息修改</td>
+									<td colspan="2" align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">学生个人信息修改</td>
 								</tr>
 								<tr style="height: 20px">
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">ID:</td>
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">ID:</td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input
+										style="border: 1px solid #C1C1C1;height: 36px;font-size:19px" /></td>
 								</tr>
 								<tr style="height: 20px">
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">学号:</td>
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">学号:</td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input
+										style="border: 1px solid #C1C1C1;height: 36px;font-size:19px" /></td>
 								</tr>
 								<tr style="height: 20px">
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">姓名:</td>
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">姓名:</td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input
+										style="border: 1px solid #C1C1C1;height: 36px;font-size:19px" /></td>
 								</tr>
 								<tr style="height: 20px">
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">邮箱:</td>
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">邮箱:</td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input
+										style="border: 1px solid #C1C1C1;height: 36px;font-size:19px" /></td>
 								</tr>
 								<tr style="height: 20px">
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">密码:</td>
-									<td align="center" style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input style="border: 1px solid #C1C1C1;height: 36px;font-size:19px"/></td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #C1C1C1;">密码:</td>
+									<td align="center"
+										style="border: 1px solid #FFF;height: 36px;width: 20%;background-color: #efefef;"><input
+										style="border: 1px solid #C1C1C1;height: 36px;font-size:19px" /></td>
 								</tr>
-							
 						</table>
 						<br />
 						<center>
-						<input onclick="submit()" id="bt_edit" type="submit" value="确认修改"
-							name="bt_edit" style="height: 25px ; width: 90px" />
-						&nbsp;&nbsp; <input onclick="redirect()" id="bt_print"
-							type="submit" value="取消返回" name="bt_print"
-							style="height: 25px ; width: 90px" />
+							<input onclick="submit()" id="bt_edit" type="submit" value="确认修改"
+								name="bt_edit" style="height: 25px ; width: 90px" />
+							&nbsp;&nbsp; <input onclick="redirect()" id="bt_print"
+								type="submit" value="取消返回" name="bt_print"
+								style="height: 25px ; width: 90px" />
 						</center>
 
 					</div>

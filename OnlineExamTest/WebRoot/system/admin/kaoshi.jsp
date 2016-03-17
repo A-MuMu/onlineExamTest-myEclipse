@@ -40,14 +40,14 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:forward page="/system/login.jsp"></jsp:forward>
+	<jsp:forward page="/system/login/login.jsp"></jsp:forward>
 	<%
 		}
 	%>
 	<%
 		if (session.getAttribute("USER") != null) {
 	%>
-	<jsp:include page="/system/teacher/topLaoShi.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
+	<jsp:include page="/system/admin/topAdmin.jsp"></jsp:include><!-- 此处必须在同一行，不能换行 -->
 	<%
 		}
 	%>

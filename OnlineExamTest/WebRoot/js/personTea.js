@@ -7,7 +7,7 @@ function submit(){
 	var homeTel = document.getElementsByName("home-tel");
 	var youbian = document.getElementsByName("youbian");
 	alert(email+"~~"+email[0].value.replace("(点击修改)", "")+"~~"+tel[0].value.replace("(点击修改)", ""));
-	var url = 'checkTeaPersonal' ;
+	var url = 'system/teacher/checkTeaPersonal' ;
 	$.ajax({
 		type : "post",
 		url : url,

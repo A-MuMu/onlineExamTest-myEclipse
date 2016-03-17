@@ -3,9 +3,8 @@
 <%@ page import="rainbow.example.domain.User"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String myPath = basePath + "system/teacher/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -34,10 +33,12 @@
 				<ul>
 					<li class="sy"><a href="<%=path%>/system/teacher/shouye.jsp"><span>首
 								页</span></a></li>
-					<li class="xc"><a href="<%=request.getContextPath()%>/system/teacher/courseManager.jsp"><span>课堂评分</span></a></li>
-					<li class="sl"><a href="<%=request.getContextPath()%>/system/teacher/personal.jsp"><span>个人信息</span></a></li>
-					<li class="lx"><a href="ketang"><span>学生管理</span></a></li>
-					<li class="jc"><a href="checkMyStudent"><span>试卷评改</span></a></li>
+					<li class="xc"><a
+						href="<%=request.getContextPath()%>/system/teacher/courseManager.jsp"><span>课堂评分</span></a></li>
+					<li class="sl"><a
+						href="<%=request.getContextPath()%>/system/teacher/personal.jsp"><span>个人信息</span></a></li>
+					<li class="lx"><a href="<%=myPath%>ketang"><span>学生管理</span></a></li>
+					<li class="jc"><a href="<%=myPath%>checkMyStudent"><span>试卷评改</span></a></li>
 				</ul>
 			</div>
 			<div class="toolbar" style="margin-left:120px;">
@@ -46,7 +47,8 @@
 					u = (User) session.getAttribute("USER");
 				%>
 				<p>
-					你好，<%=u.getId().getName()%><a href="<%=path%>/system/login/loginOut.jsp">退出</a>
+					你好，<%=u.getId().getName()%><a
+						href="<%=path%>/system/login/loginOut.jsp">退出</a>
 				</p>
 			</div>
 		</div>

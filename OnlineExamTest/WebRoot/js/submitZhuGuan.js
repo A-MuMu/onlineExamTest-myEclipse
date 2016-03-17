@@ -4,7 +4,7 @@ function submitZg(){
 	var no2 = document.getElementsByName("no2");
 	var no3 = document.getElementsByName("no3");
 	alert(document.getElementById("no").value);
-	var url = "zhuGuanSubmit";
+	var url = 'system/teacher/zhuGuanSubmit';
 	$.ajax({
 		type : "post",
 		url : url,

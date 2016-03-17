@@ -9,6 +9,7 @@
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
+	String myPath = basePath + "system/teacher/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -151,7 +152,7 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 6%;"><a
 											style="color:blue"
-											href="chaJuan?num=<%=stuCs.get(i).getId().getShijuan()%>"><%=stuCs.get(i).getId().getShijuan()%></a></td>
+											href="<%=myPath%>chaJuan?num=<%=stuCs.get(i).getId().getShijuan()%>"><%=stuCs.get(i).getId().getShijuan()%></a></td>
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 11%;"><%=stuCs.get(i).getId().getDate()%></td>
 										<td align="center"
@@ -166,7 +167,7 @@
 										<td align="center"
 											style="border: 1px solid #FFF;height: 36px;width: 15%; "><a
 											style="color:#ee0000"
-											href="gaiJuan?No=<%=stuCs.get(i).getId().getShijuan()%>&daNo=<%=stuCs.get(i).getId().getDaJuan()%>">改卷</a></td>
+											href="<%=myPath%>gaiJuan?No=<%=stuCs.get(i).getId().getShijuan()%>&daNo=<%=stuCs.get(i).getId().getDaJuan()%>">改卷</a></td>
 									</tr>
 									<%
 										}

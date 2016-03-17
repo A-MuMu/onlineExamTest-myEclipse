@@ -40,7 +40,7 @@
 	<%
 		if (session.getAttribute("USER") == null) {
 	%>
-	<jsp:forward page="/system/login.jsp"></jsp:forward>
+	<jsp:forward page="/system/login/login.jsp"></jsp:forward>
 	<%
 		}
 	%>

@@ -5,16 +5,13 @@
 	<package name="exam-login" namespace="/system/login" extends="struts-default">
 		<action name="userLogin" class="loginAction" method="doLogin">
 			<result name="student" type="redirect">
-				<param name="namespace">/system/student</param>
-				<param name="location">shouye.jsp</param>
+				/system/student/shouye.jsp
 			</result>
 			<result name="admin" type="redirect">
-				<param name="namespace">/system/admin</param>
-				<param name="location">shouye.jsp</param>
+				/system/admin/shouye.jsp
 			</result>
 			<result name="teacher" type="redirect">
-				<param name="namespace">/system/teacher</param>
-				<param name="location">shouye.jsp</param>
+				/system/teacher/shouye.jsp
 			</result>
 			<result name="exception" type="redirect">login.jsp</result>
 		</action>
@@ -45,8 +42,7 @@
 			<result name="success" type="redirect">LiKaoshi.jsp
 			</result>
 			<result name="error">
-				<param name="namespace">/system/login</param>
-				<param name="location">shouye.jsp</param>
+				/system/login/shouye.jsp
 			</result>
 		</action>
 
@@ -54,12 +50,10 @@
 		</action>
 		<action name="xuanze" class="kaoShiAction" method="intoDaAn_xz">
 			<result name="error">
-				<param name="namespace">/system/login</param>
-				<param name="location">error.jsp</param>
+				/system/login/error.jsp
 			</result>
 			<result name="success">
-				<param name="namespace">/system/student</param>
-				<param name="location">kaoshi.jsp</param>
+				/system/student/kaoshi.jsp
 			</result>
 		</action>
 
@@ -76,8 +70,6 @@
 		</action>
 
 		<action name="xzcheck" class="xuanZeAction" method="stucheck">
-		</action>
-		<action name="zhuGuanSubmit" class="gaiJuan" method="Submit">
 		</action>
 
 	</package>
@@ -113,6 +105,8 @@
 		</action>
 		<action name="checkTeaPersonal" class="teacherPersonCheck"
 			method="checkTeaPersonal">
+		</action>
+		<action name="zhuGuanSubmit" class="gaiJuan" method="Submit">
 		</action>
 
 	</package>

@@ -30,14 +30,14 @@
 			</div>
 			<div class="nav_but yahei">
 				<ul>
-					<li class="sy"><a href="<%=path%>/system/shouye.jsp"><span>首 页</span></a></li>
+					<li class="sy"><a href="<%=path%>/system/student/shouye.jsp"><span>首 页</span></a></li>
 					<li class="xc"><a href="<%=path%>/system/student/lianxi.jsp"><span>练习</span></a></li>
 					<li class="sl"><a href="<%=path%>/system/student/kaoshi.jsp"><span>考试</span></a></li>
 					<li class="lx"><a href=""><span>信息中心</span></a></li>
 				</ul>
 			</div>
 			<div class="toolbar">
-				<p >（不开放注册）<a href="<%=path%>/system/login.jsp">登录</a></p>
+				<p >（不开放注册）<a href="<%=path%>/system/student/login.jsp">登录</a></p>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,9 @@
 package rainbow.example.action;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -31,9 +34,10 @@ public class LoginAction extends ActionSupport {
 	private TempleAdminLoginService templeAdminLoginService;
 
 	@SuppressWarnings("unused")
-	public String doLogin() {
+	public void doLogin() {
 		String result = "exception";
 		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		String id = request.getParameter("loginID");
 		String psw = request.getParameter("loginPSW");
 		User loginUser;
@@ -44,29 +48,38 @@ public class LoginAction extends ActionSupport {
 
 			if (loginUser == null) {
 				result = "exception";
+				response.getWriter().write("4");// 将值写入页面
 			} else if (loginUser != null) {
 				Student student = userService.getOne(loginUser.getId().getId());
 				if (student != null) {
 					ActionContext.getContext().getSession().put("userinfo", student);
 					result = "student";
+					response.getWriter().write("1");// 将值写入页面
 				}
 				Teacher teacher = teacherDAOService.getOne(loginUser.getId().getId());
 				if (teacher != null) {
 					ActionContext.getContext().getSession().put("userinfo", teacher);
 					result = "teacher";
+					response.getWriter().write("2");// 将值写入页面
 				}
 				Admin admin = templeAdminLoginService.getOne(loginUser.getId().getId());
 				if (admin != null) {
 					ActionContext.getContext().getSession().put("userinfo", admin);
 					result = "admin";
+					response.getWriter().write("3");// 将值写入页面
+				}
+				if (result.equals("exception") || "exception" == result) {
+					response.getWriter().write("4");// 将值写入页面
 				}
 			}
 		} catch (UserException e) {
 			// TODO: handle exception
 			ValidateUtil.validateErr(request, e.getMessage());
 			result = "exception";
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return result;
 	}
 
 	public TempleStuDAOService<Student> getUserService() {

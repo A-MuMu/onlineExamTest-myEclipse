@@ -30,13 +30,19 @@
 					<value>com.mysql.jdbc.Driver</value>
 				</property>
 				<property name="jdbcUrl">
-					<value>jdbc:mysql://192.168.6.12:3306/exam</value>
+					<value>jdbc:mysql://192.168.6.61:3306/exam</value>
 				</property>
 				<property name="user">
 					<value>root</value>
 				</property>
 				<property name="password">
 					<value>root</value>
+				</property>
+				<property name="connection.useUnicode">
+					<value>true</value>
+				</property>
+				<property name="connection.characterEncoding">
+					<value>UTF-8</value>
 				</property>
 				<!--连接池中保留的最小连接数。 -->
 				<property name="minPoolSize" value="10" />

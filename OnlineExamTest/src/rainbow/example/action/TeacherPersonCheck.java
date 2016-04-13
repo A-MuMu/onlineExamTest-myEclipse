@@ -32,13 +32,16 @@ public class TeacherPersonCheck extends ActionSupport {
 		teacher = (Teacher) ActionContext.getContext().getSession().get("userinfo");
 		
 		teacher.setEmailTea(request.getParameter("email"));
-		System.out.println(teacher.getEmailTea()+"~~~~~~~~~~~~~~~~~~~");
+		System.out.println(teacher.getEmailTea()+"~~~~~~~~~~~~~~~~~~~"+teacher.getName());
 		teacher.setTel(request.getParameter("tel"));
 		teacher.setSushe(request.getParameter("sushe"));
 		teacher.setSusheTel(request.getParameter("susheTel"));
 		teacher.setHome(request.getParameter("home"));
 		teacher.setHomeTel(request.getParameter("homeTel"));
 		teacher.setYoubian(request.getParameter("youbian"));
+//		teacher.setName("’≈ Ê");
+		teacher.setName(teacher.getName());
+		System.out.println(teacher.getEmailTea()+"~~~~~~~~~~~~~~~~~~~"+teacher.getName());
 		
 		teacherDAOService.updateObject(teacher);
 		

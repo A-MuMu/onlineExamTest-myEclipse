@@ -51,7 +51,7 @@
 				<%
 					if (session.getAttribute("USER") == null) {
 				%>
-				<a href="<%=path%>/system/login.jsp"><span class="register">登录系统>></span></a>
+				<a href="<%=path%>/system/student/login.jsp"><span class="register">登录系统>></span></a>
 				<%
 					}
 				%>

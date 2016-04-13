@@ -37,7 +37,7 @@
 			</div>
 			<div class="toolbar">
 				<p>
-					（不开放注册）<a href="<%=path%>/system/login.jsp">登录</a>
+					（不开放注册）<a href="<%=path%>/system/login/login.jsp">登录</a>
 				</p>
 			</div>
 		</div>
